@@ -1,0 +1,145 @@
+<!doctype html>
+<html lang="ko">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>내 문서를 AI 기술블로그 글로 바꾸는 개인 Agent 만들기</title>
+  <style>
+    body {
+      margin: 0;
+      font-family: Arial, "Noto Sans KR", sans-serif;
+      line-height: 1.72;
+      color: #172026;
+      background: #f7f9fb;
+    }
+
+    main {
+      width: min(860px, calc(100% - 32px));
+      margin: 0 auto;
+      padding: 36px 0 60px;
+    }
+
+    a {
+      color: #115e59;
+    }
+
+    h1 {
+      margin-top: 22px;
+      font-size: clamp(30px, 5vw, 48px);
+      line-height: 1.15;
+      letter-spacing: 0;
+    }
+
+    h2 {
+      margin-top: 38px;
+      padding-top: 22px;
+      border-top: 1px solid #d8e0e6;
+      letter-spacing: 0;
+    }
+
+    h3 {
+      margin-bottom: 4px;
+    }
+
+    li {
+      margin: 5px 0;
+      color: #5a6872;
+    }
+
+    .meta {
+      color: #5a6872;
+      border: 1px solid #d8e0e6;
+      border-radius: 8px;
+      padding: 14px 16px;
+      background: #fff;
+    }
+  </style>
+</head>
+<body>
+  <main>
+    <p><a href="index.html">← 프로젝트 홈</a></p>
+    <div class="meta">
+      <strong>tags:</strong> AI, Python, Public Data, AI Agent, Portfolio<br>
+      <strong>summary:</strong> 문서와 프로젝트 경험을 AI 서비스 개발자 포트폴리오형 기술블로그 글로 재구성한 기록
+    </div>
+
+    <h1>내 문서를 AI 기술블로그 글로 바꾸는 개인 Agent 만들기</h1>
+    <p>
+      이 글은 내가 작성한 메모, 공모전 자료, 기술 학습 기록을 바탕으로 문제 정의와
+      AI 시스템 설계 관점에서 다시 정리한 초안이다.
+    </p>
+
+    <h2>1. 왜 이 문제를 풀려고 했는가</h2>
+    <h3>프로젝트 배경</h3>
+    <ul>
+      <li>Python, C, C++을 공부하면서 매일 작성한 학습 메모가 흩어져 있었다.</li>
+      <li>공공데이터와 AI를 활용해 사용자가 더 빠르게 의사결정을 할 수 있는 서비스를 기획하고 싶다.</li>
+    </ul>
+    <h3>문제 정의</h3>
+    <ul>
+      <li>학습 기록, README, 회고 문서를 넣으면 AI 서비스 개발자 관점의 기술블로그 글로 재구성하고 싶다.</li>
+      <li>사용자는 긴 공공데이터 목록을 직접 해석하기 어렵다.</li>
+    </ul>
+
+    <h2>2. 문제 정의</h2>
+    <ul>
+      <li>입력은 Markdown 또는 TXT 문서이고, 출력은 GitHub Pages나 Velog에 옮길 수 있는 Markdown 게시글이다.</li>
+      <li>서비스는 사용자의 상황 입력을 구조화하고, 관련 공공데이터를 찾아 이해하기 쉬운 추천 근거를 제공해야 한다.</li>
+    </ul>
+
+    <h2>3. 데이터와 자료</h2>
+    <ul>
+      <li>학습 기록, README, 공모전 메모, 공공데이터 API 후보를 입력 자료로 사용한다.</li>
+      <li>데이터 출처와 최신성은 반드시 확인해야 한다.</li>
+    </ul>
+
+    <h2>4. 시스템 설계</h2>
+    <ul>
+      <li><code>input_docs</code> 폴더에서 문서를 읽고, 정보 추출 모듈이 핵심 항목을 정리한다.</li>
+      <li><code>blog_writer</code>가 템플릿에 맞춰 글을 만들고 <code>output_posts</code>에 저장한다.</li>
+      <li><code>reviewer</code>는 부족한 정보와 보완 질문을 <code>review_questions.md</code>에 기록한다.</li>
+    </ul>
+
+    <h2>5. AI 적용 방식</h2>
+    <ul>
+      <li>LLM은 문제 정의, 데이터 흐름, 시스템 설계, 실패 사례, 다음 개선 방향을 추출한다.</li>
+      <li>사람은 공개 가능 여부, 과장 표현, 실제 구현 근거를 검토한다.</li>
+    </ul>
+
+    <h2>6. 구현 과정</h2>
+    <ul>
+      <li>Python 파일 입출력, Markdown 생성, mock LLM 클라이언트, 로그 기록을 사용했다.</li>
+      <li>실제 API 키가 없어도 mock 모드로 샘플 블로그 글을 생성할 수 있게 했다.</li>
+    </ul>
+
+    <h2>7. 결과물</h2>
+    <ul>
+      <li>샘플 입력 문서 2개와 생성된 Markdown 게시글, 인덱스, 리뷰 질문 파일이 만들어졌다.</li>
+      <li>포트폴리오 관점에서는 문서 자동화, LLM 적용, Human-in-the-loop 설계를 함께 보여준다.</li>
+    </ul>
+
+    <h2>8. 한계와 실패한 부분</h2>
+    <ul>
+      <li>첫 버전은 RAG나 VectorDB를 사용하지 않는다.</li>
+      <li>문서가 너무 짧으면 AI가 추론에 의존할 수 있다.</li>
+      <li>실제 블로그 업로드는 아직 자동화하지 않는다.</li>
+    </ul>
+
+    <h2>9. 다음 개선 방향</h2>
+    <ul>
+      <li>RAG를 추가해 과거 글과 문서를 함께 검색한다.</li>
+      <li>Streamlit UI를 붙여 문서를 업로드하고 결과를 확인한다.</li>
+      <li>GitHub Pages 저장소 자동 커밋 기능을 추가한다.</li>
+      <li>공모전 신청서 자동작성 Agent와 연결한다.</li>
+    </ul>
+
+    <h2>10. 회고</h2>
+    <p>
+      이 프로젝트는 글쓰기 자동화보다 더 중요한 목표를 가진다. 내 경험을 문제 정의,
+      데이터 흐름, AI 역할, 구현 증거, 한계와 개선 방향으로 다시 설명하는 훈련이다.
+      그래서 AI 서비스 개발자로 성장하는 과정 자체를 포트폴리오로 남기는 도구가 된다.
+    </p>
+  </main>
+</body>
+</html>
+
