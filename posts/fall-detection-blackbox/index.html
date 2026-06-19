@@ -6,12 +6,19 @@
   <title>실시간 영상 이벤트를 클립으로 남기는 블랙박스형 로깅 시스템 | 정태현</title>
   <style>
     :root {
-      --ink: #16181d;
-      --muted: #626a73;
-      --line: #d8dde3;
-      --bg: #fbfbfa;
-      --link: #0b5c8a;
-      --soft: #f1f4f6;
+      --color-primary: #6B1F1F;
+      --color-primary-hover: #8A2D2D;
+      --color-text: #1F2933;
+      --color-muted: #5F6B7A;
+      --color-bg: #FFFFFF;
+      --color-bg-soft: #F8F5F3;
+      --color-border: #E5DDD8;
+      --ink: var(--color-text);
+      --muted: var(--color-muted);
+      --line: var(--color-border);
+      --bg: var(--color-bg);
+      --link: var(--color-primary);
+      --soft: var(--color-bg-soft);
       --code: #232b35;
     }
 
@@ -32,6 +39,16 @@
     }
 
     a { color: var(--link); }
+
+    a:hover {
+      color: var(--color-primary-hover);
+    }
+
+    a:focus-visible {
+      outline: 2px solid var(--color-primary);
+      outline-offset: 3px;
+      border-radius: 4px;
+    }
 
     .back {
       font-family: Arial, "Noto Sans KR", sans-serif;
@@ -56,6 +73,7 @@
       margin-top: 38px;
       padding-top: 22px;
       border-top: 1px solid var(--line);
+      color: var(--color-primary);
       letter-spacing: 0;
     }
 
@@ -104,7 +122,7 @@
       border: 1px solid var(--line);
       border-radius: 4px;
       background: var(--soft);
-      color: #3e4852;
+      color: var(--color-primary);
       font-size: 13px;
     }
 
