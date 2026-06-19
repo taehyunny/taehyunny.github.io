@@ -3,6 +3,9 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="preconnect" href="https://cdn.jsdelivr.net" crossorigin>
+  <link rel="preload" as="style" crossorigin href="https://cdn.jsdelivr.net/gh/wanteddev/wanted-sans@v1.0.3/packages/wanted-sans/fonts/webfonts/variable/split/WantedSansVariable.min.css">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/wanteddev/wanted-sans@v1.0.3/packages/wanted-sans/fonts/webfonts/variable/split/WantedSansVariable.min.css">
   <title>정태현 | 업무 시스템과 AI 자동화 포트폴리오</title>
   <style>
     :root {
@@ -23,7 +26,7 @@
       --color-menu-accent: #D9D7A3;
       --color-menu-soft: #EEF0C8;
       --color-menu-muted: #BFC58A;
-      --font-sans: "Pretendard Variable", Pretendard, -apple-system, BlinkMacSystemFont,
+      --font-sans: "Wanted Sans Variable", "Wanted Sans", "Pretendard Variable", Pretendard, -apple-system, BlinkMacSystemFont,
         "Segoe UI", "Apple SD Gothic Neo", "Noto Sans KR", "Malgun Gothic", sans-serif;
     }
 
@@ -43,6 +46,14 @@
       line-height: 1.7;
     }
 
+    h1,
+    h2,
+    h3,
+    p,
+    li {
+      word-break: keep-all;
+      overflow-wrap: break-word;
+    }
     a {
       color: var(--color-primary);
       text-decoration: none;
