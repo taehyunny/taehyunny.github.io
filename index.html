@@ -20,6 +20,9 @@
       --color-border: #D8D0C2;
       --color-tag-bg: #ECEBDD;
       --color-tag-text: #4F5F2D;
+      --color-menu-accent: #D9D7A3;
+      --color-menu-soft: #EEF0C8;
+      --color-menu-muted: #BFC58A;
       --font-sans: "Pretendard Variable", Pretendard, -apple-system, BlinkMacSystemFont,
         "Segoe UI", "Apple SD Gothic Neo", "Noto Sans KR", "Malgun Gothic", sans-serif;
     }
@@ -57,7 +60,7 @@
     }
 
     .page {
-      width: min(1240px, calc(100% - 32px));
+      width: min(1600px, calc(100% - 48px));
       margin: 0 auto;
       padding: 24px 0 56px;
     }
@@ -87,8 +90,8 @@
 
     .site-shell {
       display: grid;
-      grid-template-columns: 248px minmax(0, 1fr);
-      gap: 28px;
+      grid-template-columns: 280px minmax(0, 1fr);
+      gap: 32px;
       align-items: start;
     }
 
@@ -191,7 +194,7 @@
 
     .side-group h2 {
       margin: 0 0 10px;
-      color: rgba(255, 255, 255, 0.54);
+      color: var(--color-menu-muted);
       font-size: 12px;
       font-weight: 800;
       letter-spacing: 0.08em;
@@ -212,21 +215,22 @@
       display: block;
       padding: 7px 9px;
       border-radius: 6px;
-      color: rgba(255, 255, 255, 0.8);
+      color: var(--color-menu-accent);
       font-size: 14px;
+      font-weight: 700;
     }
 
     .side-links a:hover,
     .side-tags a:hover,
     .side-links a:focus-visible,
     .side-tags a:focus-visible {
-      color: #fff;
-      background: rgba(255, 255, 255, 0.1);
+      color: var(--color-menu-soft);
+      background: rgba(217, 215, 163, 0.14);
       text-decoration: none;
     }
 
     .side-tags a {
-      color: #EFF0DF;
+      color: var(--color-menu-soft);
     }
 
     .side-plain-list {
@@ -254,13 +258,14 @@
     nav a {
       padding: 5px 8px;
       border-radius: 6px;
-      color: rgba(255, 255, 255, 0.78);
+      color: var(--color-menu-accent);
+      font-weight: 700;
     }
 
     nav a:hover,
     nav a:focus-visible {
-      color: #fff;
-      background: rgba(255, 255, 255, 0.1);
+      color: var(--color-menu-soft);
+      background: rgba(217, 215, 163, 0.14);
       text-decoration: none;
     }
 
@@ -277,7 +282,7 @@
     .profile {
       display: grid;
       grid-template-columns: minmax(280px, 0.88fr) minmax(0, 1.12fr);
-      gap: 18px;
+      gap: 20px;
       align-items: stretch;
     }
 
@@ -508,7 +513,7 @@
     .feature-grid {
       display: grid;
       grid-template-columns: repeat(2, minmax(0, 1fr));
-      gap: 14px;
+      gap: 18px;
     }
 
     .card {
