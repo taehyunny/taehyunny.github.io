@@ -57,13 +57,13 @@
     }
 
     .page {
-      width: min(1120px, calc(100% - 32px));
+      width: min(1240px, calc(100% - 32px));
       margin: 0 auto;
       padding: 24px 0 56px;
     }
 
     .site-header {
-      display: flex;
+      display: none;
       align-items: center;
       justify-content: space-between;
       gap: 20px;
@@ -83,6 +83,112 @@
     .site-name:hover {
       color: #fff;
       text-decoration: none;
+    }
+
+    .site-shell {
+      display: grid;
+      grid-template-columns: 248px minmax(0, 1fr);
+      gap: 28px;
+      align-items: start;
+    }
+
+    .side-rail {
+      position: sticky;
+      top: 24px;
+      display: flex;
+      flex-direction: column;
+      max-height: calc(100vh - 48px);
+      padding: 20px;
+      border: 1px solid rgba(47, 48, 45, 0.18);
+      border-radius: 8px;
+      background: var(--color-ink);
+      color: rgba(255, 255, 255, 0.8);
+    }
+
+    .side-brand {
+      color: #fff;
+      font-size: 22px;
+      font-weight: 800;
+      letter-spacing: 0;
+    }
+
+    .side-brand:hover {
+      color: #fff;
+      text-decoration: none;
+    }
+
+    .side-note {
+      margin: 10px 0 18px;
+      color: rgba(255, 255, 255, 0.7);
+      font-size: 13px;
+      line-height: 1.55;
+    }
+
+    .side-scroll {
+      display: grid;
+      gap: 20px;
+      min-height: 0;
+      overflow-y: auto;
+      padding-right: 8px;
+      scrollbar-color: rgba(236, 235, 221, 0.5) transparent;
+      scrollbar-width: thin;
+    }
+
+    .side-scroll::-webkit-scrollbar {
+      width: 8px;
+    }
+
+    .side-scroll::-webkit-scrollbar-track {
+      background: transparent;
+    }
+
+    .side-scroll::-webkit-scrollbar-thumb {
+      border-radius: 999px;
+      background: rgba(236, 235, 221, 0.45);
+    }
+
+    .side-group h2 {
+      margin: 0 0 10px;
+      color: rgba(255, 255, 255, 0.54);
+      font-size: 12px;
+      font-weight: 800;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+    }
+
+    .side-links,
+    .side-tags {
+      display: grid;
+      gap: 6px;
+      margin: 0;
+      padding: 0;
+      list-style: none;
+    }
+
+    .side-links a,
+    .side-tags a {
+      display: block;
+      padding: 7px 9px;
+      border-radius: 6px;
+      color: rgba(255, 255, 255, 0.8);
+      font-size: 14px;
+    }
+
+    .side-links a:hover,
+    .side-tags a:hover,
+    .side-links a:focus-visible,
+    .side-tags a:focus-visible {
+      color: #fff;
+      background: rgba(255, 255, 255, 0.1);
+      text-decoration: none;
+    }
+
+    .side-tags a {
+      color: #EFF0DF;
+    }
+
+    .content-column {
+      min-width: 0;
     }
 
     nav {
@@ -483,6 +589,14 @@
         display: block;
       }
 
+      .site-shell {
+        display: block;
+      }
+
+      .side-rail {
+        display: none;
+      }
+
       nav {
         margin-top: 12px;
       }
@@ -563,6 +677,48 @@
       </nav>
     </header>
 
+    <div class="site-shell">
+      <aside class="side-rail" aria-label="사이드 탐색">
+        <a class="side-brand" href="#home">정태현</a>
+        <p class="side-note">전략기획 관점에서 업무 시스템과 AI 자동화를 설계하고 기록합니다.</p>
+        <div class="side-scroll">
+          <section class="side-group" aria-labelledby="side-nav-title">
+            <h2 id="side-nav-title">Navigation</h2>
+            <ul class="side-links">
+              <li><a href="#home">Home</a></li>
+              <li><a href="#featured">Featured</a></li>
+              <li><a href="#latest">Latest</a></li>
+              <li><a href="blog/">Blog</a></li>
+              <li><a href="#about">About</a></li>
+              <li><a href="#contact">Contact</a></li>
+            </ul>
+          </section>
+
+          <section class="side-group" aria-labelledby="side-tags-title">
+            <h2 id="side-tags-title">Tags</h2>
+            <ul class="side-tags">
+              <li><a href="#tags">Work Systems</a></li>
+              <li><a href="#tags">Business Planning</a></li>
+              <li><a href="#tags">AI Automation</a></li>
+              <li><a href="#tags">Data &amp; Process</a></li>
+              <li><a href="#tags">Portfolio</a></li>
+              <li><a href="#tags">Tools</a></li>
+              <li><a href="#tags">Problem</a></li>
+              <li><a href="#tags">Retrospective</a></li>
+            </ul>
+          </section>
+
+          <section class="side-group" aria-labelledby="side-social-title">
+            <h2 id="side-social-title">Social</h2>
+            <ul class="side-links">
+              <li><a href="https://github.com/taehyunny">GitHub</a></li>
+              <li><a href="https://github.com/taehyunny">Contact</a></li>
+            </ul>
+          </section>
+        </div>
+      </aside>
+
+      <div class="content-column">
     <main>
       <section class="profile" id="about" aria-labelledby="profile-title">
         <div class="profile-panel">
@@ -594,7 +750,7 @@
         </div>
       </section>
 
-      <section class="tag-section" aria-labelledby="tags-title">
+      <section class="tag-section" id="tags" aria-labelledby="tags-title">
         <div class="section-heading">
           <div>
             <h2 id="tags-title">Tags</h2>
@@ -760,6 +916,8 @@
         Last updated: 2026-06-16.
       </p>
     </footer>
+      </div>
+    </div>
   </div>
 </body>
 </html>
