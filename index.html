@@ -124,6 +124,48 @@
       line-height: 1.55;
     }
 
+    .side-profile-card {
+      margin-bottom: 18px;
+      padding: 14px;
+      border: 1px solid rgba(255, 255, 255, 0.14);
+      border-radius: 8px;
+      background: rgba(255, 255, 255, 0.06);
+    }
+
+    .side-role {
+      margin: 0 0 12px;
+      color: #fff;
+      font-size: 13px;
+      font-weight: 700;
+      line-height: 1.5;
+    }
+
+    .side-stats {
+      display: grid;
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+      gap: 8px;
+      margin: 0;
+    }
+
+    .side-stats div {
+      min-width: 0;
+    }
+
+    .side-stats dt {
+      color: rgba(255, 255, 255, 0.52);
+      font-size: 11px;
+      font-weight: 800;
+      letter-spacing: 0.06em;
+      text-transform: uppercase;
+    }
+
+    .side-stats dd {
+      margin: 2px 0 0;
+      color: #fff;
+      font-size: 14px;
+      font-weight: 800;
+    }
+
     .side-scroll {
       display: grid;
       gap: 20px;
@@ -185,6 +227,17 @@
 
     .side-tags a {
       color: #EFF0DF;
+    }
+
+    .side-plain-list {
+      display: grid;
+      gap: 8px;
+      margin: 0;
+      padding: 0;
+      list-style: none;
+      color: rgba(255, 255, 255, 0.74);
+      font-size: 13px;
+      line-height: 1.55;
     }
 
     .content-column {
@@ -363,6 +416,33 @@
       margin-bottom: 4px;
       color: var(--color-heading);
       font-size: 14px;
+    }
+
+    .profile-tabs {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 8px;
+      margin-top: 24px;
+      padding-top: 18px;
+      border-top: 1px solid var(--color-border);
+    }
+
+    .profile-tabs a {
+      padding: 7px 10px;
+      border: 1px solid var(--color-border);
+      border-radius: 999px;
+      background: var(--color-surface);
+      color: var(--color-ink-soft);
+      font-size: 13px;
+      font-weight: 700;
+    }
+
+    .profile-tabs a:hover,
+    .profile-tabs a:focus-visible {
+      border-color: var(--color-tag-text);
+      background: var(--color-bg-soft);
+      color: var(--color-tag-text);
+      text-decoration: none;
     }
 
     .section-heading {
@@ -681,6 +761,23 @@
       <aside class="side-rail" aria-label="사이드 탐색">
         <a class="side-brand" href="#home">정태현</a>
         <p class="side-note">전략기획 관점에서 업무 시스템과 AI 자동화를 설계하고 기록합니다.</p>
+        <div class="side-profile-card" aria-label="프로필 요약">
+          <p class="side-role">기획자형 개발자 / 업무 시스템 설계 / AI 자동화 기록</p>
+          <dl class="side-stats">
+            <div>
+              <dt>Posts</dt>
+              <dd>10</dd>
+            </div>
+            <div>
+              <dt>Focus</dt>
+              <dd>4</dd>
+            </div>
+            <div>
+              <dt>Tags</dt>
+              <dd>8</dd>
+            </div>
+          </dl>
+        </div>
         <div class="side-scroll">
           <section class="side-group" aria-labelledby="side-nav-title">
             <h2 id="side-nav-title">Navigation</h2>
@@ -705,6 +802,16 @@
               <li><a href="#tags">Tools</a></li>
               <li><a href="#tags">Problem</a></li>
               <li><a href="#tags">Retrospective</a></li>
+            </ul>
+          </section>
+
+          <section class="side-group" aria-labelledby="side-scope-title">
+            <h2 id="side-scope-title">Scope</h2>
+            <ul class="side-plain-list">
+              <li>업무 요청과 승인 흐름</li>
+              <li>공공데이터 기반 서비스 기획</li>
+              <li>문서 자동화와 보고 구조</li>
+              <li>AI 결과와 사람 검토의 경계</li>
             </ul>
           </section>
 
@@ -747,6 +854,12 @@
             <li><strong>Data Structure</strong>보고와 판단으로 이어지는 데이터 구조</li>
             <li><strong>AI Automation</strong>사람의 검토를 전제로 한 자동화 설계</li>
           </ul>
+          <nav class="profile-tabs" aria-label="프로필 하위 메뉴">
+            <a href="#about">작가소개</a>
+            <a href="#featured">프로젝트</a>
+            <a href="#latest">글 목록</a>
+            <a href="#contact">Contact</a>
+          </nav>
         </div>
       </section>
 
