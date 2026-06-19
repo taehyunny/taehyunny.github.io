@@ -220,6 +220,12 @@
       font-weight: 700;
     }
 
+    .side-links a {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
+
     .side-links a:hover,
     .side-tags a:hover,
     .side-links a:focus-visible,
@@ -256,10 +262,21 @@
     }
 
     nav a {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
       padding: 5px 8px;
       border-radius: 6px;
       color: var(--color-menu-accent);
       font-weight: 700;
+    }
+
+    .menu-icon {
+      flex: 0 0 1.1em;
+      width: 1.1em;
+      font-size: 0.95em;
+      line-height: 1;
+      text-align: center;
     }
 
     nav a:hover,
@@ -754,11 +771,11 @@
     <header class="site-header" id="home">
       <a class="site-name" href="index.html">정태현</a>
       <nav aria-label="주요 메뉴">
-        <a href="#home">Home</a>
-        <a href="#featured">Featured</a>
-        <a href="blog/">Blog</a>
-        <a href="#about">About</a>
-        <a href="https://github.com/taehyunny">GitHub</a>
+        <a href="#home"><span class="menu-icon" aria-hidden="true">⌂</span><span>Home</span></a>
+        <a href="#featured"><span class="menu-icon" aria-hidden="true">✦</span><span>Featured</span></a>
+        <a href="blog/"><span class="menu-icon" aria-hidden="true">✎</span><span>Blog</span></a>
+        <a href="#about"><span class="menu-icon" aria-hidden="true">◉</span><span>About</span></a>
+        <a href="https://github.com/taehyunny"><span class="menu-icon" aria-hidden="true">↗</span><span>GitHub</span></a>
       </nav>
     </header>
 
@@ -787,12 +804,12 @@
           <section class="side-group" aria-labelledby="side-nav-title">
             <h2 id="side-nav-title">Navigation</h2>
             <ul class="side-links">
-              <li><a href="#home">Home</a></li>
-              <li><a href="#featured">Featured</a></li>
-              <li><a href="#latest">Latest</a></li>
-              <li><a href="blog/">Blog</a></li>
-              <li><a href="#about">About</a></li>
-              <li><a href="#contact">Contact</a></li>
+              <li><a href="#home"><span class="menu-icon" aria-hidden="true">⌂</span><span>Home</span></a></li>
+              <li><a href="#featured"><span class="menu-icon" aria-hidden="true">✦</span><span>Featured</span></a></li>
+              <li><a href="#latest"><span class="menu-icon" aria-hidden="true">◷</span><span>Latest</span></a></li>
+              <li><a href="blog/"><span class="menu-icon" aria-hidden="true">✎</span><span>Blog</span></a></li>
+              <li><a href="#about"><span class="menu-icon" aria-hidden="true">◉</span><span>About</span></a></li>
+              <li><a href="#contact"><span class="menu-icon" aria-hidden="true">✉</span><span>Contact</span></a></li>
             </ul>
           </section>
 
@@ -823,8 +840,8 @@
           <section class="side-group" aria-labelledby="side-social-title">
             <h2 id="side-social-title">Social</h2>
             <ul class="side-links">
-              <li><a href="https://github.com/taehyunny">GitHub</a></li>
-              <li><a href="https://github.com/taehyunny">Contact</a></li>
+              <li><a href="https://github.com/taehyunny"><span class="menu-icon" aria-hidden="true">↗</span><span>GitHub</span></a></li>
+              <li><a href="https://github.com/taehyunny"><span class="menu-icon" aria-hidden="true">✉</span><span>Contact</span></a></li>
             </ul>
           </section>
         </div>
