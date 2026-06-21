@@ -21,11 +21,13 @@
       --color-bg-soft: #F4F4EC;
       --color-surface: #FFFFFF;
       --color-border: #D8D0C2;
-      --color-tag-bg: #ECEBDD;
-      --color-tag-text: #4F5F2D;
-      --color-menu-accent: #D9D7A3;
-      --color-menu-soft: #EEF0C8;
-      --color-menu-muted: #BFC58A;
+      --color-tag-bg: #FFF1CC;
+      --color-tag-text: #3F2D00;
+      --color-tag-border: #D39B2A;
+      --color-menu-accent: #FFF4C2;
+      --color-menu-soft: #FFE08A;
+      --color-menu-muted: #F2C94C;
+      --color-menu-active-bg: rgba(255, 224, 138, 0.18);
       --font-sans: "Wanted Sans Variable", "Wanted Sans", "Pretendard Variable", Pretendard, -apple-system, BlinkMacSystemFont,
         "Segoe UI", "Apple SD Gothic Neo", "Noto Sans KR", "Malgun Gothic", sans-serif;
     }
@@ -225,10 +227,12 @@
     .side-tags a {
       display: block;
       padding: 7px 9px;
+      border: 1px solid rgba(255, 224, 138, 0.16);
       border-radius: 6px;
+      background: rgba(255, 255, 255, 0.03);
       color: var(--color-menu-accent);
       font-size: 14px;
-      font-weight: 700;
+      font-weight: 800;
     }
 
     .side-links a {
@@ -241,8 +245,9 @@
     .side-tags a:hover,
     .side-links a:focus-visible,
     .side-tags a:focus-visible {
-      color: var(--color-menu-soft);
-      background: rgba(217, 215, 163, 0.14);
+      border-color: rgba(255, 224, 138, 0.46);
+      color: #FFF9DE;
+      background: var(--color-menu-active-bg);
       text-decoration: none;
     }
 
@@ -529,12 +534,12 @@
       align-items: center;
       min-height: 26px;
       padding: 4px 9px;
-      border: 1px solid rgba(90, 23, 28, 0.12);
+      border: 1px solid rgba(211, 155, 42, 0.46);
       border-radius: 999px;
       background: var(--color-tag-bg);
       color: var(--color-tag-text);
       font-size: 12px;
-      font-weight: 700;
+      font-weight: 800;
       line-height: 1.2;
     }
 
@@ -783,9 +788,9 @@
       <a class="site-name" href="index.html">정태현</a>
       <nav aria-label="주요 메뉴">
         <a href="#home"><span class="menu-icon" aria-hidden="true">⌂</span><span>Home</span></a>
-        <a href="#featured"><span class="menu-icon" aria-hidden="true">✦</span><span>Featured</span></a>
-        <a href="blog/"><span class="menu-icon" aria-hidden="true">✎</span><span>Blog</span></a>
-        <a href="#about"><span class="menu-icon" aria-hidden="true">◉</span><span>About</span></a>
+        <a href="#featured"><span class="menu-icon" aria-hidden="true">✦</span><span>기획 사례</span></a>
+        <a href="blog/"><span class="menu-icon" aria-hidden="true">✎</span><span>전체 글</span></a>
+        <a href="#about"><span class="menu-icon" aria-hidden="true">◉</span><span>소개</span></a>
         <a href="https://github.com/taehyunny"><span class="menu-icon" aria-hidden="true">↗</span><span>GitHub</span></a>
       </nav>
     </header>
@@ -813,33 +818,33 @@
         </div>
         <div class="side-scroll">
           <section class="side-group" aria-labelledby="side-nav-title">
-            <h2 id="side-nav-title">Navigation</h2>
+            <h2 id="side-nav-title">메뉴</h2>
             <ul class="side-links">
               <li><a href="#home"><span class="menu-icon" aria-hidden="true">⌂</span><span>Home</span></a></li>
-              <li><a href="#featured"><span class="menu-icon" aria-hidden="true">✦</span><span>Featured</span></a></li>
-              <li><a href="#latest"><span class="menu-icon" aria-hidden="true">◷</span><span>Latest</span></a></li>
-              <li><a href="blog/"><span class="menu-icon" aria-hidden="true">✎</span><span>Blog</span></a></li>
-              <li><a href="#about"><span class="menu-icon" aria-hidden="true">◉</span><span>About</span></a></li>
-              <li><a href="#contact"><span class="menu-icon" aria-hidden="true">✉</span><span>Contact</span></a></li>
+              <li><a href="#featured"><span class="menu-icon" aria-hidden="true">✦</span><span>기획 사례</span></a></li>
+              <li><a href="#latest"><span class="menu-icon" aria-hidden="true">◷</span><span>최근 기록</span></a></li>
+              <li><a href="blog/"><span class="menu-icon" aria-hidden="true">✎</span><span>전체 글</span></a></li>
+              <li><a href="#about"><span class="menu-icon" aria-hidden="true">◉</span><span>소개</span></a></li>
+              <li><a href="#contact"><span class="menu-icon" aria-hidden="true">✉</span><span>연락</span></a></li>
             </ul>
           </section>
 
           <section class="side-group" aria-labelledby="side-tags-title">
-            <h2 id="side-tags-title">Tags</h2>
+            <h2 id="side-tags-title">기획 키워드</h2>
             <ul class="side-tags">
-              <li><a href="#tags">Work Systems</a></li>
-              <li><a href="#tags">Business Planning</a></li>
-              <li><a href="#tags">AI Automation</a></li>
-              <li><a href="#tags">Data &amp; Process</a></li>
-              <li><a href="#tags">Portfolio</a></li>
-              <li><a href="#tags">Tools</a></li>
-              <li><a href="#tags">Problem</a></li>
-              <li><a href="#tags">Retrospective</a></li>
+              <li><a href="#tags">업무 프로세스</a></li>
+              <li><a href="#tags">사업기획</a></li>
+              <li><a href="#tags">AI 자동화</a></li>
+              <li><a href="#tags">데이터 구조</a></li>
+              <li><a href="#tags">문서/결재</a></li>
+              <li><a href="#tags">공공데이터</a></li>
+              <li><a href="#tags">문제정의</a></li>
+              <li><a href="#tags">회고</a></li>
             </ul>
           </section>
 
           <section class="side-group" aria-labelledby="side-scope-title">
-            <h2 id="side-scope-title">Scope</h2>
+            <h2 id="side-scope-title">관심 범위</h2>
             <ul class="side-plain-list">
               <li>업무 요청과 승인 흐름</li>
               <li>공공데이터 기반 서비스 기획</li>
@@ -849,10 +854,10 @@
           </section>
 
           <section class="side-group" aria-labelledby="side-social-title">
-            <h2 id="side-social-title">Social</h2>
+            <h2 id="side-social-title">연결</h2>
             <ul class="side-links">
               <li><a href="https://github.com/taehyunny"><span class="menu-icon" aria-hidden="true">↗</span><span>GitHub</span></a></li>
-              <li><a href="https://github.com/taehyunny"><span class="menu-icon" aria-hidden="true">✉</span><span>Contact</span></a></li>
+              <li><a href="mailto:taehyunny0312@gmail.com"><span class="menu-icon" aria-hidden="true">✉</span><span>Email</span></a></li>
             </ul>
           </section>
         </div>
@@ -868,9 +873,9 @@
             <p class="profile-subtitle">전략기획 관점에서 업무 시스템과 AI 자동화를 설계합니다.</p>
           </div>
           <div class="profile-actions">
-            <a class="button" href="#featured">Featured 보기</a>
+            <a class="button" href="#featured">기획 사례 보기</a>
             <a class="button secondary" href="https://github.com/taehyunny">GitHub</a>
-            <a class="button secondary" href="#about">About</a>
+            <a class="button secondary" href="#about">소개</a>
           </div>
         </div>
 
@@ -883,15 +888,15 @@
             업무 시스템과 서비스 기획 과정을 기록합니다.
           </p>
           <ul class="quick-facts" aria-label="핵심 관심 영역">
-            <li><strong>Work Systems</strong>요청, 승인, 기록이 남는 업무 흐름</li>
-            <li><strong>Data Structure</strong>보고와 판단으로 이어지는 데이터 구조</li>
-            <li><strong>AI Automation</strong>사람의 검토를 전제로 한 자동화 설계</li>
+            <li><strong>업무 프로세스</strong>요청, 승인, 기록이 남는 업무 흐름</li>
+            <li><strong>데이터 구조</strong>보고와 판단으로 이어지는 데이터 구조</li>
+            <li><strong>AI 자동화</strong>사람의 검토를 전제로 한 자동화 설계</li>
           </ul>
           <nav class="profile-tabs" aria-label="프로필 하위 메뉴">
             <a href="#about">작가소개</a>
-            <a href="#featured">프로젝트</a>
-            <a href="#latest">글 목록</a>
-            <a href="#contact">Contact</a>
+            <a href="#featured">기획 사례</a>
+            <a href="#latest">최근 기록</a>
+            <a href="#contact">연락</a>
           </nav>
         </div>
       </section>
@@ -899,35 +904,35 @@
       <section class="tag-section" id="tags" aria-labelledby="tags-title">
         <div class="section-heading">
           <div>
-            <h2 id="tags-title">Tags</h2>
-            <p>상단 메뉴 대신 주요 관심사를 태그로 정리했습니다.</p>
+            <h2 id="tags-title">기획 키워드</h2>
+            <p>업무를 어떤 관점으로 구조화했는지 먼저 보이도록 정리했습니다.</p>
           </div>
         </div>
         <ul class="tag-list" aria-label="블로그 태그">
-          <li class="tag-pill">Work Systems</li>
-          <li class="tag-pill">Business Planning</li>
-          <li class="tag-pill">AI Automation</li>
-          <li class="tag-pill">Data &amp; Process</li>
-          <li class="tag-pill">Portfolio</li>
-          <li class="tag-pill">Tools</li>
-          <li class="tag-pill">Problem</li>
-          <li class="tag-pill">Retrospective</li>
+          <li class="tag-pill">업무 프로세스</li>
+          <li class="tag-pill">사업기획</li>
+          <li class="tag-pill">AI 자동화</li>
+          <li class="tag-pill">데이터 구조</li>
+          <li class="tag-pill">문서/결재</li>
+          <li class="tag-pill">공공데이터</li>
+          <li class="tag-pill">문제정의</li>
+          <li class="tag-pill">회고</li>
         </ul>
       </section>
 
       <section id="featured" aria-labelledby="featured-title">
         <div class="section-heading">
           <div>
-            <h2 id="featured-title">Featured</h2>
-            <p>업무 시스템, 기획 자동화, AI 데이터 흐름을 보여주는 대표 기록입니다.</p>
+            <h2 id="featured-title">기획 사례</h2>
+            <p>업무 문제를 정의하고, 프로세스와 데이터 구조로 정리한 대표 기록입니다.</p>
           </div>
           <a class="section-link" href="blog/">전체 글 보기</a>
         </div>
 
         <div class="feature-grid">
           <article class="card">
-            <ul class="card-tags"><li>Work Systems</li><li>Portfolio</li></ul>
-            <h3>소규모 사무실을 위한 Django 업무관리 시스템 직접 만들기</h3>
+            <ul class="card-tags"><li>업무 프로세스</li><li>문서/결재</li></ul>
+            <h3>소규모 조직의 요청·결재·회계 흐름을 묶는 업무관리 구조 설계</h3>
             <p>강사 파견 업체의 업무 요청, 결재, 회계, 식사 장부, 강사료 흐름을 Django 기반으로 묶으며 겪은 설계 결정과 운영 문제를 정리한 글입니다.</p>
             <div class="card-footer">
               <span>Jun 16, 2026</span>
@@ -936,9 +941,9 @@
           </article>
 
           <article class="card">
-            <ul class="card-tags"><li>Business Planning</li><li>AI Automation</li><li>Tools</li></ul>
-            <h3>KAS 정부지원사업 공모 자동 수집기 개발 기록</h3>
-            <p>정부지원사업, 입찰, 강사 모집 공고를 수집해 사업 적합도를 계산하고 보고서로 정리하는 Python 기반 업무 자동화 도구 개발 기록입니다.</p>
+            <ul class="card-tags"><li>사업기획</li><li>AI 자동화</li><li>공공데이터</li></ul>
+            <h3>정부지원사업 공고를 의사결정 자료로 바꾸는 수집·평가 프로세스</h3>
+            <p>정부지원사업, 입찰, 강사 모집 공고를 수집해 사업 적합도를 계산하고 보고서로 정리하는 Python 기반 업무 자동화 흐름입니다.</p>
             <div class="card-footer">
               <span>Jun 16, 2026</span>
               <a class="read-link" href="posts/kas-grant-collector/index.html">Read more</a>
@@ -946,8 +951,8 @@
           </article>
 
           <article class="card">
-            <ul class="card-tags"><li>AI Automation</li><li>Data &amp; Process</li></ul>
-            <h3>AI 응답 시스템에서 사용자 보완 흐름과 데이터 로깅을 설계한 경험</h3>
+            <ul class="card-tags"><li>AI 자동화</li><li>데이터 구조</li></ul>
+            <h3>AI 판단을 사람이 검토할 수 있게 만드는 데이터 기록 구조</h3>
             <p>AI 응답, 사용자 선택, SQLite 저장, JSONL 추출을 연결하며 AI 판단과 사용자 검토가 함께 작동하는 내부 데이터 흐름을 설계한 기록입니다.</p>
             <div class="card-footer">
               <span>May 25, 2026</span>
@@ -956,8 +961,8 @@
           </article>
 
           <article class="card">
-            <ul class="card-tags"><li>Portfolio</li><li>Tools</li><li>Retrospective</li></ul>
-            <h3>문서와 프로젝트 경험을 기술블로그 글로 전환하는 자동화 흐름</h3>
+            <ul class="card-tags"><li>문서/결재</li><li>AI 자동화</li><li>회고</li></ul>
+            <h3>문서와 프로젝트 경험을 포트폴리오 글로 바꾸는 자동화 흐름</h3>
             <p>메모, 공모전 자료, README를 문제 정의와 시스템 설계 관점으로 재구성해 포트폴리오 글 초안으로 만드는 문서 자동화 실험입니다.</p>
             <div class="card-footer">
               <span>May 25, 2026</span>
@@ -970,18 +975,18 @@
       <section id="latest" aria-labelledby="latest-title">
         <div class="section-heading">
           <div>
-            <h2 id="latest-title">Latest</h2>
-            <p>최근 기록 6개만 추려서 보여줍니다.</p>
+            <h2 id="latest-title">최근 기록</h2>
+            <p>업무 시스템, 자동화, 데이터 구조 관점의 최근 글입니다.</p>
           </div>
-          <a class="section-link" href="blog/">Blog 전체 보기</a>
+          <a class="section-link" href="blog/">전체 글 보기</a>
         </div>
 
         <ol class="latest-list">
           <li class="latest-item">
             <time class="date" datetime="2026-06-16">Jun 16, 2026</time>
             <div>
-              <div class="latest-meta"><span>Work Systems</span><span>Portfolio</span></div>
-              <h3><a href="posts/kas-web-erp-django/index.html">소규모 사무실을 위한 Django 업무관리 시스템 직접 만들기</a></h3>
+              <div class="latest-meta"><span>업무 프로세스</span><span>문서/결재</span></div>
+              <h3><a href="posts/kas-web-erp-django/index.html">소규모 조직의 요청·결재·회계 흐름을 묶는 업무관리 구조 설계</a></h3>
               <p>업무 요청, 결재, 회계, 식사 장부, 강사료 흐름을 하나로 묶은 업무관리 시스템 설계 기록입니다.</p>
               <a class="read-link" href="posts/kas-web-erp-django/index.html">Read more</a>
             </div>
@@ -990,8 +995,8 @@
           <li class="latest-item">
             <time class="date" datetime="2026-06-16">Jun 16, 2026</time>
             <div>
-              <div class="latest-meta"><span>Business Planning</span><span>Tools</span></div>
-              <h3><a href="posts/kas-grant-collector/index.html">KAS 정부지원사업 공모 자동 수집기 개발 기록</a></h3>
+              <div class="latest-meta"><span>사업기획</span><span>공공데이터</span></div>
+              <h3><a href="posts/kas-grant-collector/index.html">정부지원사업 공고를 의사결정 자료로 바꾸는 수집·평가 프로세스</a></h3>
               <p>공고 수집, 정규화, 점수화, 보고서 생성을 연결한 Python 기반 업무 자동화 도구 기록입니다.</p>
               <a class="read-link" href="posts/kas-grant-collector/index.html">Read more</a>
             </div>
@@ -1000,7 +1005,7 @@
           <li class="latest-item">
             <time class="date" datetime="2026-06-03">Jun 3, 2026</time>
             <div>
-              <div class="latest-meta"><span>Work Systems</span><span>Problem</span></div>
+              <div class="latest-meta"><span>업무 프로세스</span><span>문제정의</span></div>
               <h3><a href="posts/internal-work-system-planning/index.html">내부 업무 시스템을 기획할 때 먼저 생각한 것들</a></h3>
               <p>요청, 검토, 승인, 파일, 기록 흐름을 하나의 업무 시스템으로 묶기 위한 관점 정리입니다.</p>
               <a class="read-link" href="posts/internal-work-system-planning/index.html">Read more</a>
@@ -1010,7 +1015,7 @@
           <li class="latest-item">
             <time class="date" datetime="2026-05-25">May 25, 2026</time>
             <div>
-              <div class="latest-meta"><span>Data &amp; Process</span></div>
+              <div class="latest-meta"><span>데이터 구조</span></div>
               <h3><a href="posts/cpp-delivery-platform/index.html">주문·결제 데이터 신뢰성을 위한 서버 주도 검증 구조 설계</a></h3>
               <p>C++ TCP/IP 서버와 MariaDB로 주문 스냅샷과 운영 데이터의 신뢰성을 설계한 기록입니다.</p>
               <a class="read-link" href="posts/cpp-delivery-platform/index.html">Read more</a>
@@ -1020,8 +1025,8 @@
           <li class="latest-item">
             <time class="date" datetime="2026-05-25">May 25, 2026</time>
             <div>
-              <div class="latest-meta"><span>AI Automation</span><span>Data &amp; Process</span></div>
-              <h3><a href="posts/coco-emotion-care-agent/index.html">AI 응답 시스템에서 사용자 보완 흐름과 데이터 로깅을 설계한 경험</a></h3>
+              <div class="latest-meta"><span>AI 자동화</span><span>데이터 구조</span></div>
+              <h3><a href="posts/coco-emotion-care-agent/index.html">AI 판단을 사람이 검토할 수 있게 만드는 데이터 기록 구조</a></h3>
               <p>사용자 선택, AI 응답, SQLite 저장, JSONL 추출을 연결한 데이터 흐름 설계 기록입니다.</p>
               <a class="read-link" href="posts/coco-emotion-care-agent/index.html">Read more</a>
             </div>
@@ -1030,7 +1035,7 @@
           <li class="latest-item">
             <time class="date" datetime="2026-05-25">May 25, 2026</time>
             <div>
-              <div class="latest-meta"><span>AI Automation</span><span>Portfolio</span></div>
+              <div class="latest-meta"><span>AI 자동화</span><span>업무 프로세스</span></div>
               <h3><a href="posts/ai-drawing-system/index.html">C++ 화면 시스템과 Python AI 파이프라인을 분리한 업무형 구조 설계</a></h3>
               <p>사용자 입력, AI 처리, 결과 재생 계층을 분리하고 느슨하게 연결한 시스템 설계 기록입니다.</p>
               <a class="read-link" href="posts/ai-drawing-system/index.html">Read more</a>
@@ -1045,13 +1050,13 @@
           <p>업무 시스템 기획, AI 자동화, 데이터 기반 서비스 기획과 관련된 기록을 남깁니다.</p>
           <div class="contact-actions">
             <a class="button" href="https://github.com/taehyunny">GitHub</a>
-            <a class="button secondary" href="https://github.com/taehyunny">Contact</a>
+            <a class="button secondary" href="mailto:taehyunny0312@gmail.com">Email</a>
             <!-- <a class="button secondary" href="#">Resume / Portfolio</a> -->
           </div>
         </div>
         <ul class="contact-list" aria-label="소셜 링크">
           <li><a href="https://github.com/taehyunny">GitHub</a></li>
-          <li><a href="https://github.com/taehyunny">Contact via GitHub</a></li>
+          <li><a href="mailto:taehyunny0312@gmail.com">taehyunny0312@gmail.com</a></li>
         </ul>
       </section>
     </main>

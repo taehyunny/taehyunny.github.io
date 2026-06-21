@@ -21,8 +21,11 @@
       --color-bg-soft: #F4F4EC;
       --color-surface: #FFFFFF;
       --color-border: #D8D0C2;
-      --color-tag-bg: #ECEBDD;
-      --color-tag-text: #4F5F2D;
+      --color-tag-bg: #FFF1CC;
+      --color-tag-text: #3F2D00;
+      --color-tag-border: #D39B2A;
+      --color-menu-accent: #FFF4C2;
+      --color-menu-active-bg: rgba(255, 224, 138, 0.18);
       --font-sans: "Wanted Sans Variable", "Wanted Sans", "Pretendard Variable", Pretendard, -apple-system, BlinkMacSystemFont,
         "Segoe UI", "Apple SD Gothic Neo", "Noto Sans KR", "Malgun Gothic", sans-serif;
     }
@@ -99,14 +102,17 @@
 
     nav a {
       padding: 5px 8px;
+      border: 1px solid rgba(255, 224, 138, 0.14);
       border-radius: 6px;
-      color: rgba(255, 255, 255, 0.78);
+      color: var(--color-menu-accent);
+      font-weight: 800;
     }
 
     nav a:hover,
     nav a:focus-visible {
-      color: #fff;
-      background: rgba(255, 255, 255, 0.1);
+      border-color: rgba(255, 224, 138, 0.42);
+      color: #FFF9DE;
+      background: var(--color-menu-active-bg);
       text-decoration: none;
     }
 
@@ -162,12 +168,12 @@
       align-items: center;
       min-height: 26px;
       padding: 4px 9px;
-      border: 1px solid rgba(90, 23, 28, 0.12);
+      border: 1px solid rgba(211, 155, 42, 0.46);
       border-radius: 999px;
       background: var(--color-tag-bg);
       color: var(--color-tag-text);
       font-size: 12px;
-      font-weight: 700;
+      font-weight: 800;
       line-height: 1.2;
     }
 
@@ -269,38 +275,38 @@
       <a class="site-name" href="../index.html">정태현</a>
       <nav aria-label="주요 메뉴">
         <a href="../index.html">Home</a>
-        <a href="../index.html#featured">Featured</a>
-        <a href="index.html">Blog</a>
-        <a href="../index.html#about">About</a>
+        <a href="../index.html#featured">기획 사례</a>
+        <a href="index.html">전체 글</a>
+        <a href="../index.html#about">소개</a>
         <a href="https://github.com/taehyunny">GitHub</a>
       </nav>
     </header>
 
     <main>
       <section class="hero">
-        <p class="eyebrow">All Writing</p>
-        <h1>Blog</h1>
+        <p class="eyebrow">Planning Archive</p>
+        <h1>전체 글</h1>
         <p>전략기획 관점에서 업무 시스템, 데이터 구조, AI 자동화, 프로젝트 회고를 정리한 전체 글 목록입니다.</p>
         <ul class="tag-list" aria-label="블로그 태그">
-          <li>Work Systems</li>
-          <li>Business Planning</li>
-          <li>AI Automation</li>
-          <li>Data &amp; Process</li>
-          <li>Portfolio</li>
-          <li>Tools</li>
-          <li>Problem</li>
-          <li>Retrospective</li>
+          <li>업무 프로세스</li>
+          <li>사업기획</li>
+          <li>AI 자동화</li>
+          <li>데이터 구조</li>
+          <li>문서/결재</li>
+          <li>공공데이터</li>
+          <li>문제정의</li>
+          <li>회고</li>
         </ul>
       </section>
 
       <section class="archive" aria-labelledby="archive-title">
-        <h2 id="archive-title">All Posts</h2>
+        <h2 id="archive-title">기록 목록</h2>
         <ol class="post-list">
           <li class="post">
             <time class="date" datetime="2026-06-16">Jun 16, 2026</time>
             <div>
-              <div class="post-meta"><span>Work Systems</span><span>Portfolio</span></div>
-              <h3><a href="../posts/kas-web-erp-django/index.html">소규모 사무실을 위한 Django 업무관리 시스템 직접 만들기</a></h3>
+              <div class="post-meta"><span>업무 프로세스</span><span>문서/결재</span></div>
+              <h3><a href="../posts/kas-web-erp-django/index.html">소규모 조직의 요청·결재·회계 흐름을 묶는 업무관리 구조 설계</a></h3>
               <p>강사 파견 업체의 업무 요청, 결재, 회계, 식사 장부, 강사료 흐름을 Django 하나로 묶으며 겪은 설계 결정과 운영 문제를 정리한 글입니다.</p>
             </div>
           </li>
@@ -308,16 +314,16 @@
           <li class="post">
             <time class="date" datetime="2026-06-16">Jun 16, 2026</time>
             <div>
-              <div class="post-meta"><span>Business Planning</span><span>AI Automation</span><span>Tools</span></div>
-              <h3><a href="../posts/kas-grant-collector/index.html">KAS 정부지원사업 공모 자동 수집기 개발 기록</a></h3>
-              <p>정부지원사업, 입찰, 강사 모집 공고를 수집해 사업 적합도를 계산하고 보고서로 정리하는 Python 기반 업무 자동화 도구 개발 기록입니다.</p>
+              <div class="post-meta"><span>사업기획</span><span>AI 자동화</span><span>공공데이터</span></div>
+              <h3><a href="../posts/kas-grant-collector/index.html">정부지원사업 공고를 의사결정 자료로 바꾸는 수집·평가 프로세스</a></h3>
+              <p>정부지원사업, 입찰, 강사 모집 공고를 수집해 사업 적합도를 계산하고 보고서로 정리하는 Python 기반 업무 자동화 흐름입니다.</p>
             </div>
           </li>
 
           <li class="post">
             <time class="date" datetime="2026-06-03">Jun 3, 2026</time>
             <div>
-              <div class="post-meta"><span>Work Systems</span><span>Problem</span></div>
+              <div class="post-meta"><span>업무 프로세스</span><span>문제정의</span></div>
               <h3><a href="../posts/internal-work-system-planning/index.html">내부 업무 시스템을 기획할 때 먼저 생각한 것들</a></h3>
               <p>회사 안의 요청, 검토, 승인, 파일, 기록 흐름을 하나의 업무 시스템으로 묶기 위해 어떤 관점이 먼저 필요했는지 정리한 글입니다.</p>
             </div>
@@ -326,7 +332,7 @@
           <li class="post">
             <time class="date" datetime="2026-05-25">May 25, 2026</time>
             <div>
-              <div class="post-meta"><span>Data &amp; Process</span></div>
+              <div class="post-meta"><span>데이터 구조</span></div>
               <h3><a href="../posts/cpp-delivery-platform/index.html">주문·결제 데이터 신뢰성을 위한 서버 주도 검증 구조 설계</a></h3>
               <p>C++ TCP/IP 서버와 MariaDB를 활용해 주문, 결제, 주소, 리뷰 흐름을 하나의 운영 데이터 구조로 연결하고, 주문 스냅샷으로 과거 이력의 신뢰성을 지키려 한 기록입니다.</p>
             </div>
@@ -335,8 +341,8 @@
           <li class="post">
             <time class="date" datetime="2026-05-25">May 25, 2026</time>
             <div>
-              <div class="post-meta"><span>AI Automation</span><span>Data &amp; Process</span></div>
-              <h3><a href="../posts/coco-emotion-care-agent/index.html">AI 응답 시스템에서 사용자 보완 흐름과 데이터 로깅을 설계한 경험</a></h3>
+              <div class="post-meta"><span>AI 자동화</span><span>데이터 구조</span></div>
+              <h3><a href="../posts/coco-emotion-care-agent/index.html">AI 판단을 사람이 검토할 수 있게 만드는 데이터 기록 구조</a></h3>
               <p>표정 인식, 사용자 선택, LLM 응답, SQLite 저장, JSONL 추출을 연결하며 AI 판단과 사용자 검토가 함께 작동하는 내부 데이터 흐름을 설계한 기록입니다.</p>
             </div>
           </li>
@@ -344,7 +350,7 @@
           <li class="post">
             <time class="date" datetime="2026-05-25">May 25, 2026</time>
             <div>
-              <div class="post-meta"><span>AI Automation</span><span>Portfolio</span></div>
+              <div class="post-meta"><span>AI 자동화</span><span>업무 프로세스</span></div>
               <h3><a href="../posts/ai-drawing-system/index.html">C++ 화면 시스템과 Python AI 파이프라인을 분리한 업무형 구조 설계</a></h3>
               <p>사용자 입력, AI 처리, 결과 재생을 분리해 각 계층의 책임을 명확히 하고, 파일과 UDP 인터페이스로 느슨하게 연결한 시스템 설계 기록입니다.</p>
             </div>
@@ -353,7 +359,7 @@
           <li class="post">
             <time class="date" datetime="2026-05-25">May 25, 2026</time>
             <div>
-              <div class="post-meta"><span>Data &amp; Process</span><span>Retrospective</span></div>
+              <div class="post-meta"><span>데이터 구조</span><span>회고</span></div>
               <h3><a href="../posts/fall-detection-blackbox/index.html">이벤트 발생 전후를 기록하는 블랙박스형 업무 로그 구조</a></h3>
               <p>실시간 영상 이벤트를 감지하는 데서 끝나지 않고, 이벤트 전후의 근거 자료를 클립과 로그로 남겨 사후 검토가 가능한 구조를 만든 기록입니다.</p>
             </div>
@@ -362,8 +368,8 @@
           <li class="post">
             <time class="date" datetime="2026-05-25">May 25, 2026</time>
             <div>
-              <div class="post-meta"><span>Portfolio</span><span>Tools</span><span>Retrospective</span></div>
-              <h3><a href="../sample-post.html">문서와 프로젝트 경험을 기술블로그 글로 전환하는 자동화 흐름</a></h3>
+              <div class="post-meta"><span>문서/결재</span><span>AI 자동화</span><span>회고</span></div>
+              <h3><a href="../sample-post.html">문서와 프로젝트 경험을 포트폴리오 글로 바꾸는 자동화 흐름</a></h3>
               <p>메모, 공모전 자료, README를 문제 정의와 시스템 설계 관점으로 재구성해 포트폴리오 글 초안으로 만드는 문서 자동화 실험입니다.</p>
             </div>
           </li>
@@ -371,7 +377,7 @@
           <li class="post">
             <time class="date" datetime="2026-05-20">May 20, 2026</time>
             <div>
-              <div class="post-meta"><span>Business Planning</span><span>Problem</span></div>
+              <div class="post-meta"><span>사업기획</span><span>문제정의</span></div>
               <h3>공공데이터 기반 서비스 기획을 업무 시스템 관점으로 정리하기</h3>
               <p>공모전 제안서를 그대로 공개하기보다, 문제 정의, 데이터 출처, 개인정보 최소화, 운영 지표, AI 역할 경계로 나눠 서비스 기획 문서처럼 정리하는 과정.</p>
             </div>
@@ -380,7 +386,7 @@
           <li class="post">
             <time class="date" datetime="2026-05-13">May 13, 2026</time>
             <div>
-              <div class="post-meta"><span>Portfolio</span><span>Retrospective</span></div>
+              <div class="post-meta"><span>포트폴리오</span><span>회고</span></div>
               <h3>학습 기록을 업무 개선 포트폴리오로 바꾸는 방법</h3>
               <p>“무엇을 공부했다”를 “어떤 업무 문제에 적용할 수 있고, 어떤 프로세스 개선으로 이어지는가”로 바꾸기 위한 기록 구조 실험.</p>
             </div>
