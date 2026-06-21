@@ -6,7 +6,7 @@
   <link rel="preconnect" href="https://cdn.jsdelivr.net" crossorigin>
   <link rel="preload" as="style" crossorigin href="https://cdn.jsdelivr.net/gh/wanteddev/wanted-sans@v1.0.3/packages/wanted-sans/fonts/webfonts/variable/split/WantedSansVariable.min.css">
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/wanteddev/wanted-sans@v1.0.3/packages/wanted-sans/fonts/webfonts/variable/split/WantedSansVariable.min.css">
-  <title>정태현 | 업무 시스템과 AI 자동화 포트폴리오</title>
+  <title>정태현의 기록 | 업무와 자동화 노트</title>
   <style>
     :root {
       --color-ink: #2F302D;
@@ -17,17 +17,17 @@
       --color-heading: #252622;
       --color-text: #2F302D;
       --color-muted: #6F6B62;
-      --color-bg: #FFFFFF;
-      --color-bg-soft: #F4F4EC;
-      --color-surface: #FFFFFF;
+      --color-bg: #FAF8F1;
+      --color-bg-soft: #F2EFE6;
+      --color-surface: #FFFCF5;
       --color-border: #D8D0C2;
-      --color-tag-bg: #FFF1CC;
-      --color-tag-text: #3F2D00;
-      --color-tag-border: #D39B2A;
-      --color-menu-accent: #FFF4C2;
-      --color-menu-soft: #FFE08A;
-      --color-menu-muted: #F2C94C;
-      --color-menu-active-bg: rgba(255, 224, 138, 0.18);
+      --color-tag-bg: #F6F1E4;
+      --color-tag-text: #2F302D;
+      --color-tag-border: #C7BCA9;
+      --color-menu-accent: #2F302D;
+      --color-menu-soft: #5F5E57;
+      --color-menu-muted: #7A7468;
+      --color-menu-active-bg: rgba(47, 48, 45, 0.07);
       --font-sans: "Wanted Sans Variable", "Wanted Sans", "Pretendard Variable", Pretendard, -apple-system, BlinkMacSystemFont,
         "Segoe UI", "Apple SD Gothic Neo", "Noto Sans KR", "Malgun Gothic", sans-serif;
     }
@@ -84,20 +84,21 @@
       justify-content: space-between;
       gap: 20px;
       padding: 16px 20px;
+      border: 1px solid var(--color-border);
       border-radius: 8px;
-      background: var(--color-ink);
-      color: var(--color-surface);
+      background: var(--color-surface);
+      color: var(--color-text);
     }
 
     .site-name {
-      color: var(--color-surface);
+      color: var(--color-ink);
       font-size: 19px;
       font-weight: 700;
       letter-spacing: 0;
     }
 
     .site-name:hover {
-      color: #fff;
+      color: var(--color-primary);
       text-decoration: none;
     }
 
@@ -115,27 +116,27 @@
       flex-direction: column;
       max-height: calc(100vh - 48px);
       padding: 20px;
-      border: 1px solid rgba(47, 48, 45, 0.18);
+      border: 1px solid var(--color-border);
       border-radius: 8px;
-      background: var(--color-ink);
-      color: rgba(255, 255, 255, 0.8);
+      background: var(--color-surface);
+      color: var(--color-text);
     }
 
     .side-brand {
-      color: #fff;
+      color: var(--color-ink);
       font-size: 22px;
       font-weight: 800;
       letter-spacing: 0;
     }
 
     .side-brand:hover {
-      color: #fff;
+      color: var(--color-primary);
       text-decoration: none;
     }
 
     .side-note {
       margin: 10px 0 18px;
-      color: rgba(255, 255, 255, 0.7);
+      color: var(--color-muted);
       font-size: 13px;
       line-height: 1.55;
     }
@@ -143,14 +144,14 @@
     .side-profile-card {
       margin-bottom: 18px;
       padding: 14px;
-      border: 1px solid rgba(255, 255, 255, 0.14);
+      border: 1px solid var(--color-border);
       border-radius: 8px;
-      background: rgba(255, 255, 255, 0.06);
+      background: var(--color-bg-soft);
     }
 
     .side-role {
       margin: 0 0 12px;
-      color: #fff;
+      color: var(--color-ink);
       font-size: 13px;
       font-weight: 700;
       line-height: 1.5;
@@ -168,7 +169,7 @@
     }
 
     .side-stats dt {
-      color: rgba(255, 255, 255, 0.52);
+      color: var(--color-muted);
       font-size: 11px;
       font-weight: 800;
       letter-spacing: 0.06em;
@@ -177,7 +178,7 @@
 
     .side-stats dd {
       margin: 2px 0 0;
-      color: #fff;
+      color: var(--color-ink);
       font-size: 14px;
       font-weight: 800;
     }
@@ -188,7 +189,7 @@
       min-height: 0;
       overflow-y: auto;
       padding-right: 8px;
-      scrollbar-color: rgba(236, 235, 221, 0.5) transparent;
+      scrollbar-color: rgba(47, 48, 45, 0.28) transparent;
       scrollbar-width: thin;
     }
 
@@ -202,7 +203,7 @@
 
     .side-scroll::-webkit-scrollbar-thumb {
       border-radius: 999px;
-      background: rgba(236, 235, 221, 0.45);
+      background: rgba(47, 48, 45, 0.24);
     }
 
     .side-group h2 {
@@ -227,12 +228,12 @@
     .side-tags a {
       display: block;
       padding: 7px 9px;
-      border: 1px solid rgba(255, 224, 138, 0.16);
+      border: 1px solid transparent;
       border-radius: 6px;
-      background: rgba(255, 255, 255, 0.03);
+      background: transparent;
       color: var(--color-menu-accent);
       font-size: 14px;
-      font-weight: 800;
+      font-weight: 700;
     }
 
     .side-links a {
@@ -245,14 +246,14 @@
     .side-tags a:hover,
     .side-links a:focus-visible,
     .side-tags a:focus-visible {
-      border-color: rgba(255, 224, 138, 0.46);
-      color: #FFF9DE;
+      border-color: var(--color-border);
+      color: var(--color-ink);
       background: var(--color-menu-active-bg);
       text-decoration: none;
     }
 
     .side-tags a {
-      color: var(--color-menu-soft);
+      color: var(--color-muted);
     }
 
     .side-plain-list {
@@ -261,7 +262,7 @@
       margin: 0;
       padding: 0;
       list-style: none;
-      color: rgba(255, 255, 255, 0.74);
+      color: var(--color-muted);
       font-size: 13px;
       line-height: 1.55;
     }
@@ -297,8 +298,8 @@
 
     nav a:hover,
     nav a:focus-visible {
-      color: var(--color-menu-soft);
-      background: rgba(217, 215, 163, 0.14);
+      color: var(--color-ink);
+      background: var(--color-menu-active-bg);
       text-decoration: none;
     }
 
@@ -313,85 +314,68 @@
     }
 
     .intro-cover {
-      position: relative;
       display: block;
-      min-height: clamp(460px, 64vh, 620px);
-      overflow: hidden;
+      padding: clamp(42px, 6vw, 72px);
+      border: 1px solid var(--color-border);
       border-radius: 8px;
-      background: var(--color-ink);
-      color: #fff;
-      isolation: isolate;
+      background: var(--color-surface);
+      color: var(--color-text);
     }
 
     .intro-cover img {
-      position: absolute;
-      inset: 0;
-      z-index: -2;
-      width: 100%;
-      height: 100%;
-      object-fit: cover;
+      display: none;
     }
 
     .intro-cover::before {
-      position: absolute;
-      inset: 0;
-      z-index: -1;
-      content: "";
-      background:
-        linear-gradient(90deg, rgba(37, 38, 34, 0.88) 0%, rgba(37, 38, 34, 0.58) 42%, rgba(37, 38, 34, 0.14) 100%),
-        linear-gradient(0deg, rgba(37, 38, 34, 0.34), rgba(37, 38, 34, 0.02) 44%);
+      display: none;
     }
 
     .intro-cover:hover,
     .intro-cover:focus-visible {
-      color: #fff;
+      border-color: #C7BCA9;
+      color: var(--color-text);
       text-decoration: none;
     }
 
     .intro-cover:focus-visible {
-      outline-color: var(--color-menu-muted);
+      outline-color: var(--color-primary);
     }
 
     .intro-copy {
-      display: flex;
-      flex-direction: column;
-      justify-content: space-between;
-      width: min(560px, 100%);
-      min-height: inherit;
-      padding: clamp(30px, 5vw, 58px);
+      width: min(760px, 100%);
     }
 
     .intro-eyebrow {
-      margin: 0 0 18px;
-      color: var(--color-menu-soft);
+      margin: 0 0 16px;
+      color: var(--color-muted);
       font-size: 13px;
-      font-weight: 900;
+      font-weight: 800;
       letter-spacing: 0.08em;
       text-transform: uppercase;
     }
 
     .intro-cover h1 {
       margin: 0;
-      max-width: 580px;
-      color: #fff;
-      font-size: clamp(36px, 4.8vw, 62px);
-      line-height: 1.08;
+      max-width: 680px;
+      color: var(--color-heading);
+      font-size: clamp(38px, 5vw, 58px);
+      line-height: 1.14;
     }
 
     .intro-cover p {
-      margin: 22px 0 0;
-      max-width: 500px;
-      color: rgba(255, 255, 255, 0.86);
-      font-size: clamp(16px, 1.7vw, 20px);
-      font-weight: 650;
-      line-height: 1.55;
+      margin: 20px 0 0;
+      max-width: 660px;
+      color: var(--color-ink-soft);
+      font-size: 18px;
+      font-weight: 500;
+      line-height: 1.78;
     }
 
     .intro-meta {
       display: flex;
       flex-wrap: wrap;
       gap: 8px;
-      margin: 26px 0 0;
+      margin: 28px 0 0;
       padding: 0;
       list-style: none;
     }
@@ -401,10 +385,10 @@
       align-items: center;
       min-height: 28px;
       padding: 5px 10px;
-      border: 1px solid rgba(255, 224, 138, 0.38);
+      border: 1px solid var(--color-tag-border);
       border-radius: 999px;
-      background: rgba(255, 244, 194, 0.12);
-      color: #FFF4C2;
+      background: var(--color-tag-bg);
+      color: var(--color-tag-text);
       font-size: 12px;
       font-weight: 850;
       line-height: 1.2;
@@ -415,13 +399,14 @@
       align-items: center;
       width: fit-content;
       margin-top: 34px;
-      padding: 11px 15px;
-      border: 1px solid rgba(255, 244, 194, 0.46);
+      padding: 0 0 2px;
+      border: 0;
+      border-bottom: 1px solid var(--color-primary);
       border-radius: 999px;
-      background: rgba(47, 48, 45, 0.72);
-      color: #FFF4C2;
+      background: transparent;
+      color: var(--color-primary);
       font-size: 14px;
-      font-weight: 900;
+      font-weight: 800;
     }
 
     .profile {
@@ -445,13 +430,14 @@
       justify-content: space-between;
       min-height: 360px;
       padding: 34px;
-      background: var(--color-ink);
-      color: var(--color-surface);
+      border: 1px solid var(--color-border);
+      background: var(--color-bg-soft);
+      color: var(--color-text);
     }
 
     .eyebrow {
       margin: 0 0 14px;
-      color: rgba(255, 255, 255, 0.72);
+      color: var(--color-muted);
       font-size: 13px;
       font-weight: 700;
       letter-spacing: 0.08em;
@@ -467,24 +453,24 @@
 
     h1 {
       margin: 0;
-      color: var(--color-surface);
+      color: var(--color-heading);
       font-size: clamp(42px, 7vw, 72px);
       line-height: 1.04;
     }
 
     .profile-name {
       margin: 0;
-      color: var(--color-surface);
+      color: var(--color-heading);
       font-size: clamp(42px, 7vw, 72px);
       line-height: 1.04;
     }
 
     .profile-subtitle {
       margin: 20px 0 0;
-      color: rgba(255, 255, 255, 0.9);
-      font-size: clamp(20px, 3vw, 30px);
-      font-weight: 700;
-      line-height: 1.35;
+      color: var(--color-ink-soft);
+      font-size: clamp(18px, 2.3vw, 24px);
+      font-weight: 650;
+      line-height: 1.45;
     }
 
     .profile-actions,
@@ -516,14 +502,27 @@
     }
 
     .button.secondary {
+      border-color: var(--color-border);
+      background: var(--color-surface);
+      color: var(--color-ink);
+    }
+
+    .button.secondary:hover {
+      border-color: var(--color-primary-hover);
+      background: var(--color-bg-soft);
+      color: var(--color-primary-hover);
+    }
+
+    .contact-panel .button.secondary {
       border-color: rgba(255, 255, 255, 0.32);
       background: transparent;
       color: #fff;
     }
 
-    .button.secondary:hover {
+    .contact-panel .button.secondary:hover {
       border-color: var(--color-primary-hover);
       background: var(--color-primary-hover);
+      color: #fff;
     }
 
     .button.light {
@@ -839,17 +838,8 @@
       }
 
       .intro-cover {
-        min-height: 620px;
-      }
-
-      .intro-cover img {
-        object-position: 62% center;
-      }
-
-      .intro-cover::before {
-        background:
-          linear-gradient(90deg, rgba(37, 38, 34, 0.92) 0%, rgba(37, 38, 34, 0.72) 58%, rgba(37, 38, 34, 0.24) 100%),
-          linear-gradient(0deg, rgba(37, 38, 34, 0.42), rgba(37, 38, 34, 0.04) 44%);
+        min-height: 0;
+        padding: 34px;
       }
 
       .profile,
@@ -896,15 +886,12 @@
       }
 
       .intro-cover {
-        min-height: 560px;
-      }
-
-      .intro-cover img {
-        object-position: 70% center;
+        min-height: 0;
+        padding: 28px;
       }
 
       .intro-copy {
-        padding: 28px;
+        padding: 0;
       }
 
       .latest-item {
@@ -943,9 +930,9 @@
     <div class="site-shell">
       <aside class="side-rail" aria-label="사이드 탐색">
         <a class="side-brand" href="#home">정태현</a>
-        <p class="side-note">전략기획 관점에서 업무 시스템과 AI 자동화를 설계하고 기록합니다.</p>
+        <p class="side-note">일을 조금 더 잘 되게 만들기 위해 읽고, 만들고, 다시 적습니다.</p>
         <div class="side-profile-card" aria-label="프로필 요약">
-          <p class="side-role">기획자형 개발자 / 업무 시스템 설계 / AI 자동화 기록</p>
+          <p class="side-role">전략기획을 배우며 업무 흐름, 문서, 데이터, 자동화를 기록합니다.</p>
           <dl class="side-stats">
             <div>
               <dt>Posts</dt>
@@ -994,7 +981,7 @@
               <li>업무 요청과 승인 흐름</li>
               <li>공공데이터 기반 서비스 기획</li>
               <li>문서 자동화와 보고 구조</li>
-              <li>AI 결과와 사람 검토의 경계</li>
+              <li>자동화가 필요한 부분과 사람이 봐야 하는 부분</li>
             </ul>
           </section>
 
@@ -1011,31 +998,33 @@
       <div class="content-column">
     <main>
       <a class="intro-cover" href="#latest" aria-labelledby="intro-title">
-        <img src="assets/planning-hero-cover.png" alt="" loading="eager">
         <div class="intro-copy">
           <div>
-            <p class="intro-eyebrow">Strategy notes for work systems</p>
-            <h1 id="intro-title">업무를 설계하고, 기록으로 남깁니다.</h1>
+            <p class="intro-eyebrow">by taehyun</p>
+            <h1 id="intro-title">정태현의 기록</h1>
             <p>
-              전략기획 관점에서 업무 프로세스, 데이터 구조, AI 자동화 실험을 글로 정리합니다.
+              일이 되게 만드는 과정에서 배운 것들을 적습니다. 업무 흐름, 문서, 데이터, 자동화 사이에서
+              직접 해본 것과 다시 생각한 것을 남깁니다.
             </p>
             <ul class="intro-meta" aria-label="대표 주제">
-              <li>업무 프로세스</li>
+              <li>일의 구조</li>
+              <li>문서와 결재</li>
               <li>사업기획</li>
-              <li>AI 자동화</li>
-              <li>데이터 구조</li>
+              <li>데이터</li>
+              <li>자동화</li>
+              <li>회고</li>
             </ul>
           </div>
-          <span class="intro-action">최근 기록으로 들어가기</span>
+          <span class="intro-action">최근 글 읽기</span>
         </div>
       </a>
 
       <section class="profile" id="about" aria-labelledby="profile-title">
         <div class="profile-panel">
           <div>
-            <p class="eyebrow">Strategy Planning / AI Automation</p>
+            <p class="eyebrow">About</p>
             <h2 class="profile-name" id="profile-title">정태현</h2>
-            <p class="profile-subtitle">전략기획 관점에서 업무 시스템과 AI 자동화를 설계합니다.</p>
+            <p class="profile-subtitle">업무가 흘러가는 방식을 관찰하고, 필요한 도구를 작게 만들어 봅니다.</p>
           </div>
           <div class="profile-actions">
             <a class="button" href="#featured">기획 사례 보기</a>
@@ -1046,11 +1035,11 @@
 
         <div class="profile-copy">
           <p>
-            업무 요청, 검토, 승인, 실행, 기록이 연결되는 내부 운영 구조를 고민합니다.
+            회사 안의 요청, 검토, 승인, 실행, 기록이 어디서 막히는지 자주 생각합니다.
           </p>
           <p>
-            공공데이터, 문서 자동화, AI 활용, 데이터 구조화를 통해 실무에서 작동 가능한
-            업무 시스템과 서비스 기획 과정을 기록합니다.
+            거창한 답을 내기보다, 문서 하나와 데이터 한 줄이 다음 판단으로 이어지게 만드는 과정을
+            차분히 기록하려고 합니다.
           </p>
           <ul class="quick-facts" aria-label="핵심 관심 영역">
             <li><strong>업무 프로세스</strong>요청, 승인, 기록이 남는 업무 흐름</li>
