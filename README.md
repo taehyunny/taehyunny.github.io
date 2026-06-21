@@ -1,41 +1,83 @@
-# Strategy Planning and AI Work Systems Blog
+# 정태현의 기록
 
-This repository serves my GitHub Pages portfolio blog.
+GitHub Pages로 운영하는 개인 포트폴리오형 블로그입니다.
 
-The blog is positioned around strategy planning, internal work system design, document and approval workflows, data-driven decision making, AI automation, and public-data-based service planning.
+이 블로그는 AI 서비스를 홍보하는 랜딩 페이지가 아니라, 전략기획·업무 프로세스·내부 업무 시스템·문서/결재 구조·데이터 기반 의사결정·AI 자동화 실험을 차분히 기록하는 공간입니다.
 
-## Current Direction
+## 블로그 방향
 
-- Strategy planning
-- Work process design
-- Internal business system planning
-- Document, approval, and file management structure
-- Data-driven decision making
-- AI automation for work support
-- Public data and government project service planning
+- 업무가 실제로 흘러가는 방식 관찰
+- 요청, 검토, 승인, 파일, 기록 흐름 정리
+- 공공데이터와 정부사업을 서비스 기획 관점으로 해석
+- AI 자동화를 사람이 검토할 수 있는 업무 시스템 안에 배치
+- 프로젝트 결과보다 문제 정의, 설계 판단, 한계, 다음 개선 방향을 함께 기록
 
-## Site Structure
-
-- `index.html`: main portfolio blog page
-- `sample-post.html`: document automation sample article
-- `posts/`: published article pages
-
-## Content Framing
-
-Posts should explain projects from a planning and operations perspective:
-
-- What business or workflow problem existed?
-- What process, approval, document, or data structure was needed?
-- Which parts could be automated with AI?
-- Which decisions still required human review?
-- What evidence, logs, files, or data should remain for later verification?
-- What would be improved in the next version?
-
-## Previous Blog Content
-
-The earlier technical blog state was preserved in:
+## 현재 사이트 구조
 
 ```text
-backup/pre-ai-blog-agent-pages-20260525
+.
+├─ index.html
+├─ blog/
+│  └─ index.html
+├─ posts/
+│  └─ <post-slug>/
+│     └─ index.html
+├─ assets/
+│  └─ categories/
+│     ├─ process.jpg
+│     ├─ planning.jpg
+│     ├─ automation.jpg
+│     ├─ data.jpg
+│     ├─ docs.jpg
+│     └─ retro.jpg
+└─ sample-post.html
 ```
 
+## 페이지 역할
+
+- `index.html`: 홈 화면입니다. 블로그의 관점, 주요 주제, 대표 기록, 최근 글을 보여줍니다.
+- `blog/index.html`: 전체 글 목록입니다.
+- `posts/<slug>/index.html`: 공개된 개별 글입니다.
+- `assets/categories/`: 홈 화면의 카테고리 사진 자산입니다.
+- `sample-post.html`: 문서 자동화 실험 예시 글입니다.
+
+## 글을 쓰는 기준
+
+글은 단순 학습 기록보다 아래 질문에 답하는 방식으로 작성합니다.
+
+- 어떤 업무 또는 사용자 문제가 있었는가?
+- 기존 방식은 어디에서 막혔는가?
+- 어떤 데이터, 문서, 승인, 파일 구조가 필요했는가?
+- AI가 맡아도 되는 부분과 사람이 검토해야 하는 부분은 무엇인가?
+- 구현하면서 실패했거나 불확실했던 부분은 무엇인가?
+- 다음 버전에서 무엇을 검증해야 하는가?
+
+## 디자인 원칙
+
+- 흰 바탕과 먹색 본문을 기본으로 사용합니다.
+- 액센트 색은 버건디 한 가지로 제한합니다.
+- 태그는 칩 배경 없이 작은 점과 텍스트로만 표현합니다.
+- 홈 카테고리는 정물 사진 시리즈로 보여줍니다.
+- 과한 그림자, 그라데이션, 다색 파스텔 태그, AI 템플릿처럼 보이는 히어로 이미지는 사용하지 않습니다.
+
+## 로컬 확인
+
+정적 HTML 사이트라 별도 빌드 없이 브라우저로 열 수 있습니다.
+
+간단히 로컬 서버로 확인하려면 저장소 루트에서 실행합니다.
+
+```powershell
+python -m http.server 8000
+```
+
+그 다음 브라우저에서 `http://localhost:8000`을 엽니다.
+
+## 배포
+
+이 저장소는 `taehyunny.github.io` GitHub Pages 저장소입니다.
+
+변경 후 `main` 브랜치에 push하면 GitHub Pages가 자동으로 반영합니다.
+
+## 운영 원칙
+
+초안 Markdown, 개인 메모, 공모전 원문, 내부 업무 자료는 이 저장소에 직접 올리지 않습니다. 공개 가능한 내용만 HTML 글로 변환해서 게시합니다.

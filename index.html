@@ -4,32 +4,58 @@
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <link rel="preconnect" href="https://cdn.jsdelivr.net" crossorigin>
-  <link rel="preload" as="style" crossorigin href="https://cdn.jsdelivr.net/gh/wanteddev/wanted-sans@v1.0.3/packages/wanted-sans/fonts/webfonts/variable/split/WantedSansVariable.min.css">
-  <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/wanteddev/wanted-sans@v1.0.3/packages/wanted-sans/fonts/webfonts/variable/split/WantedSansVariable.min.css">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link rel="preload" as="style" crossorigin href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard/dist/web/variable/pretendardvariable-dynamic-subset.css">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard/dist/web/variable/pretendardvariable-dynamic-subset.css">
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Nanum+Myeongjo:wght@700&display=swap">
   <title>정태현의 기록 | 업무와 자동화 노트</title>
   <style>
     :root {
-      --color-ink: #2F302D;
-      --color-ink-soft: #464741;
-      --color-ink-muted: #5F5E57;
-      --color-primary: #5A1E22;
-      --color-primary-hover: #7A2A2F;
-      --color-heading: #252622;
-      --color-text: #2F302D;
-      --color-muted: #6F6B62;
-      --color-bg: #FAF8F1;
-      --color-bg-soft: #F2EFE6;
-      --color-surface: #FFFCF5;
-      --color-border: #D8D0C2;
-      --color-tag-bg: #F6F1E4;
-      --color-tag-text: #2F302D;
-      --color-tag-border: #C7BCA9;
-      --color-menu-accent: #2F302D;
-      --color-menu-soft: #5F5E57;
-      --color-menu-muted: #7A7468;
-      --color-menu-active-bg: rgba(47, 48, 45, 0.07);
-      --font-sans: "Wanted Sans Variable", "Wanted Sans", "Pretendard Variable", Pretendard, -apple-system, BlinkMacSystemFont,
-        "Segoe UI", "Apple SD Gothic Neo", "Noto Sans KR", "Malgun Gothic", sans-serif;
+      --bg: #FAFAF7;
+      --bg-elev: #FFFFFF;
+      --text: #111111;
+      --text-muted: #8A8A8A;
+      --border: #EDEAE3;
+      --accent: #B23B3B;
+      --accent-ink: #7A2828;
+      --font-sans: "Pretendard Variable", Pretendard, "Apple SD Gothic Neo", system-ui, sans-serif;
+      --font-serif: "Nanum Myeongjo", "Noto Serif KR", serif;
+      --font-mono: "JetBrains Mono", ui-monospace, monospace;
+      --fs-hero: clamp(40px, 6vw, 72px);
+      --fs-h1: clamp(28px, 3.2vw, 40px);
+      --fs-h2: 22px;
+      --fs-body: 16px;
+      --fs-meta: 13px;
+      --lh-body: 1.75;
+      --radius-sm: 6px;
+      --radius-md: 12px;
+      --radius-lg: 20px;
+      --space-1: 4px;
+      --space-2: 8px;
+      --space-3: 12px;
+      --space-4: 16px;
+      --space-6: 24px;
+      --space-8: 32px;
+      --space-12: 48px;
+      --space-16: 64px;
+      --color-ink: var(--text);
+      --color-ink-soft: #333333;
+      --color-ink-muted: #555555;
+      --color-primary: var(--accent);
+      --color-primary-hover: var(--accent-ink);
+      --color-heading: var(--text);
+      --color-text: var(--text);
+      --color-muted: var(--text-muted);
+      --color-bg: var(--bg);
+      --color-bg-soft: #F4F2EC;
+      --color-surface: var(--bg-elev);
+      --color-border: var(--border);
+      --color-tag-text: var(--text);
+      --color-menu-accent: var(--text);
+      --color-menu-soft: var(--accent);
+      --color-menu-muted: var(--text-muted);
+      --color-menu-active-bg: transparent;
     }
 
     * {
@@ -45,7 +71,9 @@
       color: var(--color-text);
       background: var(--color-bg);
       font-family: var(--font-sans);
-      line-height: 1.7;
+      font-size: var(--fs-body);
+      letter-spacing: -0.01em;
+      line-height: var(--lh-body);
     }
 
     h1,
@@ -73,7 +101,7 @@
     }
 
     .page {
-      width: min(1440px, calc(100% - 48px));
+      width: min(1180px, calc(100% - 48px));
       margin: 0 auto;
       padding: 24px 0 56px;
     }
@@ -83,9 +111,9 @@
       align-items: center;
       justify-content: space-between;
       gap: 20px;
-      padding: 16px 20px;
-      border: 1px solid var(--color-border);
-      border-radius: 8px;
+      padding: 14px 0 18px;
+      border-bottom: 1px solid var(--color-border);
+      border-radius: 0;
       background: var(--color-surface);
       color: var(--color-text);
     }
@@ -104,8 +132,9 @@
 
     .site-shell {
       display: grid;
-      grid-template-columns: 260px minmax(0, 1fr);
-      gap: 28px;
+      grid-template-columns: 240px minmax(0, 880px);
+      justify-content: center;
+      gap: var(--space-12);
       align-items: start;
     }
 
@@ -115,17 +144,18 @@
       display: flex;
       flex-direction: column;
       max-height: calc(100vh - 48px);
-      padding: 20px;
-      border: 1px solid var(--color-border);
-      border-radius: 8px;
-      background: var(--color-surface);
+      padding: 6px 0 0;
+      border: 0;
+      border-radius: 0;
+      background: transparent;
       color: var(--color-text);
     }
 
     .side-brand {
       color: var(--color-ink);
-      font-size: 22px;
-      font-weight: 800;
+      font-family: var(--font-serif);
+      font-size: 24px;
+      font-weight: 700;
       letter-spacing: 0;
     }
 
@@ -135,60 +165,18 @@
     }
 
     .side-note {
-      margin: 10px 0 18px;
+      margin: 10px 0 30px;
       color: var(--color-muted);
       font-size: 13px;
       line-height: 1.55;
     }
 
-    .side-profile-card {
-      margin-bottom: 18px;
-      padding: 14px;
-      border: 1px solid var(--color-border);
-      border-radius: 8px;
-      background: var(--color-bg-soft);
-    }
-
-    .side-role {
-      margin: 0 0 12px;
-      color: var(--color-ink);
-      font-size: 13px;
-      font-weight: 700;
-      line-height: 1.5;
-    }
-
-    .side-stats {
-      display: grid;
-      grid-template-columns: repeat(3, minmax(0, 1fr));
-      gap: 8px;
-      margin: 0;
-    }
-
-    .side-stats div {
-      min-width: 0;
-    }
-
-    .side-stats dt {
-      color: var(--color-muted);
-      font-size: 11px;
-      font-weight: 800;
-      letter-spacing: 0.06em;
-      text-transform: uppercase;
-    }
-
-    .side-stats dd {
-      margin: 2px 0 0;
-      color: var(--color-ink);
-      font-size: 14px;
-      font-weight: 800;
-    }
-
     .side-scroll {
       display: grid;
-      gap: 20px;
+      gap: 26px;
       min-height: 0;
       overflow-y: auto;
-      padding-right: 8px;
+      padding-right: 4px;
       scrollbar-color: rgba(47, 48, 45, 0.28) transparent;
       scrollbar-width: thin;
     }
@@ -210,50 +198,46 @@
       margin: 0 0 10px;
       color: var(--color-menu-muted);
       font-size: 12px;
-      font-weight: 800;
-      letter-spacing: 0.08em;
-      text-transform: uppercase;
+      font-weight: 700;
+      letter-spacing: 0;
+      text-transform: none;
     }
 
-    .side-links,
-    .side-tags {
+    .side-links {
       display: grid;
-      gap: 6px;
+      gap: 2px;
       margin: 0;
       padding: 0;
       list-style: none;
     }
 
-    .side-links a,
-    .side-tags a {
+    .side-links a {
       display: block;
-      padding: 7px 9px;
+      padding: 7px 0 7px 12px;
       border: 1px solid transparent;
-      border-radius: 6px;
+      border-left: 4px solid transparent;
+      border-radius: 0;
       background: transparent;
       color: var(--color-menu-accent);
       font-size: 14px;
       font-weight: 700;
     }
 
-    .side-links a {
-      display: flex;
-      align-items: center;
-      gap: 8px;
-    }
-
     .side-links a:hover,
-    .side-tags a:hover,
-    .side-links a:focus-visible,
-    .side-tags a:focus-visible {
-      border-color: var(--color-border);
+    .side-links a:focus-visible {
+      border-left-color: var(--accent);
+      border-top-color: transparent;
+      border-right-color: transparent;
+      border-bottom-color: transparent;
       color: var(--color-ink);
       background: var(--color-menu-active-bg);
       text-decoration: none;
     }
 
-    .side-tags a {
-      color: var(--color-muted);
+    .side-links a.is-active {
+      border-left-color: var(--accent);
+      color: var(--color-ink);
+      font-weight: 800;
     }
 
     .side-plain-list {
@@ -281,19 +265,10 @@
     nav a {
       display: inline-flex;
       align-items: center;
-      gap: 6px;
-      padding: 5px 8px;
+      padding: 5px 0;
       border-radius: 6px;
       color: var(--color-menu-accent);
       font-weight: 700;
-    }
-
-    .menu-icon {
-      flex: 0 0 1.1em;
-      width: 1.1em;
-      font-size: 0.95em;
-      line-height: 1;
-      text-align: center;
     }
 
     nav a:hover,
@@ -332,7 +307,7 @@
 
     .intro-cover:hover,
     .intro-cover:focus-visible {
-      border-color: #C7BCA9;
+      border-color: var(--color-text);
       color: var(--color-text);
       text-decoration: none;
     }
@@ -359,6 +334,8 @@
       max-width: 680px;
       color: var(--color-heading);
       font-size: clamp(38px, 5vw, 58px);
+      font-family: var(--font-serif);
+      font-weight: 700;
       line-height: 1.14;
     }
 
@@ -384,14 +361,20 @@
       display: inline-flex;
       align-items: center;
       min-height: 28px;
-      padding: 5px 10px;
-      border: 1px solid var(--color-tag-border);
-      border-radius: 999px;
-      background: var(--color-tag-bg);
+      padding: 0;
+      border: 0;
+      border-radius: 0;
+      background: transparent;
       color: var(--color-tag-text);
       font-size: 12px;
-      font-weight: 850;
+      font-weight: 700;
       line-height: 1.2;
+    }
+
+    .intro-meta li::before {
+      content: "•";
+      margin-right: 5px;
+      color: var(--accent);
     }
 
     .intro-action {
@@ -429,9 +412,10 @@
       flex-direction: column;
       justify-content: space-between;
       min-height: 360px;
-      padding: 34px;
-      border: 1px solid var(--color-border);
-      background: var(--color-bg-soft);
+      padding: 0;
+      border: 0;
+      border-top: 1px solid var(--color-border);
+      background: transparent;
       color: var(--color-text);
     }
 
@@ -455,6 +439,8 @@
       margin: 0;
       color: var(--color-heading);
       font-size: clamp(42px, 7vw, 72px);
+      font-family: var(--font-serif);
+      font-weight: 700;
       line-height: 1.04;
     }
 
@@ -462,6 +448,8 @@
       margin: 0;
       color: var(--color-heading);
       font-size: clamp(42px, 7vw, 72px);
+      font-family: var(--font-serif);
+      font-weight: 700;
       line-height: 1.04;
     }
 
@@ -489,7 +477,7 @@
       padding: 9px 14px;
       border: 1px solid transparent;
       border-radius: 6px;
-      background: var(--color-ink);
+      background: var(--color-primary);
       color: #fff;
       font-size: 14px;
       font-weight: 700;
@@ -502,27 +490,16 @@
     }
 
     .button.secondary {
-      border-color: var(--color-border);
-      background: var(--color-surface);
-      color: var(--color-ink);
+      border-color: transparent;
+      background: transparent;
+      color: var(--color-primary);
     }
 
     .button.secondary:hover {
-      border-color: var(--color-primary-hover);
-      background: var(--color-bg-soft);
-      color: var(--color-primary-hover);
-    }
-
-    .contact-panel .button.secondary {
-      border-color: rgba(255, 255, 255, 0.32);
+      border-color: transparent;
       background: transparent;
-      color: #fff;
-    }
-
-    .contact-panel .button.secondary:hover {
-      border-color: var(--color-primary-hover);
-      background: var(--color-primary-hover);
-      color: #fff;
+      color: var(--color-primary-hover);
+      text-decoration: underline;
     }
 
     .button.light {
@@ -538,9 +515,9 @@
     }
 
     .profile-copy {
-      padding: 34px;
-      border: 1px solid var(--color-border);
-      background: var(--color-surface);
+      padding: 0;
+      border: 0;
+      background: transparent;
     }
 
     .profile-copy p {
@@ -559,10 +536,10 @@
     }
 
     .quick-facts li {
-      padding: 14px;
-      border: 1px solid var(--color-border);
-      border-radius: 8px;
-      background: var(--color-bg);
+      padding: 14px 0 0;
+      border-top: 1px solid var(--color-border);
+      border-radius: 0;
+      background: transparent;
       color: var(--color-muted);
       font-size: 13px;
     }
@@ -611,7 +588,7 @@
 
     .section-heading h2 {
       margin: 0;
-      font-size: clamp(25px, 3vw, 34px);
+      font-size: var(--fs-h2);
       line-height: 1.2;
     }
 
@@ -638,11 +615,50 @@
       list-style: none;
     }
 
-    .tag-section {
-      padding: 22px;
-      border: 1px solid var(--color-border);
-      border-radius: 8px;
-      background: var(--color-surface);
+    .category-section {
+      padding-top: 2px;
+    }
+
+    .category-grid {
+      display: grid;
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+      gap: var(--space-4);
+      margin: 0;
+      padding: 0;
+      list-style: none;
+    }
+
+    .category-tile {
+      display: block;
+      color: var(--color-text);
+    }
+
+    .category-tile:hover,
+    .category-tile:focus-visible {
+      color: var(--color-text);
+      text-decoration: none;
+    }
+
+    .category-tile img {
+      display: block;
+      width: 100%;
+      aspect-ratio: 1;
+      object-fit: cover;
+      border-radius: var(--radius-md);
+      transition: opacity 160ms ease;
+    }
+
+    .category-tile:hover img,
+    .category-tile:focus-visible img {
+      opacity: 0.92;
+    }
+
+    .category-tile span {
+      display: block;
+      margin-top: 8px;
+      color: var(--color-text);
+      font-size: var(--fs-meta);
+      font-weight: 700;
     }
 
     .tag-pill,
@@ -650,15 +666,33 @@
     .latest-meta span {
       display: inline-flex;
       align-items: center;
-      min-height: 26px;
-      padding: 4px 9px;
-      border: 1px solid rgba(211, 155, 42, 0.46);
-      border-radius: 999px;
-      background: var(--color-tag-bg);
+      min-height: 0;
+      padding: 0;
+      border: 0;
+      border-radius: 0;
+      background: transparent;
       color: var(--color-tag-text);
-      font-size: 12px;
-      font-weight: 800;
+      font-size: var(--fs-meta);
+      font-weight: 500;
       line-height: 1.2;
+    }
+
+    .tag-pill::before,
+    .card-tags li::before,
+    .latest-meta span::before {
+      content: "•";
+      margin-right: 5px;
+      color: var(--accent);
+      font-weight: 700;
+    }
+
+    .card-tags .tag-more {
+      color: var(--color-muted);
+    }
+
+    .card-tags .tag-more::before {
+      content: "";
+      margin: 0;
     }
 
     .feature-grid {
@@ -674,13 +708,11 @@
       padding: 22px;
       border: 1px solid var(--color-border);
       background: var(--color-surface);
-      transition: background-color 160ms ease, border-color 160ms ease, transform 160ms ease;
+      transition: border-color 160ms ease;
     }
 
     .card:hover {
-      border-color: #cfc5bd;
-      background: var(--color-bg-soft);
-      transform: translateY(-1px);
+      border-color: var(--color-text);
     }
 
     .card h3 {
@@ -727,12 +759,11 @@
       padding: 18px;
       border: 1px solid var(--color-border);
       background: var(--color-surface);
-      transition: background-color 160ms ease, border-color 160ms ease;
+      transition: border-color 160ms ease;
     }
 
     .latest-item:hover {
-      border-color: #cfc5bd;
-      background: var(--color-bg-soft);
+      border-color: var(--color-text);
     }
 
     .date {
@@ -765,15 +796,16 @@
       display: grid;
       grid-template-columns: minmax(0, 1.25fr) minmax(240px, 0.75fr);
       gap: 22px;
-      padding: 28px;
-      background: var(--color-ink);
-      color: rgba(255, 255, 255, 0.82);
+      padding: 28px 0 0;
+      border-top: 1px solid var(--color-border);
+      background: transparent;
+      color: var(--color-text);
     }
 
     .contact-panel h2 {
       margin: 0 0 10px;
-      color: #fff;
-      font-size: 28px;
+      color: var(--color-heading);
+      font-size: var(--fs-h2);
     }
 
     .contact-panel p {
@@ -792,26 +824,29 @@
 
     .contact-list a {
       display: block;
-      padding: 12px 14px;
-      border: 1px solid rgba(255, 255, 255, 0.16);
-      border-radius: 6px;
-      color: #fff;
+      padding: 0;
+      border: 0;
+      border-radius: 0;
+      color: var(--color-primary);
       font-weight: 700;
     }
 
     .contact-list a:hover {
-      border-color: var(--color-primary-hover);
-      background: var(--color-primary-hover);
-      text-decoration: none;
+      background: transparent;
+      color: var(--color-primary-hover);
+      text-decoration: underline;
     }
 
     footer {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: space-between;
+      gap: var(--space-4);
       margin-top: 28px;
-      padding: 22px;
-      border-radius: 8px;
-      background: var(--color-ink);
-      color: rgba(255, 255, 255, 0.72);
-      font-size: 14px;
+      padding-top: 20px;
+      border-top: 1px solid var(--color-border);
+      color: var(--color-muted);
+      font-size: var(--fs-meta);
     }
 
     footer p {
@@ -835,6 +870,7 @@
 
       nav {
         margin-top: 12px;
+        gap: 14px;
       }
 
       .intro-cover {
@@ -850,11 +886,11 @@
 
       .profile-panel {
         min-height: 0;
-        padding: 26px;
+        padding: 0;
       }
 
       .profile-copy {
-        padding: 24px;
+        padding: 0;
       }
 
       .quick-facts {
@@ -890,6 +926,10 @@
         padding: 28px;
       }
 
+      .category-grid {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+      }
+
       .intro-copy {
         padding: 0;
       }
@@ -919,11 +959,11 @@
     <header class="site-header" id="home">
       <a class="site-name" href="index.html">정태현</a>
       <nav aria-label="주요 메뉴">
-        <a href="#home"><span class="menu-icon" aria-hidden="true">⌂</span><span>Home</span></a>
-        <a href="#featured"><span class="menu-icon" aria-hidden="true">✦</span><span>기획 사례</span></a>
-        <a href="blog/"><span class="menu-icon" aria-hidden="true">✎</span><span>전체 글</span></a>
-        <a href="#about"><span class="menu-icon" aria-hidden="true">◉</span><span>소개</span></a>
-        <a href="https://github.com/taehyunny"><span class="menu-icon" aria-hidden="true">↗</span><span>GitHub</span></a>
+        <a href="#home">Home</a>
+        <a href="#featured">기획 사례</a>
+        <a href="blog/">전체 글</a>
+        <a href="#about">소개</a>
+        <a href="https://github.com/taehyunny">GitHub</a>
       </nav>
     </header>
 
@@ -931,47 +971,16 @@
       <aside class="side-rail" aria-label="사이드 탐색">
         <a class="side-brand" href="#home">정태현</a>
         <p class="side-note">일을 조금 더 잘 되게 만들기 위해 읽고, 만들고, 다시 적습니다.</p>
-        <div class="side-profile-card" aria-label="프로필 요약">
-          <p class="side-role">전략기획을 배우며 업무 흐름, 문서, 데이터, 자동화를 기록합니다.</p>
-          <dl class="side-stats">
-            <div>
-              <dt>Posts</dt>
-              <dd>10</dd>
-            </div>
-            <div>
-              <dt>Focus</dt>
-              <dd>4</dd>
-            </div>
-            <div>
-              <dt>Tags</dt>
-              <dd>8</dd>
-            </div>
-          </dl>
-        </div>
         <div class="side-scroll">
           <section class="side-group" aria-labelledby="side-nav-title">
             <h2 id="side-nav-title">메뉴</h2>
             <ul class="side-links">
-              <li><a href="#home"><span class="menu-icon" aria-hidden="true">⌂</span><span>Home</span></a></li>
-              <li><a href="#featured"><span class="menu-icon" aria-hidden="true">✦</span><span>기획 사례</span></a></li>
-              <li><a href="#latest"><span class="menu-icon" aria-hidden="true">◷</span><span>최근 기록</span></a></li>
-              <li><a href="blog/"><span class="menu-icon" aria-hidden="true">✎</span><span>전체 글</span></a></li>
-              <li><a href="#about"><span class="menu-icon" aria-hidden="true">◉</span><span>소개</span></a></li>
-              <li><a href="#contact"><span class="menu-icon" aria-hidden="true">✉</span><span>연락</span></a></li>
-            </ul>
-          </section>
-
-          <section class="side-group" aria-labelledby="side-tags-title">
-            <h2 id="side-tags-title">기획 키워드</h2>
-            <ul class="side-tags">
-              <li><a href="#tags">업무 프로세스</a></li>
-              <li><a href="#tags">사업기획</a></li>
-              <li><a href="#tags">AI 자동화</a></li>
-              <li><a href="#tags">데이터 구조</a></li>
-              <li><a href="#tags">문서/결재</a></li>
-              <li><a href="#tags">공공데이터</a></li>
-              <li><a href="#tags">문제정의</a></li>
-              <li><a href="#tags">회고</a></li>
+              <li><a class="is-active" href="#home">Home</a></li>
+              <li><a href="#featured">기획 사례</a></li>
+              <li><a href="#latest">최근 기록</a></li>
+              <li><a href="blog/">전체 글</a></li>
+              <li><a href="#about">소개</a></li>
+              <li><a href="#contact">연락</a></li>
             </ul>
           </section>
 
@@ -988,8 +997,8 @@
           <section class="side-group" aria-labelledby="side-social-title">
             <h2 id="side-social-title">연결</h2>
             <ul class="side-links">
-              <li><a href="https://github.com/taehyunny"><span class="menu-icon" aria-hidden="true">↗</span><span>GitHub</span></a></li>
-              <li><a href="mailto:taehyunny0312@gmail.com"><span class="menu-icon" aria-hidden="true">✉</span><span>Email</span></a></li>
+              <li><a href="https://github.com/taehyunny">GitHub</a></li>
+              <li><a href="mailto:taehyunny0312@gmail.com">Email</a></li>
             </ul>
           </section>
         </div>
@@ -1019,58 +1028,20 @@
         </div>
       </a>
 
-      <section class="profile" id="about" aria-labelledby="profile-title">
-        <div class="profile-panel">
-          <div>
-            <p class="eyebrow">About</p>
-            <h2 class="profile-name" id="profile-title">정태현</h2>
-            <p class="profile-subtitle">업무가 흘러가는 방식을 관찰하고, 필요한 도구를 작게 만들어 봅니다.</p>
-          </div>
-          <div class="profile-actions">
-            <a class="button" href="#featured">기획 사례 보기</a>
-            <a class="button secondary" href="https://github.com/taehyunny">GitHub</a>
-            <a class="button secondary" href="#about">소개</a>
-          </div>
-        </div>
-
-        <div class="profile-copy">
-          <p>
-            회사 안의 요청, 검토, 승인, 실행, 기록이 어디서 막히는지 자주 생각합니다.
-          </p>
-          <p>
-            거창한 답을 내기보다, 문서 하나와 데이터 한 줄이 다음 판단으로 이어지게 만드는 과정을
-            차분히 기록하려고 합니다.
-          </p>
-          <ul class="quick-facts" aria-label="핵심 관심 영역">
-            <li><strong>업무 프로세스</strong>요청, 승인, 기록이 남는 업무 흐름</li>
-            <li><strong>데이터 구조</strong>보고와 판단으로 이어지는 데이터 구조</li>
-            <li><strong>AI 자동화</strong>사람의 검토를 전제로 한 자동화 설계</li>
-          </ul>
-          <nav class="profile-tabs" aria-label="프로필 하위 메뉴">
-            <a href="#about">작가소개</a>
-            <a href="#featured">기획 사례</a>
-            <a href="#latest">최근 기록</a>
-            <a href="#contact">연락</a>
-          </nav>
-        </div>
-      </section>
-
-      <section class="tag-section" id="tags" aria-labelledby="tags-title">
+      <section class="category-section" id="categories" aria-labelledby="categories-title">
         <div class="section-heading">
           <div>
-            <h2 id="tags-title">기획 키워드</h2>
-            <p>업무를 어떤 관점으로 구조화했는지 먼저 보이도록 정리했습니다.</p>
+            <h2 id="categories-title">기록하는 주제</h2>
+            <p>글을 쓰는 기준이 되는 여섯 가지 주제입니다.</p>
           </div>
         </div>
-        <ul class="tag-list" aria-label="블로그 태그">
-          <li class="tag-pill">업무 프로세스</li>
-          <li class="tag-pill">사업기획</li>
-          <li class="tag-pill">AI 자동화</li>
-          <li class="tag-pill">데이터 구조</li>
-          <li class="tag-pill">문서/결재</li>
-          <li class="tag-pill">공공데이터</li>
-          <li class="tag-pill">문제정의</li>
-          <li class="tag-pill">회고</li>
+        <ul class="category-grid" aria-label="블로그 카테고리">
+          <li><a class="category-tile" href="#featured"><img src="assets/categories/process.jpg" alt=""><span>업무 프로세스</span></a></li>
+          <li><a class="category-tile" href="#featured"><img src="assets/categories/planning.jpg" alt=""><span>사업기획</span></a></li>
+          <li><a class="category-tile" href="#featured"><img src="assets/categories/automation.jpg" alt=""><span>AI 자동화</span></a></li>
+          <li><a class="category-tile" href="#featured"><img src="assets/categories/data.jpg" alt=""><span>데이터 구조</span></a></li>
+          <li><a class="category-tile" href="#featured"><img src="assets/categories/docs.jpg" alt=""><span>문서/결재</span></a></li>
+          <li><a class="category-tile" href="#latest"><img src="assets/categories/retro.jpg" alt=""><span>회고</span></a></li>
         </ul>
       </section>
 
@@ -1095,7 +1066,7 @@
           </article>
 
           <article class="card">
-            <ul class="card-tags"><li>사업기획</li><li>AI 자동화</li><li>공공데이터</li></ul>
+            <ul class="card-tags"><li>사업기획</li><li>AI 자동화</li><li class="tag-more">+1</li></ul>
             <h3>정부지원사업 공고를 의사결정 자료로 바꾸는 수집·평가 프로세스</h3>
             <p>정부지원사업, 입찰, 강사 모집 공고를 수집해 사업 적합도를 계산하고 보고서로 정리하는 Python 기반 업무 자동화 흐름입니다.</p>
             <div class="card-footer">
@@ -1115,7 +1086,7 @@
           </article>
 
           <article class="card">
-            <ul class="card-tags"><li>문서/결재</li><li>AI 자동화</li><li>회고</li></ul>
+            <ul class="card-tags"><li>문서/결재</li><li>AI 자동화</li><li class="tag-more">+1</li></ul>
             <h3>문서와 프로젝트 경험을 포트폴리오 글로 바꾸는 자동화 흐름</h3>
             <p>메모, 공모전 자료, README를 문제 정의와 시스템 설계 관점으로 재구성해 포트폴리오 글 초안으로 만드는 문서 자동화 실험입니다.</p>
             <div class="card-footer">
@@ -1196,6 +1167,36 @@
             </div>
           </li>
         </ol>
+      </section>
+
+      <section class="profile" id="about" aria-labelledby="profile-title">
+        <div class="profile-panel">
+          <div>
+            <p class="eyebrow">About</p>
+            <h2 class="profile-name" id="profile-title">정태현</h2>
+            <p class="profile-subtitle">업무가 흘러가는 방식을 관찰하고, 필요한 도구를 작게 만들어 봅니다.</p>
+          </div>
+          <div class="profile-actions">
+            <a class="button" href="#featured">기록 사례 보기</a>
+            <a class="button secondary" href="https://github.com/taehyunny">GitHub</a>
+            <a class="button secondary" href="#contact">연락</a>
+          </div>
+        </div>
+
+        <div class="profile-copy">
+          <p>
+            회사 안의 요청, 검토, 승인, 실행, 기록이 어디서 막히는지 자주 생각합니다.
+          </p>
+          <p>
+            거창한 답을 내기보다, 문서 하나와 데이터 한 줄이 다음 판단으로 이어지게 만드는 과정을
+            차분히 기록하려고 합니다.
+          </p>
+          <ul class="quick-facts" aria-label="핵심 관심 영역">
+            <li><strong>업무 프로세스</strong>요청, 승인, 기록이 남는 업무 흐름</li>
+            <li><strong>데이터 구조</strong>보고와 판단으로 이어지는 데이터 구조</li>
+            <li><strong>AI 자동화</strong>사람의 검토를 전제로 한 자동화 설계</li>
+          </ul>
+        </div>
       </section>
 
       <section class="contact-panel" id="contact" aria-labelledby="contact-title">

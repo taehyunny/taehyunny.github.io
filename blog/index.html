@@ -4,30 +4,40 @@
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <link rel="preconnect" href="https://cdn.jsdelivr.net" crossorigin>
-  <link rel="preload" as="style" crossorigin href="https://cdn.jsdelivr.net/gh/wanteddev/wanted-sans@v1.0.3/packages/wanted-sans/fonts/webfonts/variable/split/WantedSansVariable.min.css">
-  <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/wanteddev/wanted-sans@v1.0.3/packages/wanted-sans/fonts/webfonts/variable/split/WantedSansVariable.min.css">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link rel="preload" as="style" crossorigin href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard/dist/web/variable/pretendardvariable-dynamic-subset.css">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard/dist/web/variable/pretendardvariable-dynamic-subset.css">
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Nanum+Myeongjo:wght@700&display=swap">
   <title>전체 글 | 정태현의 기록</title>
   <style>
     :root {
-      --color-ink: #2F302D;
-      --color-ink-soft: #464741;
-      --color-ink-muted: #5F5E57;
-      --color-primary: #5A1E22;
-      --color-primary-hover: #7A2A2F;
-      --color-heading: #252622;
-      --color-text: #2F302D;
-      --color-muted: #6F6B62;
-      --color-bg: #FAF8F1;
-      --color-bg-soft: #F2EFE6;
-      --color-surface: #FFFCF5;
-      --color-border: #D8D0C2;
-      --color-tag-bg: #F6F1E4;
-      --color-tag-text: #2F302D;
-      --color-tag-border: #C7BCA9;
-      --color-menu-accent: #2F302D;
-      --color-menu-active-bg: rgba(47, 48, 45, 0.07);
-      --font-sans: "Wanted Sans Variable", "Wanted Sans", "Pretendard Variable", Pretendard, -apple-system, BlinkMacSystemFont,
-        "Segoe UI", "Apple SD Gothic Neo", "Noto Sans KR", "Malgun Gothic", sans-serif;
+      --bg: #FAFAF7;
+      --bg-elev: #FFFFFF;
+      --text: #111111;
+      --text-muted: #8A8A8A;
+      --border: #EDEAE3;
+      --accent: #B23B3B;
+      --accent-ink: #7A2828;
+      --font-sans: "Pretendard Variable", Pretendard, "Apple SD Gothic Neo", system-ui, sans-serif;
+      --font-serif: "Nanum Myeongjo", "Noto Serif KR", serif;
+      --fs-h1: clamp(32px, 5vw, 52px);
+      --fs-h2: 22px;
+      --fs-body: 16px;
+      --fs-meta: 13px;
+      --lh-body: 1.75;
+      --color-ink: var(--text);
+      --color-primary: var(--accent);
+      --color-primary-hover: var(--accent-ink);
+      --color-heading: var(--text);
+      --color-text: var(--text);
+      --color-muted: var(--text-muted);
+      --color-bg: var(--bg);
+      --color-bg-soft: #F4F2EC;
+      --color-surface: var(--bg-elev);
+      --color-border: var(--border);
+      --color-tag-text: var(--text);
+      --color-menu-accent: var(--text);
     }
 
     * {
@@ -39,7 +49,9 @@
       color: var(--color-text);
       background: var(--color-bg);
       font-family: var(--font-sans);
-      line-height: 1.7;
+      font-size: var(--fs-body);
+      letter-spacing: -0.01em;
+      line-height: var(--lh-body);
     }
 
     h1,
@@ -67,7 +79,7 @@
     }
 
     .page {
-      width: min(980px, calc(100% - 32px));
+      width: min(880px, calc(100% - 32px));
       margin: 0 auto;
       padding: 24px 0 56px;
     }
@@ -77,14 +89,14 @@
       align-items: center;
       justify-content: space-between;
       gap: 20px;
-      padding: 16px 20px;
-      border: 1px solid var(--color-border);
-      border-radius: 8px;
-      background: var(--color-surface);
+      padding: 14px 0 18px;
+      border-bottom: 1px solid var(--color-border);
+      background: transparent;
     }
 
     .site-name {
       color: var(--color-ink);
+      font-family: var(--font-serif);
       font-size: 19px;
       font-weight: 700;
     }
@@ -97,37 +109,35 @@
     nav {
       display: flex;
       flex-wrap: wrap;
-      gap: 8px;
+      gap: 14px;
       font-size: 14px;
     }
 
     nav a {
-      padding: 5px 8px;
-      border: 1px solid transparent;
-      border-radius: 6px;
+      padding: 5px 0;
       color: var(--color-menu-accent);
       font-weight: 700;
     }
 
     nav a:hover,
     nav a:focus-visible {
-      border-color: var(--color-border);
       color: var(--color-ink);
-      background: var(--color-menu-active-bg);
       text-decoration: none;
     }
 
     .hero {
       margin-top: 26px;
-      padding: 30px;
+      padding: 44px 0 28px;
       border: 1px solid var(--color-border);
-      border-radius: 8px;
-      background: var(--color-surface);
+      border-right: 0;
+      border-left: 0;
+      border-radius: 0;
+      background: transparent;
     }
 
     .eyebrow {
       margin: 0 0 10px;
-      color: var(--color-primary);
+      color: var(--color-muted);
       font-size: 13px;
       font-weight: 700;
       letter-spacing: 0.08em;
@@ -143,7 +153,9 @@
 
     h1 {
       margin: 0;
-      font-size: clamp(34px, 6vw, 56px);
+      font-family: var(--font-serif);
+      font-size: var(--fs-h1);
+      font-weight: 700;
       line-height: 1.1;
     }
 
@@ -167,15 +179,32 @@
     .post-meta span {
       display: inline-flex;
       align-items: center;
-      min-height: 26px;
-      padding: 4px 9px;
-      border: 1px solid var(--color-tag-border);
-      border-radius: 999px;
-      background: var(--color-tag-bg);
+      min-height: 0;
+      padding: 0;
+      border: 0;
+      border-radius: 0;
+      background: transparent;
       color: var(--color-tag-text);
-      font-size: 12px;
-      font-weight: 700;
+      font-size: var(--fs-meta);
+      font-weight: 500;
       line-height: 1.2;
+    }
+
+    .tag-list li::before,
+    .post-meta span::before {
+      content: "•";
+      margin-right: 5px;
+      color: var(--accent);
+      font-weight: 700;
+    }
+
+    .post-meta .tag-more {
+      color: var(--color-muted);
+    }
+
+    .post-meta .tag-more::before {
+      content: "";
+      margin: 0;
     }
 
     .archive {
@@ -184,7 +213,7 @@
 
     .archive h2 {
       margin: 0 0 16px;
-      font-size: 28px;
+      font-size: var(--fs-h2);
     }
 
     .post-list {
@@ -203,12 +232,11 @@
       border: 1px solid var(--color-border);
       border-radius: 8px;
       background: var(--color-surface);
-      transition: background-color 160ms ease, border-color 160ms ease;
+      transition: border-color 160ms ease;
     }
 
     .post:hover {
-      border-color: #cfc5bd;
-      background: var(--color-bg-soft);
+      border-color: var(--color-text);
     }
 
     .date {
@@ -239,11 +267,10 @@
 
     footer {
       margin-top: 28px;
-      padding: 22px;
-      border-radius: 8px;
-      background: var(--color-ink);
-      color: rgba(255, 255, 255, 0.72);
-      font-size: 14px;
+      padding-top: 20px;
+      border-top: 1px solid var(--color-border);
+      color: var(--color-muted);
+      font-size: var(--fs-meta);
     }
 
     footer p {
@@ -315,7 +342,7 @@
           <li class="post">
             <time class="date" datetime="2026-06-16">Jun 16, 2026</time>
             <div>
-              <div class="post-meta"><span>사업기획</span><span>AI 자동화</span><span>공공데이터</span></div>
+              <div class="post-meta"><span>사업기획</span><span>AI 자동화</span><span class="tag-more">+1</span></div>
               <h3><a href="../posts/kas-grant-collector/index.html">정부지원사업 공고를 의사결정 자료로 바꾸는 수집·평가 프로세스</a></h3>
               <p>정부지원사업, 입찰, 강사 모집 공고를 수집해 사업 적합도를 계산하고 보고서로 정리하는 Python 기반 업무 자동화 흐름입니다.</p>
             </div>
@@ -369,7 +396,7 @@
           <li class="post">
             <time class="date" datetime="2026-05-25">May 25, 2026</time>
             <div>
-              <div class="post-meta"><span>문서/결재</span><span>AI 자동화</span><span>회고</span></div>
+              <div class="post-meta"><span>문서/결재</span><span>AI 자동화</span><span class="tag-more">+1</span></div>
               <h3><a href="../sample-post.html">문서와 프로젝트 경험을 포트폴리오 글로 바꾸는 자동화 흐름</a></h3>
               <p>메모, 공모전 자료, README를 문제 정의와 시스템 설계 관점으로 재구성해 포트폴리오 글 초안으로 만드는 문서 자동화 실험입니다.</p>
             </div>
