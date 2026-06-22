@@ -1102,7 +1102,7 @@
         <a href="#home">Home</a>
         <a href="#featured">기획 사례</a>
         <a href="blog/">전체 글</a>
-        <a href="#about">소개</a>
+        <a href="#about">작업 방식</a>
         <a href="https://github.com/taehyunny">GitHub</a>
       </nav>
       <button class="theme-toggle" type="button" aria-label="다크 모드 켜기" aria-pressed="false">
@@ -1125,9 +1125,10 @@
             <ul class="side-links">
               <li><a class="is-active" href="#home">Home</a></li>
               <li><a href="#featured">기획 사례</a></li>
+              <li><a href="#categories">기록 주제</a></li>
               <li><a href="#latest">최근 기록</a></li>
               <li><a href="blog/">전체 글</a></li>
-              <li><a href="#about">소개</a></li>
+              <li><a href="#about">작업 방식</a></li>
               <li><a href="#contact">연락</a></li>
             </ul>
           </section>
@@ -1324,29 +1325,28 @@
       <section class="profile" id="about" aria-labelledby="profile-title">
         <div class="profile-panel">
           <div>
-            <p class="eyebrow">About</p>
-            <h2 class="profile-name" id="profile-title">정태현</h2>
-            <p class="profile-subtitle">업무가 흘러가는 방식을 관찰하고, 필요한 도구를 작게 만들어 봅니다.</p>
+            <p class="eyebrow">Approach</p>
+            <h2 class="profile-name" id="profile-title">작업 방식</h2>
+            <p class="profile-subtitle">문제 정의에서 데이터 구조, 자동화 적용, 검토 기록까지 이어지는 흐름을 정리합니다.</p>
           </div>
           <div class="profile-actions">
-            <a class="button" href="#featured">기록 사례 보기</a>
-            <a class="button secondary" href="https://github.com/taehyunny">GitHub</a>
+            <a class="button" href="#featured">대표 기록 보기</a>
+            <a class="button secondary" href="blog/">전체 글</a>
             <a class="button secondary" href="#contact">연락</a>
           </div>
         </div>
 
         <div class="profile-copy">
           <p>
-            회사 안의 요청, 검토, 승인, 실행, 기록이 어디서 막히는지 자주 생각합니다.
+            업무 요청과 승인, 데이터 입력과 검토, 자동화 결과가 실제 운영에서 끊기지 않도록 흐름을 먼저 정리합니다.
           </p>
           <p>
-            거창한 답을 내기보다, 문서 하나와 데이터 한 줄이 다음 판단으로 이어지게 만드는 과정을
-            차분히 기록하려고 합니다.
+            필요한 도구를 크게 만들기보다, 문서와 데이터가 다음 판단으로 이어지는 최소 구조를 설계하고 검증합니다.
           </p>
-          <ul class="quick-facts" aria-label="핵심 관심 영역">
-            <li><strong>업무 프로세스</strong>요청, 승인, 기록이 남는 업무 흐름</li>
-            <li><strong>데이터 구조</strong>보고와 판단으로 이어지는 데이터 구조</li>
-            <li><strong>AI 자동화</strong>사람의 검토를 전제로 한 자동화 설계</li>
+          <ul class="quick-facts" aria-label="작업 방식">
+            <li><strong>문제 정의</strong>업무가 막히는 지점과 반복되는 판단을 찾습니다.</li>
+            <li><strong>데이터 구조</strong>보고와 실행으로 이어질 수 있는 기록 단위를 설계합니다.</li>
+            <li><strong>자동화 적용</strong>사람이 검토할 부분과 AI가 보조할 부분을 나눕니다.</li>
           </ul>
         </div>
       </section>
@@ -1402,6 +1402,73 @@
       document.querySelectorAll(".theme-toggle").forEach(function (button) {
         button.addEventListener("click", function () {
           applyTheme(root.dataset.theme === "dark" ? "light" : "dark");
+        });
+      });
+
+      var sideNavLinks = Array.prototype.slice.call(document.querySelectorAll('.side-links a[href^="#"]'));
+      var sideSections = sideNavLinks
+        .map(function (link) {
+          return document.querySelector(link.getAttribute("href"));
+        })
+        .filter(Boolean);
+
+      function setActiveSection(id) {
+        sideNavLinks.forEach(function (link) {
+          link.classList.toggle("is-active", link.getAttribute("href") === "#" + id);
+        });
+      }
+
+      var ticking = false;
+
+      function updateActiveFromScroll() {
+        var anchor = window.innerHeight * 0.24;
+        var marker = window.scrollY + anchor;
+        var current = sideSections[0];
+        var bestDistance = Infinity;
+
+        sideSections.forEach(function (section) {
+          var rect = section.getBoundingClientRect();
+          if (rect.bottom > 0 && rect.top < window.innerHeight) {
+            var distance = Math.abs(rect.top - anchor);
+            if (distance < bestDistance) {
+              bestDistance = distance;
+              current = section;
+            }
+            return;
+          }
+
+          var sectionTop = rect.top + window.scrollY;
+          if (bestDistance === Infinity && sectionTop <= marker) {
+            current = section;
+          }
+        });
+
+        if (current) {
+          setActiveSection(current.id);
+        }
+
+        ticking = false;
+      }
+
+      function requestActiveUpdate() {
+        if (!ticking) {
+          window.requestAnimationFrame(updateActiveFromScroll);
+          ticking = true;
+        }
+      }
+
+      if (sideSections.length) {
+        updateActiveFromScroll();
+        window.addEventListener("scroll", requestActiveUpdate, { passive: true });
+        window.addEventListener("resize", requestActiveUpdate);
+      }
+
+      sideNavLinks.forEach(function (link) {
+        link.addEventListener("click", function () {
+          var target = document.querySelector(link.getAttribute("href"));
+          if (target) {
+            setActiveSection(target.id);
+          }
         });
       });
     })();
