@@ -226,7 +226,7 @@
       list-style: none;
     }
 
-    .tag-list li,
+    .tag-list a,
     .post-meta span {
       display: inline-flex;
       align-items: center;
@@ -241,7 +241,15 @@
       line-height: 1.2;
     }
 
-    .tag-list li::before,
+    .tag-list a:hover,
+    .tag-list a:focus-visible,
+    .tag-list a.is-active {
+      color: var(--color-primary);
+      text-decoration: underline;
+      text-underline-offset: 3px;
+    }
+
+    .tag-list a::before,
     .post-meta span::before {
       content: "•";
       margin-right: 5px;
@@ -288,6 +296,16 @@
 
     .post:hover {
       border-color: var(--color-text);
+    }
+
+    .post.is-hidden {
+      display: none;
+    }
+
+    .filter-status {
+      margin: -4px 0 14px;
+      color: var(--color-muted);
+      font-size: 14px;
     }
 
     .date {
@@ -429,21 +447,23 @@
         <h1>전체 글</h1>
         <p>업무 흐름, 문서, 데이터, 자동화 사이에서 직접 해본 것과 다시 생각한 것을 모았습니다.</p>
         <ul class="tag-list" aria-label="블로그 태그">
-          <li>업무 프로세스</li>
-          <li>사업기획</li>
-          <li>AI 자동화</li>
-          <li>데이터 구조</li>
-          <li>문서/결재</li>
-          <li>공공데이터</li>
-          <li>문제정의</li>
-          <li>회고</li>
+          <li><a href="./">전체</a></li>
+          <li><a href="?tag=%EC%97%85%EB%AC%B4%20%ED%94%84%EB%A1%9C%EC%84%B8%EC%8A%A4" data-tag="업무 프로세스">업무 프로세스</a></li>
+          <li><a href="?tag=%EC%82%AC%EC%97%85%EA%B8%B0%ED%9A%8D" data-tag="사업기획">사업기획</a></li>
+          <li><a href="?tag=AI%20%EC%9E%90%EB%8F%99%ED%99%94" data-tag="AI 자동화">AI 자동화</a></li>
+          <li><a href="?tag=%EB%8D%B0%EC%9D%B4%ED%84%B0%20%EA%B5%AC%EC%A1%B0" data-tag="데이터 구조">데이터 구조</a></li>
+          <li><a href="?tag=%EB%AC%B8%EC%84%9C%2F%EA%B2%B0%EC%9E%AC" data-tag="문서/결재">문서/결재</a></li>
+          <li><a href="?tag=%EA%B3%B5%EA%B3%B5%EB%8D%B0%EC%9D%B4%ED%84%B0" data-tag="공공데이터">공공데이터</a></li>
+          <li><a href="?tag=%EB%AC%B8%EC%A0%9C%EC%A0%95%EC%9D%98" data-tag="문제정의">문제정의</a></li>
+          <li><a href="?tag=%ED%9A%8C%EA%B3%A0" data-tag="회고">회고</a></li>
         </ul>
       </section>
 
       <section class="archive" aria-labelledby="archive-title">
         <h2 id="archive-title">기록 목록</h2>
+        <p class="filter-status" id="filter-status" hidden></p>
         <ol class="post-list">
-          <li class="post">
+          <li class="post" data-tags="업무 프로세스 문서/결재 데이터 구조 내부 시스템 기획">
             <time class="date" datetime="2026-06-16">Jun 16, 2026</time>
             <div>
               <div class="post-meta"><span>업무 프로세스</span><span>문서/결재</span><span>8 min read</span></div>
@@ -452,7 +472,7 @@
             </div>
           </li>
 
-          <li class="post">
+          <li class="post" data-tags="사업기획 AI 자동화 공공데이터 Tools">
             <time class="date" datetime="2026-06-16">Jun 16, 2026</time>
             <div>
               <div class="post-meta"><span>사업기획</span><span>AI 자동화</span><span class="tag-more">+1</span><span>7 min read</span></div>
@@ -461,7 +481,7 @@
             </div>
           </li>
 
-          <li class="post">
+          <li class="post" data-tags="업무 프로세스 문제정의">
             <time class="date" datetime="2026-06-03">Jun 3, 2026</time>
             <div>
               <div class="post-meta"><span>업무 프로세스</span><span>문제정의</span><span>5 min read</span></div>
@@ -470,7 +490,7 @@
             </div>
           </li>
 
-          <li class="post">
+          <li class="post" data-tags="데이터 구조">
             <time class="date" datetime="2026-05-25">May 25, 2026</time>
             <div>
               <div class="post-meta"><span>데이터 구조</span><span>5 min read</span></div>
@@ -479,7 +499,7 @@
             </div>
           </li>
 
-          <li class="post">
+          <li class="post" data-tags="AI 자동화 데이터 구조">
             <time class="date" datetime="2026-05-25">May 25, 2026</time>
             <div>
               <div class="post-meta"><span>AI 자동화</span><span>데이터 구조</span><span>5 min read</span></div>
@@ -488,7 +508,7 @@
             </div>
           </li>
 
-          <li class="post">
+          <li class="post" data-tags="AI 자동화 업무 프로세스">
             <time class="date" datetime="2026-05-25">May 25, 2026</time>
             <div>
               <div class="post-meta"><span>AI 자동화</span><span>업무 프로세스</span><span>5 min read</span></div>
@@ -497,7 +517,7 @@
             </div>
           </li>
 
-          <li class="post">
+          <li class="post" data-tags="데이터 구조 회고">
             <time class="date" datetime="2026-05-25">May 25, 2026</time>
             <div>
               <div class="post-meta"><span>데이터 구조</span><span>회고</span><span>5 min read</span></div>
@@ -506,7 +526,7 @@
             </div>
           </li>
 
-          <li class="post">
+          <li class="post" data-tags="문서/결재 AI 자동화 데이터 구조 회고 Portfolio Tools">
             <time class="date" datetime="2026-05-25">May 25, 2026</time>
             <div>
               <div class="post-meta"><span>문서/결재</span><span>AI 자동화</span><span class="tag-more">+1</span><span>4 min read</span></div>
@@ -554,6 +574,38 @@
           applyTheme(root.dataset.theme === "dark" ? "light" : "dark");
         });
       });
+
+      var params = new URLSearchParams(window.location.search);
+      var selectedTag = params.get("tag");
+      var posts = Array.prototype.slice.call(document.querySelectorAll(".post"));
+      var status = document.getElementById("filter-status");
+      var tagLinks = Array.prototype.slice.call(document.querySelectorAll(".tag-list a"));
+
+      if (selectedTag) {
+        var visibleCount = 0;
+
+        posts.forEach(function (post) {
+          var tags = post.dataset.tags || "";
+          var isVisible = tags.indexOf(selectedTag) !== -1;
+          post.classList.toggle("is-hidden", !isVisible);
+          if (isVisible) {
+            visibleCount += 1;
+          }
+        });
+
+        tagLinks.forEach(function (link) {
+          link.classList.toggle("is-active", link.dataset.tag === selectedTag);
+        });
+
+        if (status) {
+          status.hidden = false;
+          status.textContent = selectedTag + " 태그의 글 " + visibleCount + "개를 보여줍니다.";
+        }
+      } else {
+        tagLinks.forEach(function (link) {
+          link.classList.toggle("is-active", !link.dataset.tag);
+        });
+      }
     })();
   </script></body>
 </html>
