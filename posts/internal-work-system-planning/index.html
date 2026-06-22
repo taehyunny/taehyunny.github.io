@@ -254,6 +254,66 @@
       font-weight: 700;
     }
 
+    .post-kicker {
+      display: inline-flex;
+      flex-wrap: wrap;
+      gap: 6px;
+      margin: 0 0 12px;
+      color: var(--accent);
+      font-family: var(--font-sans);
+      font-size: var(--fs-meta);
+      font-weight: 800;
+      letter-spacing: 0.04em;
+      text-transform: uppercase;
+    }
+
+    .lead {
+      margin: 18px 0 0;
+      color: var(--muted);
+      font-family: var(--font-serif);
+      font-size: 19px;
+      line-height: 1.85;
+    }
+
+    .article-footer {
+      margin-top: 42px;
+      padding-top: 24px;
+      border-top: 1px solid var(--line);
+      font-family: var(--font-sans);
+    }
+
+    .article-footer h2 {
+      margin: 0 0 12px;
+      padding: 0;
+      border: 0;
+      color: var(--ink);
+      font-size: 18px;
+      line-height: 1.35;
+    }
+
+    .article-footer ul {
+      display: grid;
+      gap: 8px;
+      margin: 0;
+      padding: 0;
+      list-style: none;
+    }
+
+    .article-footer li {
+      margin: 0;
+      color: var(--ink);
+    }
+
+    .article-footer a {
+      font-weight: 700;
+    }
+
+    .article-contact {
+      margin: 22px 0 0;
+      color: var(--muted);
+      font-size: 14px;
+      line-height: 1.7;
+    }
     table {
       width: 100%;
       margin: 22px 0;
@@ -340,9 +400,10 @@
       <button class="theme-toggle" type="button" aria-label="다크 모드 켜기" aria-pressed="false"><span class="theme-toggle-icon" aria-hidden="true">◐</span><span class="theme-toggle-text">Dark</span></button>
     </div>
     <article>
+      <div class="post-kicker">대표 기록 · 업무 프로세스 · 5 min read</div>
       <div class="meta">Jun 3, 2026</div>
       <h1>내부 업무 시스템을 기획할 때 먼저 생각한 것들</h1>
-      <p class="meta">회사 안의 요청, 검토, 승인, 파일, 기록 흐름을 하나의 업무 시스템으로 묶기 위해 어떤 관점이 먼저 필요했는지 정리한 글입니다.</p>
+      <p class="lead">회사 안의 요청, 검토, 승인, 파일, 기록 흐름을 하나의 업무 시스템으로 묶기 위해 어떤 관점이 먼저 필요했는지 정리한 글입니다.</p>
       <ul class="tags"><li>전략기획</li><li>업무 프로세스</li><li>내부 시스템</li><li>문서 자동화</li><li>AI 자동화</li></ul>
       <h2>1. 왜 내부 업무 시스템을 생각하게 되었는가</h2>
 <p>회사 안의 일은 대부분 누군가의 요청에서 시작된다.</p>
@@ -412,6 +473,16 @@
 <p>다음 단계에서는 실제 구현보다 먼저 몇 가지를 더 정리하고 싶다.</p>
 <ul><li>어떤 요청 유형을 1차 MVP에 넣을 것인가</li><li>승인과 검토를 어떻게 최소 단계로 유지할 것인가</li><li>파일 보관 규칙을 얼마나 단순하게 시작할 것인가</li><li>AI가 생성한 요약과 사람이 승인한 기록을 어떻게 구분할 것인가</li><li>공공데이터 기반 서비스 기획과 내부 업무 시스템을 어떻게 연결할 것인가</li></ul>
 <p>이 프로젝트는 개발 프로젝트이기도 하지만, 더 크게 보면 업무 흐름을 설계하는 연습이다. 전략기획 관점에서 시스템을 바라보는 첫 번째 기준은 “사람이 일하는 방식을 더 명확하게 만드는가”라고 생각한다.</p>
+      <footer class="article-footer">
+        <section class="related-posts" aria-labelledby="related-title">
+          <h2 id="related-title">다음에 읽을 기록</h2>
+          <ul>
+            <li><a href="../kas-web-erp-django/index.html">엑셀과 구두 보고를 업무 시스템으로 바꾸며 배운 승인·정산 구조</a></li>
+            <li><a href="../kas-grant-collector/index.html">정부지원사업 공고를 의사결정 자료로 바꾸는 업무 흐름 설계</a></li>
+          </ul>
+        </section>
+        <p class="article-contact">업무 시스템 기획과 AI 자동화 기록은 <a href="../../index.html#contact">Contact</a> 또는 <a href="https://github.com/taehyunny">GitHub</a>에서 이어집니다.</p>
+      </footer>
     </article>
   </main>
   <script>

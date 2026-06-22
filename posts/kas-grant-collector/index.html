@@ -254,6 +254,66 @@
       font-weight: 700;
     }
 
+    .post-kicker {
+      display: inline-flex;
+      flex-wrap: wrap;
+      gap: 6px;
+      margin: 0 0 12px;
+      color: var(--accent);
+      font-family: var(--font-sans);
+      font-size: var(--fs-meta);
+      font-weight: 800;
+      letter-spacing: 0.04em;
+      text-transform: uppercase;
+    }
+
+    .lead {
+      margin: 18px 0 0;
+      color: var(--muted);
+      font-family: var(--font-serif);
+      font-size: 19px;
+      line-height: 1.85;
+    }
+
+    .article-footer {
+      margin-top: 42px;
+      padding-top: 24px;
+      border-top: 1px solid var(--line);
+      font-family: var(--font-sans);
+    }
+
+    .article-footer h2 {
+      margin: 0 0 12px;
+      padding: 0;
+      border: 0;
+      color: var(--ink);
+      font-size: 18px;
+      line-height: 1.35;
+    }
+
+    .article-footer ul {
+      display: grid;
+      gap: 8px;
+      margin: 0;
+      padding: 0;
+      list-style: none;
+    }
+
+    .article-footer li {
+      margin: 0;
+      color: var(--ink);
+    }
+
+    .article-footer a {
+      font-weight: 700;
+    }
+
+    .article-contact {
+      margin: 22px 0 0;
+      color: var(--muted);
+      font-size: 14px;
+      line-height: 1.7;
+    }
     table {
       width: 100%;
       margin: 22px 0;
@@ -340,9 +400,10 @@
       <button class="theme-toggle" type="button" aria-label="다크 모드 켜기" aria-pressed="false"><span class="theme-toggle-icon" aria-hidden="true">◐</span><span class="theme-toggle-text">Dark</span></button>
     </div>
     <article>
+      <div class="post-kicker">대표 기록 · 사업기획 · 7 min read</div>
       <div class="meta">Jun 16, 2026</div>
       <h1>정부지원사업 공고를 의사결정 자료로 바꾸는 업무 흐름 설계</h1>
-      <p class="meta">정부지원사업, 입찰, 강사 모집 공고를 수집한 뒤 정규화, 중복 제거, 점수화, 보고서 생성으로 이어지게 만들어 사람이 검토할 후보를 줄인 업무 자동화 기록입니다.</p>
+      <p class="lead">정부지원사업, 입찰, 강사 모집 공고를 수집한 뒤 정규화, 중복 제거, 점수화, 보고서 생성으로 이어지게 만들어 사람이 검토할 후보를 줄인 업무 자동화 기록입니다.</p>
       <ul class="tags"><li>사업기획</li><li>공공데이터</li><li>AI 자동화</li><li>데이터 기반 의사결정</li></ul>
 
       <h2>1. 어떤 업무 문제에서 시작했는가</h2>
@@ -439,6 +500,16 @@ data/
       <h2>8. 다시 생각한 점</h2>
       <p>이 자동 수집기는 KAS가 관심 있는 공고를 더 빠르게 찾기 위한 업무 보조 도구다. 중요한 것은 모든 판단을 자동화하는 것이 아니라, 사람이 검토해야 할 후보를 줄이고 추천 이유를 설명할 수 있게 만드는 것이다.</p>
       <p>정부지원사업과 입찰 정보는 계속 바뀌고, 공고마다 조건도 다르다. 그래서 이 프로그램은 수집, 정규화, 점수화, 보고서 생성이라는 반복 흐름을 자동화하되, 최종 신청 가능 여부와 사업 전략 판단은 사람이 확인하는 구조로 두었다.</p>
+      <footer class="article-footer">
+        <section class="related-posts" aria-labelledby="related-title">
+          <h2 id="related-title">다음에 읽을 기록</h2>
+          <ul>
+            <li><a href="../kas-web-erp-django/index.html">엑셀과 구두 보고를 업무 시스템으로 바꾸며 배운 승인·정산 구조</a></li>
+            <li><a href="../internal-work-system-planning/index.html">내부 업무 시스템을 기획할 때 먼저 생각한 것들</a></li>
+          </ul>
+        </section>
+        <p class="article-contact">업무 시스템 기획과 AI 자동화 기록은 <a href="../../index.html#contact">Contact</a> 또는 <a href="https://github.com/taehyunny">GitHub</a>에서 이어집니다.</p>
+      </footer>
     </article>
   </main>
   <script>

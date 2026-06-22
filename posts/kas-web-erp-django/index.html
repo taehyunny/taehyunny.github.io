@@ -254,6 +254,66 @@
       font-weight: 700;
     }
 
+    .post-kicker {
+      display: inline-flex;
+      flex-wrap: wrap;
+      gap: 6px;
+      margin: 0 0 12px;
+      color: var(--accent);
+      font-family: var(--font-sans);
+      font-size: var(--fs-meta);
+      font-weight: 800;
+      letter-spacing: 0.04em;
+      text-transform: uppercase;
+    }
+
+    .lead {
+      margin: 18px 0 0;
+      color: var(--muted);
+      font-family: var(--font-serif);
+      font-size: 19px;
+      line-height: 1.85;
+    }
+
+    .article-footer {
+      margin-top: 42px;
+      padding-top: 24px;
+      border-top: 1px solid var(--line);
+      font-family: var(--font-sans);
+    }
+
+    .article-footer h2 {
+      margin: 0 0 12px;
+      padding: 0;
+      border: 0;
+      color: var(--ink);
+      font-size: 18px;
+      line-height: 1.35;
+    }
+
+    .article-footer ul {
+      display: grid;
+      gap: 8px;
+      margin: 0;
+      padding: 0;
+      list-style: none;
+    }
+
+    .article-footer li {
+      margin: 0;
+      color: var(--ink);
+    }
+
+    .article-footer a {
+      font-weight: 700;
+    }
+
+    .article-contact {
+      margin: 22px 0 0;
+      color: var(--muted);
+      font-size: 14px;
+      line-height: 1.7;
+    }
     table {
       width: 100%;
       margin: 22px 0;
@@ -340,9 +400,10 @@
       <button class="theme-toggle" type="button" aria-label="다크 모드 켜기" aria-pressed="false"><span class="theme-toggle-icon" aria-hidden="true">◐</span><span class="theme-toggle-text">Dark</span></button>
     </div>
     <article>
+      <div class="post-kicker">대표 기록 · 업무 프로세스 · 8 min read</div>
       <div class="meta">Jun 16, 2026</div>
       <h1>엑셀과 구두 보고를 업무 시스템으로 바꾸며 배운 승인·정산 구조</h1>
-      <p class="meta">강사 파견 업체의 요청, 결재, 강사료, 식사 장부, 회계 흐름을 하나의 업무 시스템으로 묶으며 어떤 기록과 권한 구조가 필요했는지 정리한 글입니다.</p>
+      <p class="lead">강사 파견 업체의 요청, 결재, 강사료, 식사 장부, 회계 흐름을 하나의 업무 시스템으로 묶으며 어떤 기록과 권한 구조가 필요했는지 정리한 글입니다.</p>
       <ul class="tags"><li>업무 프로세스</li><li>문서/결재</li><li>데이터 구조</li><li>내부 시스템 기획</li></ul>
 
       <h2>1. 어떤 업무 문제에서 시작했는가</h2>
@@ -444,6 +505,16 @@ target.save(update_fields=['is_active'])</code></pre>
         <li>운영 서버를 Windows에서 직접 실행하는 방식이라 프로세스 재시작 자동화가 되어 있지 않다.</li>
       </ul>
       <p>작은 사무실 하나가 엑셀에서 벗어나게 하는 것이 목표였고, 그 부분은 동작하고 있다. 다음 단계는 테스트 커버리지를 올리는 것이다.</p>
+      <footer class="article-footer">
+        <section class="related-posts" aria-labelledby="related-title">
+          <h2 id="related-title">다음에 읽을 기록</h2>
+          <ul>
+            <li><a href="../kas-grant-collector/index.html">정부지원사업 공고를 의사결정 자료로 바꾸는 업무 흐름 설계</a></li>
+            <li><a href="../internal-work-system-planning/index.html">내부 업무 시스템을 기획할 때 먼저 생각한 것들</a></li>
+          </ul>
+        </section>
+        <p class="article-contact">업무 시스템 기획과 AI 자동화 기록은 <a href="../../index.html#contact">Contact</a> 또는 <a href="https://github.com/taehyunny">GitHub</a>에서 이어집니다.</p>
+      </footer>
     </article>
   </main>
   <script>

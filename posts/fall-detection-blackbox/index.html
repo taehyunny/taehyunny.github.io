@@ -254,6 +254,66 @@
       font-weight: 700;
     }
 
+    .post-kicker {
+      display: inline-flex;
+      flex-wrap: wrap;
+      gap: 6px;
+      margin: 0 0 12px;
+      color: var(--accent);
+      font-family: var(--font-sans);
+      font-size: var(--fs-meta);
+      font-weight: 800;
+      letter-spacing: 0.04em;
+      text-transform: uppercase;
+    }
+
+    .lead {
+      margin: 18px 0 0;
+      color: var(--muted);
+      font-family: var(--font-serif);
+      font-size: 19px;
+      line-height: 1.85;
+    }
+
+    .article-footer {
+      margin-top: 42px;
+      padding-top: 24px;
+      border-top: 1px solid var(--line);
+      font-family: var(--font-sans);
+    }
+
+    .article-footer h2 {
+      margin: 0 0 12px;
+      padding: 0;
+      border: 0;
+      color: var(--ink);
+      font-size: 18px;
+      line-height: 1.35;
+    }
+
+    .article-footer ul {
+      display: grid;
+      gap: 8px;
+      margin: 0;
+      padding: 0;
+      list-style: none;
+    }
+
+    .article-footer li {
+      margin: 0;
+      color: var(--ink);
+    }
+
+    .article-footer a {
+      font-weight: 700;
+    }
+
+    .article-contact {
+      margin: 22px 0 0;
+      color: var(--muted);
+      font-size: 14px;
+      line-height: 1.7;
+    }
     table {
       width: 100%;
       margin: 22px 0;
@@ -340,9 +400,10 @@
       <button class="theme-toggle" type="button" aria-label="다크 모드 켜기" aria-pressed="false"><span class="theme-toggle-icon" aria-hidden="true">◐</span><span class="theme-toggle-text">Dark</span></button>
     </div>
     <article>
+      <div class="post-kicker">대표 기록 · 데이터 구조 · 5 min read</div>
       <div class="meta">May 25, 2026</div>
       <h1>감지 결과를 나중에 확인 가능한 기록으로 남기는 영상 로그 구조</h1>
-      <p class="meta">실시간 영상 이벤트를 감지하는 데서 끝내지 않고, 발생 전후의 프레임과 클립을 함께 남겨 사람이 다시 확인할 수 있는 블랙박스형 기록 구조를 만든 글입니다.</p>
+      <p class="lead">실시간 영상 이벤트를 감지하는 데서 끝내지 않고, 발생 전후의 프레임과 클립을 함께 남겨 사람이 다시 확인할 수 있는 블랙박스형 기록 구조를 만든 글입니다.</p>
       <ul class="tags"><li>데이터 구조</li><li>AI 자동화</li><li>업무 프로세스</li><li>회고</li></ul>
       <h2>1. 어떤 확인 문제에서 시작했는가</h2>
 <p>낙상이나 이상 행동처럼 특정 이벤트가 발생했을 때, 단순히 “감지했다”는 결과만 남기는 것으로는 부족하다고 생각했습니다. 실제 상황을 확인하려면 이벤트가 발생한 순간뿐 아니라, 그 전후의 영상 흐름이 함께 기록되어야 합니다.</p>
@@ -398,6 +459,16 @@
 <h2>10. 다시 생각한 점</h2>
 <p>이 프로젝트는 Computer Vision 프로젝트이면서 동시에 실시간 시스템 프로젝트였습니다. AI 모델이 좋은 판단을 내려도, 그 판단의 근거가 영상과 로그로 남지 않으면 실제 서비스에서는 신뢰하기 어렵습니다.</p>
 <p>그래서 이 프로젝트에서 가장 중요했던 배움은 “감지”보다 “검증 가능한 기록”이었습니다.</p>
+      <footer class="article-footer">
+        <section class="related-posts" aria-labelledby="related-title">
+          <h2 id="related-title">다음에 읽을 기록</h2>
+          <ul>
+            <li><a href="../cpp-delivery-platform/index.html">주문·결제 데이터가 흔들리지 않게 서버 기준을 세운 기록</a></li>
+            <li><a href="../coco-emotion-care-agent/index.html">AI가 감정을 판단할 때 사람이 보완해야 하는 흐름을 어떻게 설계할까</a></li>
+          </ul>
+        </section>
+        <p class="article-contact">업무 시스템 기획과 AI 자동화 기록은 <a href="../../index.html#contact">Contact</a> 또는 <a href="https://github.com/taehyunny">GitHub</a>에서 이어집니다.</p>
+      </footer>
     </article>
   </main>
   <script>

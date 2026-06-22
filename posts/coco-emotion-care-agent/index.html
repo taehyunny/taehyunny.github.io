@@ -254,6 +254,66 @@
       font-weight: 700;
     }
 
+    .post-kicker {
+      display: inline-flex;
+      flex-wrap: wrap;
+      gap: 6px;
+      margin: 0 0 12px;
+      color: var(--accent);
+      font-family: var(--font-sans);
+      font-size: var(--fs-meta);
+      font-weight: 800;
+      letter-spacing: 0.04em;
+      text-transform: uppercase;
+    }
+
+    .lead {
+      margin: 18px 0 0;
+      color: var(--muted);
+      font-family: var(--font-serif);
+      font-size: 19px;
+      line-height: 1.85;
+    }
+
+    .article-footer {
+      margin-top: 42px;
+      padding-top: 24px;
+      border-top: 1px solid var(--line);
+      font-family: var(--font-sans);
+    }
+
+    .article-footer h2 {
+      margin: 0 0 12px;
+      padding: 0;
+      border: 0;
+      color: var(--ink);
+      font-size: 18px;
+      line-height: 1.35;
+    }
+
+    .article-footer ul {
+      display: grid;
+      gap: 8px;
+      margin: 0;
+      padding: 0;
+      list-style: none;
+    }
+
+    .article-footer li {
+      margin: 0;
+      color: var(--ink);
+    }
+
+    .article-footer a {
+      font-weight: 700;
+    }
+
+    .article-contact {
+      margin: 22px 0 0;
+      color: var(--muted);
+      font-size: 14px;
+      line-height: 1.7;
+    }
     table {
       width: 100%;
       margin: 22px 0;
@@ -340,9 +400,10 @@
       <button class="theme-toggle" type="button" aria-label="다크 모드 켜기" aria-pressed="false"><span class="theme-toggle-icon" aria-hidden="true">◐</span><span class="theme-toggle-text">Dark</span></button>
     </div>
     <article>
+      <div class="post-kicker">대표 기록 · AI 자동화 · 5 min read</div>
       <div class="meta">May 25, 2026</div>
       <h1>AI가 감정을 판단할 때 사람이 보완해야 하는 흐름을 어떻게 설계할까</h1>
-      <p class="meta">표정 인식, 사용자 선택, LLM 응답, SQLite 기록을 연결하면서 AI 판단을 확정값이 아니라 사람이 보완하고 검토할 수 있는 흐름으로 설계한 기록입니다.</p>
+      <p class="lead">표정 인식, 사용자 선택, LLM 응답, SQLite 기록을 연결하면서 AI 판단을 확정값이 아니라 사람이 보완하고 검토할 수 있는 흐름으로 설계한 기록입니다.</p>
       <ul class="tags"><li>AI 자동화</li><li>데이터 구조</li><li>사용자 흐름</li><li>회고</li></ul>
       <h2>1. 어떤 문제에서 시작했는가</h2>
 <p>감정은 텍스트만으로 충분히 드러나지 않을 때가 있고, 표정만으로도 확정하기 어렵습니다. 그래서 AI가 감정을 한 번에 맞히는 구조보다, AI 판단과 사용자 보완이 함께 작동하는 흐름이 필요하다고 생각했습니다.</p>
@@ -412,6 +473,16 @@ Output
 <h2>10. 다시 생각한 점</h2>
 <p>COCO는 단순히 표정을 인식하는 프로젝트가 아니라, 표정 인식 결과를 LLM 응답과 데이터 파이프라인으로 연결한 실험이었습니다.</p>
 <p>다시 보면 중요한 것은 AI가 감정을 맞혔는지가 아니라, AI가 틀릴 수 있는 지점에서 사용자가 어떻게 보완하고, 그 판단과 응답이 어떤 기록으로 남는가였습니다. 감정처럼 민감한 영역일수록 자동화보다 검토 가능한 흐름이 먼저 필요하다는 점을 배웠습니다.</p>
+      <footer class="article-footer">
+        <section class="related-posts" aria-labelledby="related-title">
+          <h2 id="related-title">다음에 읽을 기록</h2>
+          <ul>
+            <li><a href="../ai-drawing-system/index.html">AI 생성 결과를 사용자가 이해할 수 있는 과정으로 바꾸는 인터랙션 설계</a></li>
+            <li><a href="../fall-detection-blackbox/index.html">감지 결과를 나중에 확인 가능한 기록으로 남기는 영상 로그 구조</a></li>
+          </ul>
+        </section>
+        <p class="article-contact">업무 시스템 기획과 AI 자동화 기록은 <a href="../../index.html#contact">Contact</a> 또는 <a href="https://github.com/taehyunny">GitHub</a>에서 이어집니다.</p>
+      </footer>
     </article>
   </main>
   <script>

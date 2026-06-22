@@ -254,6 +254,66 @@
       font-weight: 700;
     }
 
+    .post-kicker {
+      display: inline-flex;
+      flex-wrap: wrap;
+      gap: 6px;
+      margin: 0 0 12px;
+      color: var(--accent);
+      font-family: var(--font-sans);
+      font-size: var(--fs-meta);
+      font-weight: 800;
+      letter-spacing: 0.04em;
+      text-transform: uppercase;
+    }
+
+    .lead {
+      margin: 18px 0 0;
+      color: var(--muted);
+      font-family: var(--font-serif);
+      font-size: 19px;
+      line-height: 1.85;
+    }
+
+    .article-footer {
+      margin-top: 42px;
+      padding-top: 24px;
+      border-top: 1px solid var(--line);
+      font-family: var(--font-sans);
+    }
+
+    .article-footer h2 {
+      margin: 0 0 12px;
+      padding: 0;
+      border: 0;
+      color: var(--ink);
+      font-size: 18px;
+      line-height: 1.35;
+    }
+
+    .article-footer ul {
+      display: grid;
+      gap: 8px;
+      margin: 0;
+      padding: 0;
+      list-style: none;
+    }
+
+    .article-footer li {
+      margin: 0;
+      color: var(--ink);
+    }
+
+    .article-footer a {
+      font-weight: 700;
+    }
+
+    .article-contact {
+      margin: 22px 0 0;
+      color: var(--muted);
+      font-size: 14px;
+      line-height: 1.7;
+    }
     table {
       width: 100%;
       margin: 22px 0;
@@ -339,13 +399,14 @@
       <p class="back"><a href="index.html">← 블로그 홈</a></p>
       <button class="theme-toggle" type="button" aria-label="다크 모드 켜기" aria-pressed="false"><span class="theme-toggle-icon" aria-hidden="true">◐</span><span class="theme-toggle-text">Dark</span></button>
     </div>
+    <div class="post-kicker">대표 기록 · 문서/결재 · 4 min read</div>
     <div class="meta">
       <strong>tags:</strong> 문서/결재, AI 자동화, 데이터 구조, 회고<br>
       <strong>summary:</strong> 흩어진 메모와 프로젝트 자료를 문제 정의, 데이터 흐름, 시스템 설계, 한계와 다음 개선 방향이 있는 포트폴리오 글로 재구성한 기록
     </div>
 
     <h1>문서와 프로젝트 경험을 포트폴리오 글로 바꾸는 자동화 흐름</h1>
-    <p>
+    <p class="lead">
       이 글은 내가 작성한 메모, 공모전 자료, 기술 학습 기록을 바탕으로 문제 정의와
       시스템 설계 관점에서 다시 정리한 초안이다.
     </p>
@@ -420,6 +481,16 @@
       데이터 흐름, AI 역할, 구현 증거, 한계와 개선 방향으로 다시 설명하는 훈련이다.
       그래서 AI 서비스 개발자로 성장하는 과정 자체를 포트폴리오로 남기는 도구가 된다.
     </p>
+    <footer class="article-footer">
+      <section class="related-posts" aria-labelledby="related-title">
+        <h2 id="related-title">다음에 읽을 기록</h2>
+        <ul>
+          <li><a href="posts/kas-grant-collector/index.html">정부지원사업 공고를 의사결정 자료로 바꾸는 업무 흐름 설계</a></li>
+          <li><a href="posts/kas-web-erp-django/index.html">엑셀과 구두 보고를 업무 시스템으로 바꾸며 배운 승인·정산 구조</a></li>
+        </ul>
+      </section>
+      <p class="article-contact">업무 시스템 기획과 AI 자동화 기록은 <a href="index.html#contact">Contact</a> 또는 <a href="https://github.com/taehyunny">GitHub</a>에서 이어집니다.</p>
+    </footer>
   </main>
   <script>
     (function () {
