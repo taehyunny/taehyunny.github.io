@@ -9,16 +9,27 @@
   <link rel="preload" as="style" crossorigin href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard/dist/web/variable/pretendardvariable-dynamic-subset.css">
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard/dist/web/variable/pretendardvariable-dynamic-subset.css">
   <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Nanum+Myeongjo:wght@700&display=swap">
+  <script>
+    (function () {
+      try {
+        var savedTheme = localStorage.getItem("theme");
+        document.documentElement.dataset.theme = savedTheme === "dark" ? "dark" : "light";
+      } catch (error) {
+        document.documentElement.dataset.theme = "light";
+      }
+    })();
+  </script>
   <title>정태현의 기록 | 업무와 자동화 노트</title>
   <style>
     :root {
-      --bg: #FAFAF7;
+      color-scheme: light;
+      --bg: #FFFFFF;
       --bg-elev: #FFFFFF;
-      --text: #111111;
-      --text-muted: #8A8A8A;
-      --border: #EDEAE3;
-      --accent: #B23B3B;
-      --accent-ink: #7A2828;
+      --text: #252622;
+      --text-muted: #6F6B62;
+      --border: #D8D0C2;
+      --accent: #5A1E22;
+      --accent-ink: #7A2A2F;
       --font-sans: "Pretendard Variable", Pretendard, "Apple SD Gothic Neo", system-ui, sans-serif;
       --font-serif: "Nanum Myeongjo", "Noto Serif KR", serif;
       --font-mono: "JetBrains Mono", ui-monospace, monospace;
@@ -40,24 +51,59 @@
       --space-12: 48px;
       --space-16: 64px;
       --color-ink: var(--text);
-      --color-ink-soft: #333333;
-      --color-ink-muted: #555555;
+      --color-ink-soft: #464741;
+      --color-ink-muted: #5F5E57;
       --color-primary: var(--accent);
       --color-primary-hover: var(--accent-ink);
       --color-heading: var(--text);
       --color-text: var(--text);
       --color-muted: var(--text-muted);
       --color-bg: var(--bg);
-      --color-bg-soft: #F4F2EC;
+      --color-bg-soft: #F4F4EC;
       --color-surface: var(--bg-elev);
       --color-border: var(--border);
-      --color-tag-text: var(--text);
-      --color-menu-accent: var(--text);
+      --color-tag-text: #4F5F2D;
+      --color-menu-accent: #4F5F2D;
+      --focus-ring: rgba(90, 30, 34, 0.24);
       --color-menu-soft: var(--accent);
       --color-menu-muted: var(--text-muted);
       --color-menu-active-bg: transparent;
     }
-
+    html[data-theme="dark"] {
+      color-scheme: dark;
+      --bg: #171814;
+      --bg-elev: #20211D;
+      --text: #E8E2D7;
+      --text-muted: #B9B1A4;
+      --border: #474237;
+      --accent: #E3A0A6;
+      --accent-ink: #F1BAC0;
+      --color-ink: var(--text);
+      --color-ink-soft: #D5CEC2;
+      --color-ink-muted: #A8A092;
+      --color-primary: var(--accent);
+      --color-primary-hover: var(--accent-ink);
+      --color-heading: #F4EFE6;
+      --color-text: var(--text);
+      --color-muted: var(--text-muted);
+      --color-bg: var(--bg);
+      --color-bg-soft: #24251F;
+      --color-surface: var(--bg-elev);
+      --color-border: var(--border);
+      --color-tag-text: #DAD9A8;
+      --color-menu-accent: #DAD9A8;
+      --color-menu-soft: var(--accent);
+      --color-menu-muted: #AAA58F;
+      --color-menu-active-bg: rgba(218, 217, 168, 0.08);
+      --ink: var(--color-text);
+      --muted: var(--color-muted);
+      --line: var(--color-border);
+      --bg-page: var(--color-bg);
+      --link: var(--color-primary);
+      --soft: var(--color-bg-soft);
+      --code: #11120F;
+      --focus-ring: rgba(227, 160, 166, 0.34);
+    }
     * {
       box-sizing: border-box;
     }
@@ -74,6 +120,7 @@
       font-size: var(--fs-body);
       letter-spacing: -0.01em;
       line-height: var(--lh-body);
+      transition: background-color 160ms ease, color 160ms ease;
     }
 
     h1,
@@ -98,6 +145,7 @@
       outline: 2px solid var(--color-primary);
       outline-offset: 3px;
       border-radius: 4px;
+      box-shadow: 0 0 0 4px var(--focus-ring);
     }
 
     .page {
@@ -877,6 +925,64 @@
     footer p {
       margin: 0;
     }
+    .theme-toggle {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      gap: 6px;
+      min-height: 32px;
+      padding: 5px 12px;
+      border: 1px solid var(--color-border);
+      border-radius: 999px;
+      background: var(--color-surface);
+      color: var(--color-menu-accent);
+      cursor: pointer;
+      font-family: var(--font-sans);
+      font-size: 13px;
+      font-weight: 800;
+      line-height: 1;
+      transition: background-color 160ms ease, border-color 160ms ease, color 160ms ease;
+    }
+
+    .theme-toggle:hover,
+    .theme-toggle:focus-visible {
+      border-color: var(--color-primary);
+      background: var(--color-bg-soft);
+      color: var(--color-primary);
+    }
+
+    .theme-toggle:focus-visible {
+      outline: 2px solid var(--color-primary);
+      outline-offset: 3px;
+      box-shadow: 0 0 0 4px var(--focus-ring);
+    }
+
+    .theme-toggle-icon {
+      font-size: 12px;
+      line-height: 1;
+    }
+
+    .side-theme-toggle {
+      width: fit-content;
+      margin: -12px 0 24px;
+    }
+
+    .site-header .theme-toggle {
+      flex: 0 0 auto;
+    }
+
+    .post-toolbar {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 16px;
+      margin-bottom: 28px;
+    }
+
+    .post-toolbar .back {
+      margin: 0;
+    }
+
 
     @media (max-width: 860px) {
       .site-header,
@@ -990,12 +1096,20 @@
         <a href="#about">소개</a>
         <a href="https://github.com/taehyunny">GitHub</a>
       </nav>
+      <button class="theme-toggle" type="button" aria-label="다크 모드 켜기" aria-pressed="false">
+        <span class="theme-toggle-icon" aria-hidden="true">◐</span>
+        <span class="theme-toggle-text">Dark</span>
+      </button>
     </header>
 
     <div class="site-shell">
       <aside class="side-rail" aria-label="사이드 탐색">
         <a class="side-brand" href="#home">정태현</a>
         <p class="side-note">일을 조금 더 잘 되게 만들기 위해 읽고, 만들고, 다시 적습니다.</p>
+        <button class="theme-toggle side-theme-toggle" type="button" aria-label="다크 모드 켜기" aria-pressed="false">
+          <span class="theme-toggle-icon" aria-hidden="true">◐</span>
+          <span class="theme-toggle-text">Dark</span>
+        </button>
         <div class="side-scroll">
           <section class="side-group" aria-labelledby="side-nav-title">
             <h2 id="side-nav-title">메뉴</h2>
@@ -1249,5 +1363,34 @@
       </div>
     </div>
   </div>
-</body>
+  <script>
+    (function () {
+      var root = document.documentElement;
+
+      function applyTheme(theme) {
+        var nextTheme = theme === "dark" ? "dark" : "light";
+        root.dataset.theme = nextTheme;
+        try {
+          localStorage.setItem("theme", nextTheme);
+        } catch (error) {}
+
+        document.querySelectorAll(".theme-toggle").forEach(function (button) {
+          var isDark = nextTheme === "dark";
+          button.setAttribute("aria-pressed", String(isDark));
+          button.setAttribute("aria-label", isDark ? "라이트 모드 켜기" : "다크 모드 켜기");
+          var text = button.querySelector(".theme-toggle-text");
+          if (text) {
+            text.textContent = isDark ? "Light" : "Dark";
+          }
+        });
+      }
+
+      applyTheme(root.dataset.theme === "dark" ? "dark" : "light");
+      document.querySelectorAll(".theme-toggle").forEach(function (button) {
+        button.addEventListener("click", function () {
+          applyTheme(root.dataset.theme === "dark" ? "light" : "dark");
+        });
+      });
+    })();
+  </script></body>
 </html>

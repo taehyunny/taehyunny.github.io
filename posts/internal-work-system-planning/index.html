@@ -9,16 +9,27 @@
   <link rel="preload" as="style" crossorigin href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard/dist/web/variable/pretendardvariable-dynamic-subset.css">
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard/dist/web/variable/pretendardvariable-dynamic-subset.css">
   <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Nanum+Myeongjo:wght@700&display=swap">
+  <script>
+    (function () {
+      try {
+        var savedTheme = localStorage.getItem("theme");
+        document.documentElement.dataset.theme = savedTheme === "dark" ? "dark" : "light";
+      } catch (error) {
+        document.documentElement.dataset.theme = "light";
+      }
+    })();
+  </script>
   <title>내부 업무 시스템을 기획할 때 먼저 생각한 것들 | 정태현</title>
   <style>
     :root {
-      --bg: #FAFAF7;
+      color-scheme: light;
+      --bg: #FFFFFF;
       --bg-elev: #FFFFFF;
-      --text: #111111;
-      --text-muted: #8A8A8A;
-      --border: #EDEAE3;
-      --accent: #B23B3B;
-      --accent-ink: #7A2828;
+      --text: #252622;
+      --text-muted: #6F6B62;
+      --border: #D8D0C2;
+      --accent: #5A1E22;
+      --accent-ink: #7A2A2F;
       --font-sans: "Pretendard Variable", Pretendard, "Apple SD Gothic Neo", system-ui, sans-serif;
       --font-serif: "Nanum Myeongjo", "Noto Serif KR", serif;
       --font-mono: "JetBrains Mono", ui-monospace, monospace;
@@ -32,7 +43,7 @@
       --color-text: var(--text);
       --color-muted: var(--text-muted);
       --color-bg: var(--bg);
-      --color-bg-soft: #F4F2EC;
+      --color-bg-soft: #F4F4EC;
       --color-border: var(--border);
       --ink: var(--color-text);
       --muted: var(--color-muted);
@@ -41,8 +52,43 @@
       --link: var(--color-primary);
       --soft: var(--color-bg-soft);
       --code: #262523;
+      --focus-ring: rgba(90, 30, 34, 0.24);
     }
-
+    html[data-theme="dark"] {
+      color-scheme: dark;
+      --bg: #171814;
+      --bg-elev: #20211D;
+      --text: #E8E2D7;
+      --text-muted: #B9B1A4;
+      --border: #474237;
+      --accent: #E3A0A6;
+      --accent-ink: #F1BAC0;
+      --color-ink: var(--text);
+      --color-ink-soft: #D5CEC2;
+      --color-ink-muted: #A8A092;
+      --color-primary: var(--accent);
+      --color-primary-hover: var(--accent-ink);
+      --color-heading: #F4EFE6;
+      --color-text: var(--text);
+      --color-muted: var(--text-muted);
+      --color-bg: var(--bg);
+      --color-bg-soft: #24251F;
+      --color-surface: var(--bg-elev);
+      --color-border: var(--border);
+      --color-tag-text: #DAD9A8;
+      --color-menu-accent: #DAD9A8;
+      --color-menu-soft: var(--accent);
+      --color-menu-muted: #AAA58F;
+      --color-menu-active-bg: rgba(218, 217, 168, 0.08);
+      --ink: var(--color-text);
+      --muted: var(--color-muted);
+      --line: var(--color-border);
+      --bg-page: var(--color-bg);
+      --link: var(--color-primary);
+      --soft: var(--color-bg-soft);
+      --code: #11120F;
+      --focus-ring: rgba(227, 160, 166, 0.34);
+    }
     * { box-sizing: border-box; }
 
     body {
@@ -53,6 +99,7 @@
       font-size: var(--fs-body);
       letter-spacing: -0.01em;
       line-height: var(--lh-body);
+      transition: background-color 160ms ease, color 160ms ease;
     }
 
     h1,
@@ -84,6 +131,7 @@
       outline: 2px solid var(--color-primary);
       outline-offset: 3px;
       border-radius: 4px;
+      box-shadow: 0 0 0 4px var(--focus-ring);
     }
 
     .back,
@@ -194,7 +242,7 @@
       border: 0;
       border-radius: 0;
       background: transparent;
-      color: var(--ink);
+      color: var(--color-tag-text);
       font-size: var(--fs-meta);
       line-height: 1.2;
     }
@@ -225,11 +273,72 @@
       background: var(--soft);
       text-align: left;
     }
+    .theme-toggle {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      gap: 6px;
+      min-height: 32px;
+      padding: 5px 12px;
+      border: 1px solid var(--color-border);
+      border-radius: 999px;
+      background: var(--color-surface);
+      color: var(--color-menu-accent);
+      cursor: pointer;
+      font-family: var(--font-sans);
+      font-size: 13px;
+      font-weight: 800;
+      line-height: 1;
+      transition: background-color 160ms ease, border-color 160ms ease, color 160ms ease;
+    }
+
+    .theme-toggle:hover,
+    .theme-toggle:focus-visible {
+      border-color: var(--color-primary);
+      background: var(--color-bg-soft);
+      color: var(--color-primary);
+    }
+
+    .theme-toggle:focus-visible {
+      outline: 2px solid var(--color-primary);
+      outline-offset: 3px;
+      box-shadow: 0 0 0 4px var(--focus-ring);
+    }
+
+    .theme-toggle-icon {
+      font-size: 12px;
+      line-height: 1;
+    }
+
+    .side-theme-toggle {
+      width: fit-content;
+      margin: -12px 0 24px;
+    }
+
+    .site-header .theme-toggle {
+      flex: 0 0 auto;
+    }
+
+    .post-toolbar {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 16px;
+      margin-bottom: 28px;
+    }
+
+    .post-toolbar .back {
+      margin: 0;
+    }
+
   </style>
 </head>
 <body>
   <main>
-    <p class="back"><a href="../../index.html">← 블로그 홈</a></p>
+    <div class="post-toolbar">
+      <p class="back"><a href="../../index.html">← 블로그 홈</a></p>
+      <button class="theme-toggle" type="button" aria-label="다크 모드 켜기" aria-pressed="false"><span class="theme-toggle-icon" aria-hidden="true">◐</span><span class="theme-toggle-text">Dark</span></button>
+    </div>
     <article>
       <div class="meta">Jun 3, 2026</div>
       <h1>내부 업무 시스템을 기획할 때 먼저 생각한 것들</h1>
@@ -305,5 +414,34 @@
 <p>이 프로젝트는 개발 프로젝트이기도 하지만, 더 크게 보면 업무 흐름을 설계하는 연습이다. 전략기획 관점에서 시스템을 바라보는 첫 번째 기준은 “사람이 일하는 방식을 더 명확하게 만드는가”라고 생각한다.</p>
     </article>
   </main>
-</body>
+  <script>
+    (function () {
+      var root = document.documentElement;
+
+      function applyTheme(theme) {
+        var nextTheme = theme === "dark" ? "dark" : "light";
+        root.dataset.theme = nextTheme;
+        try {
+          localStorage.setItem("theme", nextTheme);
+        } catch (error) {}
+
+        document.querySelectorAll(".theme-toggle").forEach(function (button) {
+          var isDark = nextTheme === "dark";
+          button.setAttribute("aria-pressed", String(isDark));
+          button.setAttribute("aria-label", isDark ? "라이트 모드 켜기" : "다크 모드 켜기");
+          var text = button.querySelector(".theme-toggle-text");
+          if (text) {
+            text.textContent = isDark ? "Light" : "Dark";
+          }
+        });
+      }
+
+      applyTheme(root.dataset.theme === "dark" ? "dark" : "light");
+      document.querySelectorAll(".theme-toggle").forEach(function (button) {
+        button.addEventListener("click", function () {
+          applyTheme(root.dataset.theme === "dark" ? "light" : "dark");
+        });
+      });
+    })();
+  </script></body>
 </html>
