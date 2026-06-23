@@ -216,10 +216,39 @@
     }
 
     .side-note {
-      margin: 10px 0 30px;
+      margin: 10px 0 14px;
       color: var(--color-muted);
       font-size: 13px;
       line-height: 1.55;
+    }
+
+    .side-visual {
+      display: block;
+      width: 86px;
+      height: 86px;
+      margin: 0 0 24px;
+      overflow: hidden;
+      border: 1px solid rgba(216, 208, 194, 0.68);
+      border-radius: 18px;
+      background: var(--color-bg-soft);
+    }
+
+    .side-visual:hover,
+    .side-visual:focus-visible {
+      border-color: var(--color-primary);
+      text-decoration: none;
+    }
+
+    .side-visual:focus-visible {
+      outline: 2px solid var(--color-primary);
+      outline-offset: 3px;
+    }
+
+    .side-visual img {
+      display: block;
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
     }
 
     .side-scroll {
@@ -263,7 +292,9 @@
     }
 
     .side-links a {
-      display: block;
+      display: flex;
+      align-items: center;
+      gap: 9px;
       padding: 7px 0 7px 12px;
       border: 1px solid transparent;
       border-left: 4px solid transparent;
@@ -272,6 +303,18 @@
       color: var(--color-menu-accent);
       font-size: 14px;
       font-weight: 700;
+    }
+
+    .side-links .nav-icon {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      width: 18px;
+      min-width: 18px;
+      font-size: 14px;
+      line-height: 1;
+      opacity: 0.9;
+      filter: saturate(0.78);
     }
 
     .side-links a:hover,
@@ -1147,6 +1190,9 @@
       <aside class="side-rail" aria-label="사이드 탐색">
         <a class="side-brand" href="#home">정태현</a>
         <p class="side-note">일을 조금 더 잘 되게 만들기 위해 읽고, 만들고, 다시 적습니다.</p>
+        <a class="side-visual" href="#featured" aria-label="기획 사례 보기">
+          <img src="assets/sidebar-workflow.jpg" alt="">
+        </a>
         <button class="theme-toggle side-theme-toggle" type="button" aria-label="다크 모드 켜기" aria-pressed="false">
           <span class="theme-toggle-icon" aria-hidden="true">◐</span>
           <span class="theme-toggle-text">Dark</span>
@@ -1155,13 +1201,13 @@
           <section class="side-group" aria-labelledby="side-nav-title">
             <h2 id="side-nav-title">메뉴</h2>
             <ul class="side-links">
-              <li><a class="is-active" href="#home">Home</a></li>
-              <li><a href="#featured">기획 사례</a></li>
-              <li><a href="#categories">기록 주제</a></li>
-              <li><a href="#latest">최근 기록</a></li>
-              <li><a href="blog/">전체 글</a></li>
-              <li><a href="#about">작업 방식</a></li>
-              <li><a href="#contact">연락</a></li>
+              <li><a class="is-active" href="#home"><span class="nav-icon" aria-hidden="true">🏠</span><span>Home</span></a></li>
+              <li><a href="#featured"><span class="nav-icon" aria-hidden="true">📌</span><span>기획 사례</span></a></li>
+              <li><a href="#categories"><span class="nav-icon" aria-hidden="true">🗂️</span><span>기록 주제</span></a></li>
+              <li><a href="#latest"><span class="nav-icon" aria-hidden="true">🕒</span><span>최근 기록</span></a></li>
+              <li><a href="blog/"><span class="nav-icon" aria-hidden="true">📚</span><span>전체 글</span></a></li>
+              <li><a href="#about"><span class="nav-icon" aria-hidden="true">🧭</span><span>작업 방식</span></a></li>
+              <li><a href="#contact"><span class="nav-icon" aria-hidden="true">✉️</span><span>연락</span></a></li>
             </ul>
           </section>
 
