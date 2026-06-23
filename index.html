@@ -334,15 +334,29 @@
       font-weight: 800;
     }
 
-    .side-plain-list {
+    .side-tag-list {
       display: grid;
-      gap: 8px;
+      gap: 6px;
       margin: 0;
       padding: 0;
       list-style: none;
+    }
+
+    .side-tag-list a {
+      display: inline-flex;
+      align-items: center;
+      width: fit-content;
+      padding: 2px 0;
       color: var(--color-muted);
       font-size: 13px;
+      font-weight: 700;
       line-height: 1.55;
+    }
+
+    .side-tag-list a:hover,
+    .side-tag-list a:focus-visible {
+      color: var(--color-menu-accent);
+      text-decoration: none;
     }
 
     .content-column {
@@ -400,14 +414,10 @@
     }
 
     .intro-cover:hover,
-    .intro-cover:focus-visible {
+    .intro-cover:focus-within {
       border-color: var(--color-text);
       color: var(--color-text);
       text-decoration: none;
-    }
-
-    .intro-cover:focus-visible {
-      outline-color: var(--color-primary);
     }
 
     .intro-copy {
@@ -455,20 +465,29 @@
       display: inline-flex;
       align-items: center;
       min-height: 28px;
+    }
+
+    .intro-meta a {
+      display: inline-flex;
+      align-items: center;
+      min-height: 28px;
       padding: 0;
-      border: 0;
-      border-radius: 0;
-      background: transparent;
       color: var(--color-tag-text);
       font-size: 12px;
       font-weight: 700;
       line-height: 1.2;
     }
 
-    .intro-meta li::before {
+    .intro-meta a::before {
       content: "•";
       margin-right: 5px;
       color: var(--accent);
+    }
+
+    .intro-meta a:hover,
+    .intro-meta a:focus-visible {
+      color: var(--color-primary-hover);
+      text-decoration: none;
     }
 
     .intro-action {
@@ -1135,13 +1154,17 @@
             </ul>
           </section>
 
-          <section class="side-group" aria-labelledby="side-scope-title">
-            <h2 id="side-scope-title">관심 범위</h2>
-            <ul class="side-plain-list">
-              <li>업무 요청과 승인 흐름</li>
-              <li>공공데이터 기반 서비스 기획</li>
-              <li>문서 자동화와 보고 구조</li>
-              <li>자동화가 필요한 부분과 사람이 봐야 하는 부분</li>
+          <section class="side-group" aria-labelledby="side-tags-title">
+            <h2 id="side-tags-title">Tags</h2>
+            <ul class="side-tag-list" aria-label="주제별 글">
+              <li><a href="blog/?tag=%EC%97%85%EB%AC%B4%20%ED%94%84%EB%A1%9C%EC%84%B8%EC%8A%A4">업무 프로세스</a></li>
+              <li><a href="blog/?tag=%EC%82%AC%EC%97%85%EA%B8%B0%ED%9A%8D">사업기획</a></li>
+              <li><a href="blog/?tag=AI%20%EC%9E%90%EB%8F%99%ED%99%94">AI 자동화</a></li>
+              <li><a href="blog/?tag=%EB%8D%B0%EC%9D%B4%ED%84%B0%20%EA%B5%AC%EC%A1%B0">데이터 구조</a></li>
+              <li><a href="blog/?tag=%EB%AC%B8%EC%84%9C%2F%EA%B2%B0%EC%9E%AC">문서/결재</a></li>
+              <li><a href="blog/?tag=Tools">Tools</a></li>
+              <li><a href="blog/?tag=Portfolio">Portfolio</a></li>
+              <li><a href="blog/?tag=%ED%9A%8C%EA%B3%A0">회고</a></li>
             </ul>
           </section>
 
@@ -1157,7 +1180,7 @@
 
       <div class="content-column">
     <main>
-      <a class="intro-cover" href="#latest" aria-labelledby="intro-title">
+      <section class="intro-cover" aria-labelledby="intro-title">
         <div class="intro-copy">
           <div>
             <p class="intro-eyebrow">by taehyun</p>
@@ -1167,17 +1190,19 @@
               직접 해본 것과 다시 생각한 것을 남깁니다.
             </p>
             <ul class="intro-meta" aria-label="대표 주제">
-              <li>일의 구조</li>
-              <li>문서와 결재</li>
-              <li>사업기획</li>
-              <li>데이터</li>
-              <li>자동화</li>
-              <li>회고</li>
+              <li><a href="blog/?tag=%EC%97%85%EB%AC%B4%20%ED%94%84%EB%A1%9C%EC%84%B8%EC%8A%A4">업무 프로세스</a></li>
+              <li><a href="blog/?tag=%EC%82%AC%EC%97%85%EA%B8%B0%ED%9A%8D">사업기획</a></li>
+              <li><a href="blog/?tag=AI%20%EC%9E%90%EB%8F%99%ED%99%94">AI 자동화</a></li>
+              <li><a href="blog/?tag=%EB%8D%B0%EC%9D%B4%ED%84%B0%20%EA%B5%AC%EC%A1%B0">데이터 구조</a></li>
+              <li><a href="blog/?tag=%EB%AC%B8%EC%84%9C%2F%EA%B2%B0%EC%9E%AC">문서/결재</a></li>
+              <li><a href="blog/?tag=Tools">Tools</a></li>
+              <li><a href="blog/?tag=Portfolio">Portfolio</a></li>
+              <li><a href="blog/?tag=%ED%9A%8C%EA%B3%A0">회고</a></li>
             </ul>
           </div>
-          <span class="intro-action">최근 글 읽기</span>
+          <a class="intro-action" href="#latest">최근 글 읽기</a>
         </div>
-      </a>
+      </section>
 
       <section id="featured" aria-labelledby="featured-title">
         <div class="section-heading">
