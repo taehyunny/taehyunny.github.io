@@ -1,0 +1,4 @@
+User-agent: *
+Allow: /
+
+Sitemap: https://taehyunny.github.io/sitemap.xml

@@ -3,20 +3,29 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="정태현이 업무 시스템, 데이터 구조, AI 자동화를 기획하고 구현하며 남긴 기술 의사결정과 검증 기록입니다.">
+  <link rel="canonical" href="https://taehyunny.github.io/">
+  <meta property="og:type" content="website">
+  <meta property="og:locale" content="ko_KR">
+  <meta property="og:title" content="정태현의 기술 기록">
+  <meta property="og:description" content="문제 정의에서 시스템 설계, 구현, 실패 원인과 검증까지 기록합니다.">
+  <meta property="og:url" content="https://taehyunny.github.io/">
+  <meta property="og:image" content="https://taehyunny.github.io/assets/categories/process.jpg">
+  <meta name="twitter:card" content="summary_large_image">
+  <link rel="alternate" type="application/rss+xml" title="정태현의 기술 기록" href="/feed.xml">
   <link rel="icon" href="/favicon.ico?v=20260622" sizes="any">
   <link rel="icon" href="/assets/favicon-32x32.png?v=20260622" type="image/png" sizes="32x32">
   <link rel="apple-touch-icon" href="/assets/apple-touch-icon.png?v=20260622">
   <link rel="preconnect" href="https://cdn.jsdelivr.net" crossorigin>
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link rel="preload" as="style" crossorigin href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard/dist/web/variable/pretendardvariable-dynamic-subset.css">
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard/dist/web/variable/pretendardvariable-dynamic-subset.css">
   <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Nanum+Myeongjo:wght@700&display=swap">
+  <link rel="stylesheet" href="/assets/css/site.css?v=20260717">
   <script>
     (function () {
       try {
-        var savedTheme = localStorage.getItem("theme");
-        document.documentElement.dataset.theme = savedTheme === "dark" ? "dark" : "light";
+        document.documentElement.dataset.theme = localStorage.getItem("theme") === "dark" ? "dark" : "light";
       } catch (error) {
         document.documentElement.dataset.theme = "light";
       }
@@ -29,1519 +38,139 @@
     function gtag() { dataLayer.push(arguments); }
     gtag("js", new Date());
     gtag("config", "G-Z1WFWHS0VR");
-  </script>  <title>정태현의 기록 | 업무와 자동화 노트</title>
-  <style>
-    :root {
-      color-scheme: light;
-      --bg: #FFFFFF;
-      --bg-elev: #FFFFFF;
-      --text: #252622;
-      --text-muted: #6F6B62;
-      --border: #D8D0C2;
-      --accent: #5A1E22;
-      --accent-ink: #7A2A2F;
-      --font-sans: "Pretendard Variable", Pretendard, "Apple SD Gothic Neo", system-ui, sans-serif;
-      --font-serif: "Nanum Myeongjo", "Noto Serif KR", serif;
-      --font-mono: "JetBrains Mono", ui-monospace, monospace;
-      --fs-hero: clamp(40px, 6vw, 72px);
-      --fs-h1: clamp(28px, 3.2vw, 40px);
-      --fs-h2: 22px;
-      --fs-body: 16px;
-      --fs-meta: 13px;
-      --lh-body: 1.75;
-      --radius-sm: 6px;
-      --radius-md: 12px;
-      --radius-lg: 20px;
-      --space-1: 4px;
-      --space-2: 8px;
-      --space-3: 12px;
-      --space-4: 16px;
-      --space-6: 24px;
-      --space-8: 32px;
-      --space-12: 48px;
-      --space-16: 64px;
-      --color-ink: var(--text);
-      --color-ink-soft: #464741;
-      --color-ink-muted: #5F5E57;
-      --color-primary: var(--accent);
-      --color-primary-hover: var(--accent-ink);
-      --color-heading: var(--text);
-      --color-text: var(--text);
-      --color-muted: var(--text-muted);
-      --color-bg: var(--bg);
-      --color-bg-soft: #F4F4EC;
-      --color-surface: var(--bg-elev);
-      --color-border: var(--border);
-      --color-tag-text: #4F5F2D;
-      --color-menu-accent: #4F5F2D;
-      --focus-ring: rgba(90, 30, 34, 0.24);
-      --color-menu-soft: var(--accent);
-      --color-menu-muted: var(--text-muted);
-      --color-menu-active-bg: transparent;
-    }
-    html[data-theme="dark"] {
-      color-scheme: dark;
-      --bg: #171814;
-      --bg-elev: #20211D;
-      --text: #E8E2D7;
-      --text-muted: #B9B1A4;
-      --border: #474237;
-      --accent: #E3A0A6;
-      --accent-ink: #F1BAC0;
-      --color-ink: var(--text);
-      --color-ink-soft: #D5CEC2;
-      --color-ink-muted: #A8A092;
-      --color-primary: var(--accent);
-      --color-primary-hover: var(--accent-ink);
-      --color-heading: #F4EFE6;
-      --color-text: var(--text);
-      --color-muted: var(--text-muted);
-      --color-bg: var(--bg);
-      --color-bg-soft: #24251F;
-      --color-surface: var(--bg-elev);
-      --color-border: var(--border);
-      --color-tag-text: #DAD9A8;
-      --color-menu-accent: #DAD9A8;
-      --color-menu-soft: var(--accent);
-      --color-menu-muted: #AAA58F;
-      --color-menu-active-bg: rgba(218, 217, 168, 0.08);
-      --ink: var(--color-text);
-      --muted: var(--color-muted);
-      --line: var(--color-border);
-      --bg-page: var(--color-bg);
-      --link: var(--color-primary);
-      --soft: var(--color-bg-soft);
-      --code: #11120F;
-      --focus-ring: rgba(227, 160, 166, 0.34);
-    }
-    * {
-      box-sizing: border-box;
-    }
-
-    html {
-      scroll-behavior: smooth;
-    }
-
-    body {
-      margin: 0;
-      color: var(--color-text);
-      background: var(--color-bg);
-      font-family: var(--font-sans);
-      font-size: var(--fs-body);
-      letter-spacing: -0.01em;
-      line-height: var(--lh-body);
-      transition: background-color 160ms ease, color 160ms ease;
-    }
-
-    h1,
-    h2,
-    h3,
-    p,
-    li {
-      word-break: keep-all;
-      overflow-wrap: break-word;
-    }
-    a {
-      color: var(--color-primary);
-      text-decoration: none;
-    }
-
-    a:hover {
-      color: var(--color-primary-hover);
-      text-decoration: underline;
-    }
-
-    a:focus-visible {
-      outline: 2px solid var(--color-primary);
-      outline-offset: 3px;
-      border-radius: 4px;
-      box-shadow: 0 0 0 4px var(--focus-ring);
-    }
-
-    .page {
-      width: min(1180px, calc(100% - 48px));
-      margin: 0 auto;
-      padding: 24px 0 56px;
-    }
-
-    .site-header {
-      display: none;
-      align-items: center;
-      justify-content: space-between;
-      gap: 20px;
-      padding: 14px 0 18px;
-      border-bottom: 1px solid var(--color-border);
-      border-radius: 0;
-      background: var(--color-surface);
-      color: var(--color-text);
-    }
-
-    .site-name {
-      color: var(--color-ink);
-      font-size: 19px;
-      font-weight: 700;
-      letter-spacing: 0;
-    }
-
-    .site-name:hover {
-      color: var(--color-primary);
-      text-decoration: none;
-    }
-
-    .site-shell {
-      display: grid;
-      grid-template-columns: 240px minmax(0, 880px);
-      justify-content: center;
-      gap: var(--space-12);
-      align-items: start;
-    }
-
-    .side-rail {
-      position: sticky;
-      top: 24px;
-      display: flex;
-      flex-direction: column;
-      max-height: calc(100vh - 48px);
-      padding: 6px 0 0;
-      border: 0;
-      border-radius: 0;
-      background: transparent;
-      color: var(--color-text);
-    }
-
-    .side-brand {
-      color: var(--color-ink);
-      font-family: var(--font-serif);
-      font-size: 24px;
-      font-weight: 700;
-      letter-spacing: 0;
-    }
-
-    .side-brand:hover {
-      color: var(--color-primary);
-      text-decoration: none;
-    }
-
-    .side-note {
-      margin: 10px 0 14px;
-      color: var(--color-muted);
-      font-size: 13px;
-      line-height: 1.55;
-    }
-
-    .side-visual {
-      display: block;
-      width: 86px;
-      height: 86px;
-      margin: 0 0 24px;
-      overflow: hidden;
-      border: 1px solid rgba(216, 208, 194, 0.68);
-      border-radius: 18px;
-      background: var(--color-bg-soft);
-    }
-
-    .side-visual:hover,
-    .side-visual:focus-visible {
-      border-color: var(--color-primary);
-      text-decoration: none;
-    }
-
-    .side-visual:focus-visible {
-      outline: 2px solid var(--color-primary);
-      outline-offset: 3px;
-    }
-
-    .side-visual img {
-      display: block;
-      width: 100%;
-      height: 100%;
-      object-fit: cover;
-    }
-
-    .side-scroll {
-      display: grid;
-      gap: 26px;
-      min-height: 0;
-      overflow-y: auto;
-      padding-right: 4px;
-      scrollbar-color: rgba(47, 48, 45, 0.28) transparent;
-      scrollbar-width: thin;
-    }
-
-    .side-scroll::-webkit-scrollbar {
-      width: 8px;
-    }
-
-    .side-scroll::-webkit-scrollbar-track {
-      background: transparent;
-    }
-
-    .side-scroll::-webkit-scrollbar-thumb {
-      border-radius: 999px;
-      background: rgba(47, 48, 45, 0.24);
-    }
-
-    .side-group h2 {
-      margin: 0 0 10px;
-      color: var(--color-menu-muted);
-      font-size: 12px;
-      font-weight: 700;
-      letter-spacing: 0;
-      text-transform: none;
-    }
-
-    .side-links {
-      display: grid;
-      gap: 2px;
-      margin: 0;
-      padding: 0;
-      list-style: none;
-    }
-
-    .side-links a {
-      display: flex;
-      align-items: center;
-      gap: 9px;
-      padding: 7px 0 7px 12px;
-      border: 1px solid transparent;
-      border-left: 4px solid transparent;
-      border-radius: 0;
-      background: transparent;
-      color: var(--color-menu-accent);
-      font-size: 14px;
-      font-weight: 700;
-    }
-
-    .side-links .nav-icon {
-      display: inline-flex;
-      align-items: center;
-      justify-content: center;
-      width: 18px;
-      min-width: 18px;
-      font-size: 14px;
-      line-height: 1;
-      opacity: 0.9;
-      filter: saturate(0.78);
-    }
-
-    .side-links a:hover,
-    .side-links a:focus-visible {
-      border-left-color: var(--accent);
-      border-top-color: transparent;
-      border-right-color: transparent;
-      border-bottom-color: transparent;
-      color: var(--color-ink);
-      background: var(--color-menu-active-bg);
-      text-decoration: none;
-    }
-
-    .side-links a.is-active {
-      border-left-color: var(--accent);
-      color: var(--color-ink);
-      font-weight: 800;
-    }
-
-    .side-tag-list {
-      display: grid;
-      gap: 6px;
-      margin: 0;
-      padding: 0;
-      list-style: none;
-    }
-
-    .side-tag-list a {
-      display: inline-flex;
-      align-items: center;
-      gap: 8px;
-      width: fit-content;
-      padding: 3px 5px 3px 0;
-      color: var(--color-muted);
-      font-size: 13px;
-      font-weight: 700;
-      line-height: 1.3;
-    }
-
-    .side-tag-list a:hover,
-    .side-tag-list a:focus-visible {
-      color: var(--color-menu-accent);
-      text-decoration: none;
-    }
-
-    .content-column {
-      min-width: 0;
-    }
-
-    nav {
-      display: flex;
-      flex-wrap: wrap;
-      gap: 8px;
-      font-size: 14px;
-    }
-
-    nav a {
-      display: inline-flex;
-      align-items: center;
-      padding: 5px 0;
-      border-radius: 6px;
-      color: var(--color-menu-accent);
-      font-weight: 700;
-    }
-
-    nav a:hover,
-    nav a:focus-visible {
-      color: var(--color-ink);
-      background: var(--color-menu-active-bg);
-      text-decoration: none;
-    }
-
-    main {
-      display: grid;
-      gap: 28px;
-      padding-top: 28px;
-    }
-
-    section {
-      scroll-margin-top: 24px;
-    }
-
-    .intro-cover {
-      display: block;
-      padding: clamp(30px, 5vw, 52px) 0 clamp(34px, 5vw, 58px);
-      border: 0;
-      border-top: 1px solid var(--color-border);
-      border-bottom: 1px solid var(--color-border);
-      border-radius: 0;
-      background: transparent;
-      color: var(--color-text);
-    }
-
-    .intro-cover > img {
-      display: none;
-    }
-
-    .intro-cover::before {
-      display: none;
-    }
-
-    .intro-cover:hover,
-    .intro-cover:focus-within {
-      border-color: var(--color-border);
-      color: var(--color-text);
-      text-decoration: none;
-    }
-
-    .intro-copy {
-      width: min(820px, 100%);
-    }
-
-    .intro-eyebrow {
-      margin: 0 0 16px;
-      color: var(--color-muted);
-      font-size: 13px;
-      font-weight: 800;
-      letter-spacing: 0.08em;
-      text-transform: uppercase;
-    }
-
-    .intro-cover h1 {
-      margin: 0;
-      max-width: 680px;
-      color: var(--color-heading);
-      font-size: clamp(38px, 5vw, 58px);
-      font-family: var(--font-serif);
-      font-weight: 700;
-      line-height: 1.14;
-    }
-
-    .intro-cover p {
-      margin: 20px 0 0;
-      max-width: 660px;
-      color: var(--color-ink-soft);
-      font-size: 18px;
-      font-weight: 500;
-      line-height: 1.78;
-    }
-
-    .intro-meta {
-      display: flex;
-      flex-wrap: wrap;
-      gap: 10px;
-      margin: 30px 0 0;
-      padding: 0;
-      list-style: none;
-    }
-
-    .intro-meta li {
-      display: inline-flex;
-      align-items: center;
-      min-height: 28px;
-    }
-
-    .intro-meta a {
-      display: inline-flex;
-      align-items: center;
-      gap: 8px;
-      min-height: 42px;
-      padding: 3px 12px 3px 3px;
-      border: 1px solid var(--color-border);
-      border-radius: 999px;
-      background: var(--color-surface);
-      color: var(--color-tag-text);
-      font-size: 12px;
-      font-weight: 700;
-      line-height: 1.2;
-    }
-
-    .intro-meta a:hover,
-    .intro-meta a:focus-visible {
-      border-color: var(--color-primary);
-      background: var(--color-bg-soft);
-      color: var(--color-primary-hover);
-      text-decoration: none;
-    }
-
-    .tag-thumb {
-      display: inline-block;
-      flex: 0 0 auto;
-      width: 22px;
-      height: 22px;
-      min-width: 22px;
-      overflow: hidden;
-      border: 1px solid rgba(216, 208, 194, 0.75);
-      border-radius: 7px;
-      background: var(--color-bg-soft);
-      object-fit: cover;
-    }
-
-    .intro-meta .tag-thumb {
-      width: 34px;
-      height: 34px;
-      min-width: 34px;
-      border-radius: 999px;
-    }
-
-    .side-tag-list .tag-thumb {
-      width: 20px;
-      height: 20px;
-      min-width: 20px;
-      border-radius: 6px;
-    }
-
-    .intro-action {
-      display: inline-flex;
-      align-items: center;
-      width: fit-content;
-      margin-top: 30px;
-      padding: 0 0 2px;
-      border: 0;
-      border-bottom: 1px solid var(--color-primary);
-      border-radius: 999px;
-      background: transparent;
-      color: var(--color-primary);
-      font-size: 14px;
-      font-weight: 800;
-    }
-
-    .profile {
-      display: grid;
-      grid-template-columns: minmax(280px, 0.88fr) minmax(0, 1.12fr);
-      gap: 20px;
-      align-items: stretch;
-    }
-
-    .profile-panel,
-    .profile-copy,
-    .card,
-    .latest-item,
-    .contact-panel {
-      border-radius: 8px;
-    }
-
-    .profile-panel {
-      display: flex;
-      flex-direction: column;
-      justify-content: space-between;
-      min-height: 360px;
-      padding: 0;
-      border: 0;
-      border-top: 1px solid var(--color-border);
-      background: transparent;
-      color: var(--color-text);
-    }
-
-    .eyebrow {
-      margin: 0 0 14px;
-      color: var(--color-muted);
-      font-size: 13px;
-      font-weight: 700;
-      letter-spacing: 0.08em;
-      text-transform: uppercase;
-    }
-
-    h1,
-    h2,
-    h3 {
-      color: var(--color-heading);
-      letter-spacing: 0;
-    }
-
-    h1 {
-      margin: 0;
-      color: var(--color-heading);
-      font-size: clamp(42px, 7vw, 72px);
-      font-family: var(--font-serif);
-      font-weight: 700;
-      line-height: 1.04;
-    }
-
-    .profile-name {
-      margin: 0;
-      color: var(--color-heading);
-      font-size: clamp(42px, 7vw, 72px);
-      font-family: var(--font-serif);
-      font-weight: 700;
-      line-height: 1.04;
-    }
-
-    .profile-subtitle {
-      margin: 20px 0 0;
-      color: var(--color-ink-soft);
-      font-size: clamp(18px, 2.3vw, 24px);
-      font-weight: 650;
-      line-height: 1.45;
-    }
-
-    .profile-actions,
-    .contact-actions {
-      display: flex;
-      flex-wrap: wrap;
-      gap: 10px;
-      margin-top: 28px;
-    }
-
-    .button {
-      display: inline-flex;
-      align-items: center;
-      justify-content: center;
-      min-height: 40px;
-      padding: 9px 14px;
-      border: 1px solid transparent;
-      border-radius: 6px;
-      background: var(--color-primary);
-      color: #fff;
-      font-size: 14px;
-      font-weight: 700;
-    }
-
-    .button:hover {
-      background: var(--color-primary-hover);
-      color: #fff;
-      text-decoration: none;
-    }
-
-    .button.secondary {
-      border-color: transparent;
-      background: transparent;
-      color: var(--color-primary);
-    }
-
-    .button.secondary:hover {
-      border-color: transparent;
-      background: transparent;
-      color: var(--color-primary-hover);
-      text-decoration: underline;
-    }
-
-    .button.disabled {
-      border-color: var(--color-border);
-      background: var(--color-bg-soft);
-      color: var(--color-muted);
-      cursor: not-allowed;
-    }
-
-    .button.light {
-      border-color: var(--color-border);
-      background: var(--color-surface);
-      color: var(--color-heading);
-    }
-
-    .button.light:hover {
-      border-color: var(--color-primary-hover);
-      background: var(--color-bg-soft);
-      color: var(--color-primary-hover);
-    }
-
-    .profile-copy {
-      padding: 0;
-      border: 0;
-      background: transparent;
-    }
-
-    .profile-copy p {
-      margin: 0 0 14px;
-      max-width: 660px;
-      font-size: 17px;
-    }
-
-    .quick-facts {
-      display: grid;
-      grid-template-columns: repeat(3, minmax(0, 1fr));
-      gap: 10px;
-      margin: 26px 0 0;
-      padding: 0;
-      list-style: none;
-    }
-
-    .quick-facts li {
-      padding: 14px 0 0;
-      border-top: 1px solid var(--color-border);
-      border-radius: 0;
-      background: transparent;
-      color: var(--color-muted);
-      font-size: 13px;
-    }
-
-    .quick-facts strong {
-      display: block;
-      margin-bottom: 4px;
-      color: var(--color-heading);
-      font-size: 14px;
-    }
-
-    .profile-tabs {
-      display: flex;
-      flex-wrap: wrap;
-      gap: 8px;
-      margin-top: 24px;
-      padding-top: 18px;
-      border-top: 1px solid var(--color-border);
-    }
-
-    .profile-tabs a {
-      padding: 7px 10px;
-      border: 1px solid var(--color-border);
-      border-radius: 999px;
-      background: var(--color-surface);
-      color: var(--color-ink-soft);
-      font-size: 13px;
-      font-weight: 700;
-    }
-
-    .profile-tabs a:hover,
-    .profile-tabs a:focus-visible {
-      border-color: var(--color-tag-text);
-      background: var(--color-bg-soft);
-      color: var(--color-tag-text);
-      text-decoration: none;
-    }
-
-    .section-heading {
-      display: flex;
-      align-items: end;
-      justify-content: space-between;
-      gap: 16px;
-      margin-bottom: 16px;
-    }
-
-    .section-heading h2 {
-      margin: 0;
-      font-size: var(--fs-h2);
-      line-height: 1.2;
-    }
-
-    .section-heading p {
-      margin: 6px 0 0;
-      color: var(--color-muted);
-      font-size: 15px;
-    }
-
-    .section-link {
-      flex: 0 0 auto;
-      color: var(--color-primary);
-      font-size: 14px;
-      font-weight: 700;
-    }
-
-    .tag-list,
-    .card-tags {
-      display: flex;
-      flex-wrap: wrap;
-      gap: 8px;
-      margin: 0;
-      padding: 0;
-      list-style: none;
-    }
-
-    .tag-pill,
-    .card-tags li,
-    .latest-meta span {
-      display: inline-flex;
-      align-items: center;
-      min-height: 0;
-      padding: 0;
-      border: 0;
-      border-radius: 0;
-      background: transparent;
-      color: var(--color-tag-text);
-      font-size: var(--fs-meta);
-      font-weight: 500;
-      line-height: 1.2;
-    }
-
-    .tag-pill::before,
-    .card-tags li::before,
-    .latest-meta span::before {
-      content: "•";
-      margin-right: 5px;
-      color: var(--accent);
-      font-weight: 700;
-    }
-
-    .card-tags .tag-more {
-      color: var(--color-muted);
-    }
-
-    .card-tags .tag-more::before {
-      content: "";
-      margin: 0;
-    }
-
-    .feature-grid {
-      display: grid;
-      grid-template-columns: repeat(2, minmax(0, 1fr));
-      gap: 18px;
-    }
-
-    .card {
-      display: flex;
-      flex-direction: column;
-      min-height: 270px;
-      padding: 22px;
-      border: 1px solid var(--color-border);
-      background: var(--color-surface);
-      transition: border-color 160ms ease;
-    }
-
-    .card:hover {
-      border-color: var(--color-text);
-    }
-
-    .card-media {
-      display: block;
-      overflow: hidden;
-      margin: -22px -22px 18px;
-      border-bottom: 1px solid var(--color-border);
-      border-radius: 8px 8px 0 0;
-      background: var(--color-bg-soft);
-    }
-
-    .card-media img {
-      display: block;
-      width: 100%;
-      aspect-ratio: 16 / 9;
-      object-fit: cover;
-      transition: transform 180ms ease, opacity 180ms ease;
-    }
-
-    .card:hover .card-media img {
-      opacity: 0.94;
-      transform: scale(1.02);
-    }
-
-    .card h3 {
-      margin: 18px 0 10px;
-      font-size: 22px;
-      line-height: 1.35;
-    }
-
-    .card p {
-      margin: 0;
-      color: var(--color-muted);
-      font-size: 15px;
-    }
-
-    .card .card-kicker {
-      margin: 0 0 14px;
-      color: var(--color-primary);
-      font-size: 12px;
-      font-weight: 800;
-      letter-spacing: 0.04em;
-      text-transform: uppercase;
-    }
-
-    .card-footer {
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-      gap: 14px;
-      margin-top: auto;
-      padding-top: 22px;
-      color: var(--color-muted);
-      font-size: 13px;
-    }
-
-    .read-link {
-      color: var(--color-primary);
-      font-weight: 700;
-      white-space: nowrap;
-    }
-
-    .latest-list {
-      display: grid;
-      gap: 10px;
-      margin: 0;
-      padding: 0;
-      list-style: none;
-    }
-
-    .latest-item {
-      display: grid;
-      grid-template-columns: 110px minmax(0, 1fr);
-      gap: 18px;
-      padding: 18px;
-      border: 1px solid var(--color-border);
-      background: var(--color-surface);
-      transition: border-color 160ms ease;
-    }
-
-    .latest-item:hover {
-      border-color: var(--color-text);
-    }
-
-    .date {
-      color: var(--color-muted);
-      font-size: 13px;
-      font-weight: 700;
-      white-space: nowrap;
-    }
-
-    .latest-meta {
-      display: flex;
-      flex-wrap: wrap;
-      gap: 6px;
-      margin-bottom: 8px;
-    }
-
-    .latest-item h3 {
-      margin: 0 0 6px;
-      font-size: 20px;
-      line-height: 1.35;
-    }
-
-    .latest-item p {
-      margin: 0 0 10px;
-      color: var(--color-muted);
-      font-size: 15px;
-    }
-
-    .contact-panel {
-      display: grid;
-      grid-template-columns: minmax(0, 1.25fr) minmax(240px, 0.75fr);
-      gap: 22px;
-      padding: 28px 0 0;
-      border-top: 1px solid var(--color-border);
-      background: transparent;
-      color: var(--color-text);
-    }
-
-    .contact-panel h2 {
-      margin: 0 0 10px;
-      color: var(--color-heading);
-      font-size: var(--fs-h2);
-    }
-
-    .contact-panel p {
-      margin: 0;
-      max-width: 660px;
-    }
-
-    .contact-list {
-      display: grid;
-      gap: 10px;
-      align-content: center;
-      margin: 0;
-      padding: 0;
-      list-style: none;
-    }
-
-    .contact-list a {
-      display: block;
-      padding: 0;
-      border: 0;
-      border-radius: 0;
-      color: var(--color-primary);
-      font-weight: 700;
-    }
-
-    .contact-list a:hover {
-      background: transparent;
-      color: var(--color-primary-hover);
-      text-decoration: underline;
-    }
-
-    footer {
-      display: flex;
-      flex-wrap: wrap;
-      justify-content: space-between;
-      gap: var(--space-4);
-      margin-top: 28px;
-      padding-top: 20px;
-      border-top: 1px solid var(--color-border);
-      color: var(--color-muted);
-      font-size: var(--fs-meta);
-    }
-
-    footer p {
-      margin: 0;
-    }
-    .theme-toggle {
-      display: inline-flex;
-      align-items: center;
-      justify-content: center;
-      gap: 6px;
-      min-height: 32px;
-      padding: 5px 12px;
-      border: 1px solid var(--color-border);
-      border-radius: 999px;
-      background: var(--color-surface);
-      color: var(--color-menu-accent);
-      cursor: pointer;
-      font-family: var(--font-sans);
-      font-size: 13px;
-      font-weight: 800;
-      line-height: 1;
-      transition: background-color 160ms ease, border-color 160ms ease, color 160ms ease;
-    }
-
-    .theme-toggle:hover,
-    .theme-toggle:focus-visible {
-      border-color: var(--color-primary);
-      background: var(--color-bg-soft);
-      color: var(--color-primary);
-    }
-
-    .theme-toggle:focus-visible {
-      outline: 2px solid var(--color-primary);
-      outline-offset: 3px;
-      box-shadow: 0 0 0 4px var(--focus-ring);
-    }
-
-    .theme-toggle-icon {
-      font-size: 12px;
-      line-height: 1;
-    }
-
-    .side-theme-toggle {
-      width: fit-content;
-      margin: -12px 0 24px;
-    }
-
-    .site-header .theme-toggle {
-      flex: 0 0 auto;
-    }
-
-    .post-toolbar {
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-      gap: 16px;
-      margin-bottom: 28px;
-    }
-
-    .post-toolbar .back {
-      margin: 0;
-    }
-
-
-    @media (max-width: 860px) {
-      .site-header,
-      .section-heading,
-      .contact-panel {
-        display: block;
-      }
-
-      .site-shell {
-        display: block;
-      }
-
-      .side-rail {
-        display: none;
-      }
-
-      nav {
-        margin-top: 12px;
-        gap: 14px;
-      }
-
-      .intro-cover {
-        min-height: 0;
-        padding: 34px 0 38px;
-      }
-
-      .profile,
-      .feature-grid,
-      .contact-panel {
-        grid-template-columns: 1fr;
-      }
-
-      .profile-panel {
-        min-height: 0;
-        padding: 0;
-      }
-
-      .profile-copy {
-        padding: 0;
-      }
-
-      .quick-facts {
-        grid-template-columns: 1fr;
-      }
-
-      .section-link {
-        display: inline-block;
-        margin-top: 8px;
-      }
-
-      .contact-list {
-        margin-top: 20px;
-      }
-    }
-
-    @media (max-width: 560px) {
-      .page {
-        width: min(100% - 24px, 1120px);
-        padding-top: 12px;
-      }
-
-      .site-header {
-        padding: 14px;
-      }
-
-      nav a {
-        padding-left: 0;
-      }
-
-      .intro-cover {
-        min-height: 0;
-        padding: 28px 0 34px;
-      }
-
-      .intro-copy {
-        padding: 0;
-      }
-
-      .latest-item {
-        display: block;
-      }
-
-      .date {
-        display: block;
-        margin-bottom: 8px;
-      }
-
-      .card-footer {
-        display: block;
-      }
-
-      .read-link {
-        display: inline-block;
-        margin-top: 8px;
-      }
-    }
-  </style>
+  </script>
+  <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "Blog",
+      "name": "정태현의 기술 기록",
+      "url": "https://taehyunny.github.io/",
+      "description": "업무 시스템, 데이터 구조, AI 자동화의 설계와 구현 기록",
+      "author": { "@type": "Person", "name": "정태현", "url": "https://taehyunny.github.io/about/" }
+    }
+  </script>
+  <title>정태현의 기술 기록 | 시스템 설계와 AI 자동화</title>
 </head>
 <body>
-  <div class="page">
-    <header class="site-header" id="home">
-      <a class="site-name" href="index.html">정태현</a>
-      <nav aria-label="주요 메뉴">
-        <a href="#home">Home</a>
-        <a href="#featured">기획 사례</a>
-        <a href="blog/">전체 글</a>
-        <a href="about/">About</a>
-        <a href="https://github.com/taehyunny">GitHub</a>
+  <a class="skip-link" href="#content">본문으로 이동</a>
+  <header class="site-header">
+    <div class="site-shell site-header-inner">
+      <a class="site-brand" href="/" aria-current="page">정태현의 기술 기록</a>
+      <nav class="site-nav" aria-label="주요 메뉴">
+        <a href="/blog/">글</a>
+        <a href="#implementation">구현 기록</a>
+        <a href="/about/">About</a>
+        <a class="nav-optional" href="https://github.com/taehyunny">GitHub</a>
+        <button class="theme-toggle" type="button" aria-label="다크 모드 켜기" aria-pressed="false" title="화면 테마 변경"><span data-theme-icon aria-hidden="true">◐</span></button>
       </nav>
-      <button class="theme-toggle" type="button" aria-label="다크 모드 켜기" aria-pressed="false">
-        <span class="theme-toggle-icon" aria-hidden="true">◐</span>
-        <span class="theme-toggle-text">Dark</span>
-      </button>
-    </header>
-
-    <div class="site-shell">
-      <aside class="side-rail" aria-label="사이드 탐색">
-        <a class="side-brand" href="#home">정태현</a>
-        <p class="side-note">일을 조금 더 잘 되게 만들기 위해 읽고, 만들고, 다시 적습니다.</p>
-        <a class="side-visual" href="#featured" aria-label="기획 사례 보기">
-          <img src="assets/sidebar-workflow.jpg" alt="">
-        </a>
-        <button class="theme-toggle side-theme-toggle" type="button" aria-label="다크 모드 켜기" aria-pressed="false">
-          <span class="theme-toggle-icon" aria-hidden="true">◐</span>
-          <span class="theme-toggle-text">Dark</span>
-        </button>
-        <div class="side-scroll">
-          <section class="side-group" aria-labelledby="side-nav-title">
-            <h2 id="side-nav-title">메뉴</h2>
-            <ul class="side-links">
-              <li><a class="is-active" href="#home"><span class="nav-icon" aria-hidden="true">🏠</span><span>Home</span></a></li>
-              <li><a href="#featured"><span class="nav-icon" aria-hidden="true">📌</span><span>기획 사례</span></a></li>
-              <li><a href="#latest"><span class="nav-icon" aria-hidden="true">🕒</span><span>최근 기록</span></a></li>
-              <li><a href="blog/"><span class="nav-icon" aria-hidden="true">📚</span><span>전체 글</span></a></li>
-              <li><a href="about/"><span class="nav-icon" aria-hidden="true">🧭</span><span>About</span></a></li>
-              <li><a href="#contact"><span class="nav-icon" aria-hidden="true">✉️</span><span>연락</span></a></li>
-            </ul>
-          </section>
-
-          <section class="side-group" aria-labelledby="side-tags-title">
-            <h2 id="side-tags-title">Tags</h2>
-            <ul class="side-tag-list" aria-label="주제별 글">
-              <li><a href="blog/?tag=%EC%97%85%EB%AC%B4%20%ED%94%84%EB%A1%9C%EC%84%B8%EC%8A%A4"><img class="tag-thumb" src="assets/tags/work-process.jpg" alt="" width="24" height="24">업무 프로세스</a></li>
-              <li><a href="blog/?tag=%EC%82%AC%EC%97%85%EA%B8%B0%ED%9A%8D"><img class="tag-thumb" src="assets/tags/business-planning.jpg" alt="" width="24" height="24">사업기획</a></li>
-              <li><a href="blog/?tag=AI%20%EC%9E%90%EB%8F%99%ED%99%94"><img class="tag-thumb" src="assets/tags/ai-automation.jpg" alt="" width="24" height="24">AI 자동화</a></li>
-              <li><a href="blog/?tag=%EB%8D%B0%EC%9D%B4%ED%84%B0%20%EA%B5%AC%EC%A1%B0"><img class="tag-thumb" src="assets/tags/data-structure.jpg" alt="" width="24" height="24">데이터 구조</a></li>
-              <li><a href="blog/?tag=%EB%AC%B8%EC%84%9C%2F%EA%B2%B0%EC%9E%AC"><img class="tag-thumb" src="assets/tags/document-approval.jpg" alt="" width="24" height="24">문서/결재</a></li>
-              <li><a href="blog/?tag=Tools"><img class="tag-thumb" src="assets/tags/tools.jpg" alt="" width="24" height="24">Tools</a></li>
-              <li><a href="blog/?tag=Portfolio"><img class="tag-thumb" src="assets/tags/portfolio.jpg" alt="" width="24" height="24">Portfolio</a></li>
-              <li><a href="blog/?tag=%ED%9A%8C%EA%B3%A0"><img class="tag-thumb" src="assets/tags/retrospective.jpg" alt="" width="24" height="24">회고</a></li>
-            </ul>
-          </section>
-
-          <section class="side-group" aria-labelledby="side-social-title">
-            <h2 id="side-social-title">연결</h2>
-            <ul class="side-links">
-              <li><a href="https://github.com/taehyunny">GitHub</a></li>
-              <li><a href="mailto:taehyunny0312@gmail.com">Email</a></li>
-            </ul>
-          </section>
-        </div>
-      </aside>
-
-      <div class="content-column">
-    <main>
-      <section class="intro-cover" aria-labelledby="intro-title">
-        <div class="intro-copy">
-          <div>
-            <p class="intro-eyebrow">by taehyun</p>
-            <h1 id="intro-title">정태현의 기록</h1>
-            <p>
-              일이 되게 만드는 과정에서 배운 것들을 적습니다. 업무 흐름, 문서, 데이터, 자동화 사이에서
-              직접 해본 것과 다시 생각한 것을 남깁니다.
-            </p>
-            <ul class="intro-meta" aria-label="대표 주제">
-              <li><a href="blog/?tag=%EC%97%85%EB%AC%B4%20%ED%94%84%EB%A1%9C%EC%84%B8%EC%8A%A4"><img class="tag-thumb" src="assets/tags/work-process.jpg" alt="" width="24" height="24">업무 프로세스</a></li>
-              <li><a href="blog/?tag=%EC%82%AC%EC%97%85%EA%B8%B0%ED%9A%8D"><img class="tag-thumb" src="assets/tags/business-planning.jpg" alt="" width="24" height="24">사업기획</a></li>
-              <li><a href="blog/?tag=AI%20%EC%9E%90%EB%8F%99%ED%99%94"><img class="tag-thumb" src="assets/tags/ai-automation.jpg" alt="" width="24" height="24">AI 자동화</a></li>
-              <li><a href="blog/?tag=%EB%8D%B0%EC%9D%B4%ED%84%B0%20%EA%B5%AC%EC%A1%B0"><img class="tag-thumb" src="assets/tags/data-structure.jpg" alt="" width="24" height="24">데이터 구조</a></li>
-              <li><a href="blog/?tag=%EB%AC%B8%EC%84%9C%2F%EA%B2%B0%EC%9E%AC"><img class="tag-thumb" src="assets/tags/document-approval.jpg" alt="" width="24" height="24">문서/결재</a></li>
-              <li><a href="blog/?tag=Tools"><img class="tag-thumb" src="assets/tags/tools.jpg" alt="" width="24" height="24">Tools</a></li>
-              <li><a href="blog/?tag=Portfolio"><img class="tag-thumb" src="assets/tags/portfolio.jpg" alt="" width="24" height="24">Portfolio</a></li>
-              <li><a href="blog/?tag=%ED%9A%8C%EA%B3%A0"><img class="tag-thumb" src="assets/tags/retrospective.jpg" alt="" width="24" height="24">회고</a></li>
-            </ul>
-          </div>
-          <a class="intro-action" href="#latest">최근 글 읽기</a>
-        </div>
-      </section>
-
-      <section id="featured" aria-labelledby="featured-title">
-        <div class="section-heading">
-          <div>
-            <h2 id="featured-title">Featured</h2>
-            <p>업무 문제를 정의하고, 프로세스와 데이터 구조로 정리한 대표 기록입니다.</p>
-          </div>
-          <a class="section-link" href="blog/">전체 글 보기</a>
-        </div>
-
-        <div class="feature-grid">
-          <article class="card">
-            <a class="card-media" href="posts/kas-web-erp-django/index.html" aria-label="엑셀과 구두 보고를 업무 시스템으로 바꾸며 배운 승인·정산 구조">
-              <img src="assets/categories/process.jpg" alt="">
-            </a>
-            <p class="card-kicker">대표 기록 · 8 min read</p>
-            <ul class="card-tags"><li>업무 프로세스</li><li>문서/결재</li></ul>
-            <h3>엑셀과 구두 보고를 업무 시스템으로 바꾸며 배운 승인·정산 구조</h3>
-            <p>강사 파견 업체의 요청, 결재, 강사료, 식사 장부, 회계 흐름을 하나의 업무 시스템으로 묶으며 필요한 기록과 권한 구조를 정리한 글입니다.</p>
-            <div class="card-footer">
-              <span>Jun 16, 2026</span>
-              <a class="read-link" href="posts/kas-web-erp-django/index.html">기록 읽기</a>
-            </div>
-          </article>
-
-          <article class="card">
-            <a class="card-media" href="posts/kas-grant-collector/index.html" aria-label="정부지원사업 공고를 의사결정 자료로 바꾸는 업무 흐름 설계">
-              <img src="assets/categories/planning.jpg" alt="">
-            </a>
-            <p class="card-kicker">대표 기록 · 7 min read</p>
-            <ul class="card-tags"><li>사업기획</li><li>AI 자동화</li><li class="tag-more">+1</li></ul>
-            <h3>정부지원사업 공고를 의사결정 자료로 바꾸는 업무 흐름 설계</h3>
-            <p>흩어진 공고를 수집하고 정규화, 중복 제거, 점수화, 보고서 생성으로 이어지게 만들어 사람이 검토할 후보를 줄인 기록입니다.</p>
-            <div class="card-footer">
-              <span>Jun 16, 2026</span>
-              <a class="read-link" href="posts/kas-grant-collector/index.html">기록 읽기</a>
-            </div>
-          </article>
-
-          <article class="card">
-            <a class="card-media" href="posts/coco-emotion-care-agent/index.html" aria-label="AI가 감정을 판단할 때 사람이 보완해야 하는 흐름을 어떻게 설계할까">
-              <img src="assets/categories/automation.jpg" alt="">
-            </a>
-            <p class="card-kicker">대표 기록 · 5 min read</p>
-            <ul class="card-tags"><li>AI 자동화</li><li>데이터 구조</li></ul>
-            <h3>AI가 감정을 판단할 때 사람이 보완해야 하는 흐름을 어떻게 설계할까</h3>
-            <p>표정 인식, 사용자 선택, LLM 응답, SQLite 기록을 연결하면서 AI 판단을 사람이 보완하고 검토할 수 있게 만든 기록입니다.</p>
-            <div class="card-footer">
-              <span>May 25, 2026</span>
-              <a class="read-link" href="posts/coco-emotion-care-agent/index.html">기록 읽기</a>
-            </div>
-          </article>
-
-          <article class="card">
-            <a class="card-media" href="posts/youth-ai-pass/index.html" aria-label="공공데이터를 AI 커리어 추천 흐름으로 바꾸며 배운 것">
-              <img src="assets/categories/data.jpg" alt="">
-            </a>
-            <p class="card-kicker">대표 기록 · 8 min read</p>
-            <ul class="card-tags"><li>사업기획</li><li>공공데이터</li><li class="tag-more">+1</li></ul>
-            <h3>공공데이터를 AI 커리어 추천 흐름으로 바꾸며 배운 것</h3>
-            <p>전라남도 청년 정책과 교육 데이터를 수집, 정규화, 필터링, AI 설명 흐름으로 연결하며 배운 서비스 기획 기록입니다.</p>
-            <div class="card-footer">
-              <span>Jul 2, 2026</span>
-              <a class="read-link" href="posts/youth-ai-pass/index.html">기록 읽기</a>
-            </div>
-          </article>
-        </div>
-      </section>
-
-      <section id="latest" aria-labelledby="latest-title">
-        <div class="section-heading">
-          <div>
-            <h2 id="latest-title">최근 기록</h2>
-            <p>업무 시스템, 자동화, 데이터 구조 관점의 최근 글입니다.</p>
-          </div>
-          <a class="section-link" href="blog/">전체 글 보기</a>
-        </div>
-
-        <ol class="latest-list">
-          <li class="latest-item">
-            <time class="date" datetime="2026-07-02">Jul 2, 2026</time>
-            <div>
-              <div class="latest-meta"><span>사업기획</span><span>공공데이터</span><span>8 min read</span></div>
-              <h3><a href="posts/youth-ai-pass/index.html">공공데이터를 AI 커리어 추천 흐름으로 바꾸며 배운 것</a></h3>
-              <p>흩어진 청년 정책과 교육 데이터를 Raw 보존, Opportunity 정규화, AI 추천 조건으로 연결한 서비스 기획 기록입니다.</p>
-              <a class="read-link" href="posts/youth-ai-pass/index.html">기록 읽기</a>
-            </div>
-          </li>
-
-          <li class="latest-item">
-            <time class="date" datetime="2026-06-16">Jun 16, 2026</time>
-            <div>
-              <div class="latest-meta"><span>업무 프로세스</span><span>문서/결재</span><span>8 min read</span></div>
-              <h3><a href="posts/kas-web-erp-django/index.html">엑셀과 구두 보고를 업무 시스템으로 바꾸며 배운 승인·정산 구조</a></h3>
-              <p>요청, 결재, 강사료, 식사 장부, 회계 흐름을 하나로 묶으며 필요한 기록과 권한 구조를 정리한 글입니다.</p>
-              <a class="read-link" href="posts/kas-web-erp-django/index.html">기록 읽기</a>
-            </div>
-          </li>
-
-          <li class="latest-item">
-            <time class="date" datetime="2026-06-16">Jun 16, 2026</time>
-            <div>
-              <div class="latest-meta"><span>사업기획</span><span>공공데이터</span><span>7 min read</span></div>
-              <h3><a href="posts/kas-grant-collector/index.html">정부지원사업 공고를 의사결정 자료로 바꾸는 업무 흐름 설계</a></h3>
-              <p>공고 수집, 정규화, 중복 제거, 점수화, 보고서 생성을 연결해 검토할 후보를 줄인 기록입니다.</p>
-              <a class="read-link" href="posts/kas-grant-collector/index.html">기록 읽기</a>
-            </div>
-          </li>
-
-          <li class="latest-item">
-            <time class="date" datetime="2026-06-03">Jun 3, 2026</time>
-            <div>
-              <div class="latest-meta"><span>업무 프로세스</span><span>문제정의</span><span>5 min read</span></div>
-              <h3><a href="posts/internal-work-system-planning/index.html">내부 업무 시스템을 기획할 때 먼저 생각한 것들</a></h3>
-              <p>요청, 검토, 승인, 파일, 기록 흐름을 하나의 업무 시스템으로 묶기 위한 관점 정리입니다.</p>
-              <a class="read-link" href="posts/internal-work-system-planning/index.html">기록 읽기</a>
-            </div>
-          </li>
-
-          <li class="latest-item">
-            <time class="date" datetime="2026-05-25">May 25, 2026</time>
-            <div>
-              <div class="latest-meta"><span>데이터 구조</span><span>5 min read</span></div>
-              <h3><a href="posts/cpp-delivery-platform/index.html">주문·결제 데이터가 흔들리지 않게 서버 기준을 세운 기록</a></h3>
-              <p>주소, 주문, 결제, 리뷰 흐름을 서버와 데이터베이스 기준으로 검증하고 주문 당시 정보를 남긴 기록입니다.</p>
-              <a class="read-link" href="posts/cpp-delivery-platform/index.html">기록 읽기</a>
-            </div>
-          </li>
-
-          <li class="latest-item">
-            <time class="date" datetime="2026-05-25">May 25, 2026</time>
-            <div>
-              <div class="latest-meta"><span>AI 자동화</span><span>데이터 구조</span><span>5 min read</span></div>
-              <h3><a href="posts/coco-emotion-care-agent/index.html">AI가 감정을 판단할 때 사람이 보완해야 하는 흐름을 어떻게 설계할까</a></h3>
-              <p>표정 인식, 사용자 선택, LLM 응답, SQLite 기록을 연결해 AI 판단을 검토 가능한 흐름으로 만든 기록입니다.</p>
-              <a class="read-link" href="posts/coco-emotion-care-agent/index.html">기록 읽기</a>
-            </div>
-          </li>
-
-          <li class="latest-item">
-            <time class="date" datetime="2026-05-25">May 25, 2026</time>
-            <div>
-              <div class="latest-meta"><span>AI 자동화</span><span>업무 프로세스</span><span>5 min read</span></div>
-              <h3><a href="posts/ai-drawing-system/index.html">AI 생성 결과를 사용자가 이해할 수 있는 과정으로 바꾸는 인터랙션 설계</a></h3>
-              <p>스케치 입력, AI 이미지 생성, 윤곽선 추출, C++ 재생 흐름을 사용자가 따라갈 수 있는 과정으로 바꾼 기록입니다.</p>
-              <a class="read-link" href="posts/ai-drawing-system/index.html">기록 읽기</a>
-            </div>
-          </li>
-        </ol>
-      </section>
-
-      <section class="profile" id="about" aria-labelledby="profile-title">
-        <div class="profile-panel">
-          <div>
-            <p class="eyebrow">Approach</p>
-            <h2 class="profile-name" id="profile-title">작업 방식</h2>
-            <p class="profile-subtitle">문제 정의에서 데이터 구조, 자동화 적용, 검토 기록까지 이어지는 흐름을 정리합니다.</p>
-          </div>
-          <div class="profile-actions">
-            <a class="button" href="#featured">대표 기록 보기</a>
-            <a class="button secondary" href="about/">About</a>
-            <a class="button secondary" href="blog/">전체 글</a>
-            <a class="button secondary" href="#contact">연락</a>
-          </div>
-        </div>
-
-        <div class="profile-copy">
-          <p>
-            업무 요청과 승인, 데이터 입력과 검토, 자동화 결과가 실제 운영에서 끊기지 않도록 흐름을 먼저 정리합니다.
-          </p>
-          <p>
-            필요한 도구를 크게 만들기보다, 문서와 데이터가 다음 판단으로 이어지는 최소 구조를 설계하고 검증합니다.
-          </p>
-          <ul class="quick-facts" aria-label="작업 방식">
-            <li><strong>문제 정의</strong>업무가 막히는 지점과 반복되는 판단을 찾습니다.</li>
-            <li><strong>데이터 구조</strong>보고와 실행으로 이어질 수 있는 기록 단위를 설계합니다.</li>
-            <li><strong>자동화 적용</strong>사람이 검토할 부분과 AI가 보조할 부분을 나눕니다.</li>
-          </ul>
-        </div>
-      </section>
-
-      <section class="contact-panel" id="contact" aria-labelledby="contact-title">
-        <div>
-          <h2 id="contact-title">Contact / Social</h2>
-          <p>업무 시스템 기획, AI 자동화, 데이터 기반 서비스 기획과 관련된 기록을 남깁니다.</p>
-          <div class="contact-actions">
-            <a class="button" href="https://github.com/taehyunny">GitHub</a>
-            <a class="button secondary" href="mailto:taehyunny0312@gmail.com">Email</a>
-            <a class="button secondary" href="about/">About 보기</a>
-          </div>
-        </div>
-        <ul class="contact-list" aria-label="소셜 링크">
-          <li><a href="https://github.com/taehyunny">GitHub</a></li>
-          <li><a href="mailto:taehyunny0312@gmail.com">taehyunny0312@gmail.com</a></li>
-        </ul>
-      </section>
-    </main>
-
-    <footer>
-      <p>
-        I write about planning work systems, structuring business data, and using AI automation where it supports better decisions.
-        Last updated: 2026-07-08.
-      </p>
-    </footer>
-      </div>
     </div>
-  </div>
-  <script>
-    (function () {
-      var root = document.documentElement;
+  </header>
 
-      function applyTheme(theme) {
-        var nextTheme = theme === "dark" ? "dark" : "light";
-        root.dataset.theme = nextTheme;
-        try {
-          localStorage.setItem("theme", nextTheme);
-        } catch (error) {}
+  <main id="content" class="site-shell">
+    <section class="page-intro" aria-labelledby="home-title">
+      <p class="eyebrow">Strategy · Systems · Implementation</p>
+      <h1 id="home-title">문제를 정의하고,<br>시스템으로 검증한 기록</h1>
+      <p class="intro-copy">업무 흐름과 데이터 구조를 기획하고 Python, Django, C++, AI로 구현하며 확인한 설계 판단과 실패를 기록합니다.</p>
+      <ul class="identity-line" aria-label="주요 관심 분야">
+        <li>업무 시스템</li>
+        <li>데이터·AI</li>
+        <li>공공데이터</li>
+        <li>구현과 검증</li>
+      </ul>
+    </section>
 
-        document.querySelectorAll(".theme-toggle").forEach(function (button) {
-          var isDark = nextTheme === "dark";
-          button.setAttribute("aria-pressed", String(isDark));
-          button.setAttribute("aria-label", isDark ? "라이트 모드 켜기" : "다크 모드 켜기");
-          var text = button.querySelector(".theme-toggle-text");
-          if (text) {
-            text.textContent = isDark ? "Light" : "Dark";
-          }
-        });
-      }
+    <section class="content-section" aria-labelledby="featured-title">
+      <div class="section-heading">
+        <h2 id="featured-title">먼저 읽을 글</h2>
+        <a href="/blog/">전체 글 보기</a>
+      </div>
+      <ol class="article-list">
+        <li class="article-row">
+          <time class="article-date" datetime="2026-07-02">2026. 07. 02</time>
+          <div class="article-body">
+            <p class="post-domain">데이터·AI 시스템</p>
+            <h2><a href="/posts/youth-ai-pass/">공공데이터를 AI 커리어 추천 흐름으로 바꾸며 배운 것</a></h2>
+            <p class="article-summary">서로 다른 공공데이터를 원본 기록, 표준 모델, 필터, 추천 근거로 연결하며 데이터 계약과 실패 경로를 설계한 기록입니다.</p>
+            <ul class="inline-tags"><li>공공데이터</li><li>API 계약</li></ul>
+          </div>
+        </li>
+        <li class="article-row">
+          <time class="article-date" datetime="2026-06-16">2026. 06. 16</time>
+          <div class="article-body">
+            <p class="post-domain">시스템·업무 설계</p>
+            <h2><a href="/posts/kas-web-erp-django/">엑셀과 구두 보고를 업무 시스템으로 바꾸며 배운 승인·정산 구조</a></h2>
+            <p class="article-summary">요청, 결재, 강사료, 식사 장부와 회계 흐름을 하나의 Django 업무 시스템으로 묶으며 권한과 기록 기준을 정한 과정입니다.</p>
+            <ul class="inline-tags"><li>Django</li><li>업무 프로세스</li></ul>
+          </div>
+        </li>
+        <li class="article-row">
+          <time class="article-date" datetime="2026-06-16">2026. 06. 16</time>
+          <div class="article-body">
+            <p class="post-domain">데이터·AI 시스템</p>
+            <h2><a href="/posts/kas-grant-collector/">정부지원사업 공고를 의사결정 자료로 바꾸는 업무 흐름 설계</a></h2>
+            <p class="article-summary">수집보다 어려웠던 정규화, 중복 제거, 점수화와 사람 검토 지점을 중심으로 자동화 파이프라인을 정리했습니다.</p>
+            <ul class="inline-tags"><li>Python</li><li>Human-in-the-loop</li></ul>
+          </div>
+        </li>
+      </ol>
+    </section>
 
-      applyTheme(root.dataset.theme === "dark" ? "dark" : "light");
-      document.querySelectorAll(".theme-toggle").forEach(function (button) {
-        button.addEventListener("click", function () {
-          applyTheme(root.dataset.theme === "dark" ? "light" : "dark");
-        });
-      });
+    <section class="content-section" aria-labelledby="domains-title">
+      <div class="section-heading">
+        <h2 id="domains-title">기술 분야별 기록</h2>
+      </div>
+      <div class="domain-grid">
+        <section class="domain-column" aria-labelledby="systems-title">
+          <h3 id="systems-title">시스템·업무 설계</h3>
+          <ul class="domain-list">
+            <li><a href="/posts/kas-web-erp-django/">승인·정산 구조를 Django 시스템으로 옮긴 기록</a><small>권한 · 상태 · 기록 보존</small></li>
+            <li><a href="/posts/cpp-delivery-platform/">주문·결제 데이터의 서버 기준을 세운 기록</a><small>C++ · 데이터 스냅샷</small></li>
+            <li><a href="/posts/internal-work-system-planning/">내부 업무 시스템을 기획할 때 먼저 생각한 것들</a><small>요청 · 승인 · 파일</small></li>
+          </ul>
+        </section>
+        <section class="domain-column" aria-labelledby="data-title">
+          <h3 id="data-title">데이터·AI 시스템</h3>
+          <ul class="domain-list">
+            <li><a href="/posts/youth-ai-pass/">공공데이터와 AI 추천 흐름</a><small>정규화 · 필터 · API fallback</small></li>
+            <li><a href="/posts/kas-grant-collector/">지원사업 공고 수집과 검토 자동화</a><small>수집 · 중복 제거 · 점수화</small></li>
+            <li><a href="/posts/coco-emotion-care-agent/">감정 판단을 사람이 보완하는 AI 흐름</a><small>Vision · LLM · SQLite</small></li>
+          </ul>
+        </section>
+        <section class="domain-column" aria-labelledby="interaction-title">
+          <h3 id="interaction-title">인터랙션·Vision</h3>
+          <ul class="domain-list">
+            <li><a href="/posts/ai-drawing-system/">AI 생성 결과를 과정으로 바꾼 인터랙션</a><small>이미지 생성 · C++ 재생</small></li>
+            <li><a href="/posts/fall-detection-blackbox/">감지 결과를 검증 가능한 영상 로그로 남기기</a><small>이벤트 · 프레임 · 클립</small></li>
+          </ul>
+        </section>
+      </div>
+    </section>
 
-      var sideNavLinks = Array.prototype.slice.call(document.querySelectorAll('.side-links a[href^="#"]'));
-      var sideSections = sideNavLinks
-        .map(function (link) {
-          return document.querySelector(link.getAttribute("href"));
-        })
-        .filter(Boolean);
+    <section class="content-section" id="implementation" aria-labelledby="implementation-title">
+      <div class="section-heading">
+        <h2 id="implementation-title">구현 기록을 읽는 기준</h2>
+      </div>
+      <p class="implementation-note">기능 목록보다 어떤 제약 아래 기준을 세웠고, 어디에서 실패했으며, 무엇으로 완료를 확인했는지를 중심으로 기록합니다. 기획은 구현과 검증으로 이어질 때 기술 의사결정이 됩니다.</p>
+      <div class="text-links">
+        <a href="/blog/?tag=시스템·업무 설계">시스템 설계 글</a>
+        <a href="/blog/?tag=데이터·AI 시스템">데이터·AI 글</a>
+        <a href="/blog/?tag=인터랙션·Vision">Vision·인터랙션 글</a>
+      </div>
+    </section>
 
-      function setActiveSection(id) {
-        sideNavLinks.forEach(function (link) {
-          link.classList.toggle("is-active", link.getAttribute("href") === "#" + id);
-        });
-      }
+    <section class="content-section" aria-labelledby="about-brief-title">
+      <div class="section-heading">
+        <h2 id="about-brief-title">작성자</h2>
+        <a href="/about/">About 보기</a>
+      </div>
+      <p class="about-note">정태현. 전략기획 관점에서 업무 흐름과 데이터 구조를 정리하고, 작은 구현과 테스트를 통해 가정을 확인하는 기획자·개발자입니다.</p>
+    </section>
+  </main>
 
-      var ticking = false;
-
-      function updateActiveFromScroll() {
-        var anchor = window.innerHeight * 0.24;
-        var marker = window.scrollY + anchor;
-        var current = sideSections[0];
-        var bestDistance = Infinity;
-
-        sideSections.forEach(function (section) {
-          var rect = section.getBoundingClientRect();
-          if (rect.bottom > 0 && rect.top < window.innerHeight) {
-            var distance = Math.abs(rect.top - anchor);
-            if (distance < bestDistance) {
-              bestDistance = distance;
-              current = section;
-            }
-            return;
-          }
-
-          var sectionTop = rect.top + window.scrollY;
-          if (bestDistance === Infinity && sectionTop <= marker) {
-            current = section;
-          }
-        });
-
-        if (current) {
-          setActiveSection(current.id);
-        }
-
-        ticking = false;
-      }
-
-      function requestActiveUpdate() {
-        if (!ticking) {
-          window.requestAnimationFrame(updateActiveFromScroll);
-          ticking = true;
-        }
-      }
-
-      if (sideSections.length) {
-        updateActiveFromScroll();
-        window.addEventListener("scroll", requestActiveUpdate, { passive: true });
-        window.addEventListener("resize", requestActiveUpdate);
-      }
-
-      sideNavLinks.forEach(function (link) {
-        link.addEventListener("click", function () {
-          var target = document.querySelector(link.getAttribute("href"));
-          if (target) {
-            setActiveSection(target.id);
-          }
-        });
-      });
-    })();
-  </script></body>
+  <footer class="site-shell site-footer">
+    <p>© <span data-current-year>2026</span> 정태현</p>
+    <p><a href="mailto:taehyunny0312@gmail.com">Email</a> · <a href="https://github.com/taehyunny">GitHub</a> · <a href="/feed.xml">RSS</a></p>
+  </footer>
+  <script src="/assets/js/site.js?v=20260717"></script>
+</body>
 </html>

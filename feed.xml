@@ -1,0 +1,74 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>정태현의 기술 기록</title>
+    <link>https://taehyunny.github.io/</link>
+    <description>업무 시스템, 데이터 구조, AI 자동화의 설계와 구현 기록</description>
+    <language>ko</language>
+    <lastBuildDate>Fri, 17 Jul 2026 00:00:00 +0900</lastBuildDate>
+    <atom:link href="https://taehyunny.github.io/feed.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>공공데이터를 AI 커리어 추천 흐름으로 바꾸며 배운 것</title>
+      <link>https://taehyunny.github.io/posts/youth-ai-pass/</link>
+      <guid isPermaLink="true">https://taehyunny.github.io/posts/youth-ai-pass/</guid>
+      <pubDate>Thu, 02 Jul 2026 00:00:00 +0900</pubDate>
+      <description>공공데이터 원본 보존, 표준 모델, 필터, AI 서버 계약과 API fallback을 연결한 기록입니다.</description>
+    </item>
+    <item>
+      <title>엑셀과 구두 보고를 업무 시스템으로 바꾸며 배운 승인·정산 구조</title>
+      <link>https://taehyunny.github.io/posts/kas-web-erp-django/</link>
+      <guid isPermaLink="true">https://taehyunny.github.io/posts/kas-web-erp-django/</guid>
+      <pubDate>Tue, 16 Jun 2026 00:00:00 +0900</pubDate>
+      <description>Django 업무 시스템에서 요청, 승인, 정산, 상태와 권한 기준을 정한 기록입니다.</description>
+    </item>
+    <item>
+      <title>정부지원사업 공고를 의사결정 자료로 바꾸는 업무 흐름 설계</title>
+      <link>https://taehyunny.github.io/posts/kas-grant-collector/</link>
+      <guid isPermaLink="true">https://taehyunny.github.io/posts/kas-grant-collector/</guid>
+      <pubDate>Tue, 16 Jun 2026 00:00:00 +0900</pubDate>
+      <description>수집 결과를 정규화하고 중복을 줄여 사람이 검토할 후보로 좁힌 자동화 기록입니다.</description>
+    </item>
+    <item>
+      <title>내부 업무 시스템을 기획할 때 먼저 생각한 것들</title>
+      <link>https://taehyunny.github.io/posts/internal-work-system-planning/</link>
+      <guid isPermaLink="true">https://taehyunny.github.io/posts/internal-work-system-planning/</guid>
+      <pubDate>Wed, 03 Jun 2026 00:00:00 +0900</pubDate>
+      <description>요청, 검토, 승인, 파일과 기록의 책임을 먼저 정의한 업무 시스템 기획 기록입니다.</description>
+    </item>
+    <item>
+      <title>주문·결제 데이터가 흔들리지 않게 서버 기준을 세운 기록</title>
+      <link>https://taehyunny.github.io/posts/cpp-delivery-platform/</link>
+      <guid isPermaLink="true">https://taehyunny.github.io/posts/cpp-delivery-platform/</guid>
+      <pubDate>Mon, 25 May 2026 00:00:00 +0900</pubDate>
+      <description>주문 당시 데이터를 스냅샷으로 남기고 서버 기준을 세운 C++ 프로젝트 기록입니다.</description>
+    </item>
+    <item>
+      <title>AI가 감정을 판단할 때 사람이 보완해야 하는 흐름을 어떻게 설계할까</title>
+      <link>https://taehyunny.github.io/posts/coco-emotion-care-agent/</link>
+      <guid isPermaLink="true">https://taehyunny.github.io/posts/coco-emotion-care-agent/</guid>
+      <pubDate>Mon, 25 May 2026 00:00:00 +0900</pubDate>
+      <description>AI 감정 판단을 확정값으로 쓰지 않고 사람이 보완하는 시스템 흐름입니다.</description>
+    </item>
+    <item>
+      <title>AI 생성 결과를 사용자가 이해할 수 있는 과정으로 바꾸는 인터랙션 설계</title>
+      <link>https://taehyunny.github.io/posts/ai-drawing-system/</link>
+      <guid isPermaLink="true">https://taehyunny.github.io/posts/ai-drawing-system/</guid>
+      <pubDate>Mon, 25 May 2026 00:00:00 +0900</pubDate>
+      <description>AI 생성 결과를 사용자가 따라갈 수 있는 과정으로 설계한 구현 기록입니다.</description>
+    </item>
+    <item>
+      <title>감지 결과를 나중에 확인 가능한 기록으로 남기는 영상 로그 구조</title>
+      <link>https://taehyunny.github.io/posts/fall-detection-blackbox/</link>
+      <guid isPermaLink="true">https://taehyunny.github.io/posts/fall-detection-blackbox/</guid>
+      <pubDate>Mon, 25 May 2026 00:00:00 +0900</pubDate>
+      <description>영상 감지 결과를 검증 가능한 이벤트 로그로 남긴 시스템 설계 기록입니다.</description>
+    </item>
+    <item>
+      <title>문서와 프로젝트 경험을 포트폴리오 글로 바꾸는 자동화 흐름</title>
+      <link>https://taehyunny.github.io/sample-post.html</link>
+      <guid isPermaLink="true">https://taehyunny.github.io/sample-post.html</guid>
+      <pubDate>Mon, 25 May 2026 00:00:00 +0900</pubDate>
+      <description>메모와 프로젝트 자료를 기술 의사결정 기록으로 재구성한 문서 자동화 MVP입니다.</description>
+    </item>
+  </channel>
+</rss>

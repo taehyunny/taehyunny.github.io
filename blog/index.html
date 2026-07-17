@@ -3,23 +3,29 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="업무 시스템, 데이터·AI, 공공데이터, Vision 구현과 검증 과정을 정리한 정태현의 기술 글 목록입니다.">
+  <link rel="canonical" href="https://taehyunny.github.io/blog/">
+  <meta property="og:type" content="website">
+  <meta property="og:locale" content="ko_KR">
+  <meta property="og:title" content="전체 기술 기록 | 정태현">
+  <meta property="og:description" content="문제 정의, 설계 판단, 구현, 실패 원인과 검증을 담은 기술 글 목록입니다.">
+  <meta property="og:url" content="https://taehyunny.github.io/blog/">
+  <meta property="og:image" content="https://taehyunny.github.io/assets/categories/data.jpg">
+  <meta name="twitter:card" content="summary_large_image">
+  <link rel="alternate" type="application/rss+xml" title="정태현의 기술 기록" href="/feed.xml">
   <link rel="icon" href="/favicon.ico?v=20260622" sizes="any">
   <link rel="icon" href="/assets/favicon-32x32.png?v=20260622" type="image/png" sizes="32x32">
   <link rel="apple-touch-icon" href="/assets/apple-touch-icon.png?v=20260622">
   <link rel="preconnect" href="https://cdn.jsdelivr.net" crossorigin>
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link rel="preload" as="style" crossorigin href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard/dist/web/variable/pretendardvariable-dynamic-subset.css">
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard/dist/web/variable/pretendardvariable-dynamic-subset.css">
   <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Nanum+Myeongjo:wght@700&display=swap">
+  <link rel="stylesheet" href="/assets/css/site.css?v=20260717">
   <script>
     (function () {
-      try {
-        var savedTheme = localStorage.getItem("theme");
-        document.documentElement.dataset.theme = savedTheme === "dark" ? "dark" : "light";
-      } catch (error) {
-        document.documentElement.dataset.theme = "light";
-      }
+      try { document.documentElement.dataset.theme = localStorage.getItem("theme") === "dark" ? "dark" : "light"; }
+      catch (error) { document.documentElement.dataset.theme = "light"; }
     })();
   </script>
   <!-- Google Analytics -->
@@ -30,601 +36,57 @@
     gtag("js", new Date());
     gtag("config", "G-Z1WFWHS0VR");
   </script>
-  <title>전체 글 | 정태현의 기록</title>
-  <style>
-    :root {
-      color-scheme: light;
-      --bg: #FFFFFF;
-      --bg-elev: #FFFFFF;
-      --text: #252622;
-      --text-muted: #6F6B62;
-      --border: #D8D0C2;
-      --accent: #5A1E22;
-      --accent-ink: #7A2A2F;
-      --font-sans: "Pretendard Variable", Pretendard, "Apple SD Gothic Neo", system-ui, sans-serif;
-      --font-serif: "Nanum Myeongjo", "Noto Serif KR", serif;
-      --fs-h1: clamp(32px, 5vw, 52px);
-      --fs-h2: 22px;
-      --fs-body: 16px;
-      --fs-meta: 13px;
-      --lh-body: 1.75;
-      --color-ink: var(--text);
-      --color-primary: var(--accent);
-      --color-primary-hover: var(--accent-ink);
-      --color-heading: var(--text);
-      --color-text: var(--text);
-      --color-muted: var(--text-muted);
-      --color-bg: var(--bg);
-      --color-bg-soft: #F4F4EC;
-      --color-surface: var(--bg-elev);
-      --color-border: var(--border);
-      --color-tag-text: #4F5F2D;
-      --color-menu-accent: #4F5F2D;
-      --focus-ring: rgba(90, 30, 34, 0.24);
-    }
-    html[data-theme="dark"] {
-      color-scheme: dark;
-      --bg: #171814;
-      --bg-elev: #20211D;
-      --text: #E8E2D7;
-      --text-muted: #B9B1A4;
-      --border: #474237;
-      --accent: #E3A0A6;
-      --accent-ink: #F1BAC0;
-      --color-ink: var(--text);
-      --color-ink-soft: #D5CEC2;
-      --color-ink-muted: #A8A092;
-      --color-primary: var(--accent);
-      --color-primary-hover: var(--accent-ink);
-      --color-heading: #F4EFE6;
-      --color-text: var(--text);
-      --color-muted: var(--text-muted);
-      --color-bg: var(--bg);
-      --color-bg-soft: #24251F;
-      --color-surface: var(--bg-elev);
-      --color-border: var(--border);
-      --color-tag-text: #DAD9A8;
-      --color-menu-accent: #DAD9A8;
-      --color-menu-soft: var(--accent);
-      --color-menu-muted: #AAA58F;
-      --color-menu-active-bg: rgba(218, 217, 168, 0.08);
-      --ink: var(--color-text);
-      --muted: var(--color-muted);
-      --line: var(--color-border);
-      --bg-page: var(--color-bg);
-      --link: var(--color-primary);
-      --soft: var(--color-bg-soft);
-      --code: #11120F;
-      --focus-ring: rgba(227, 160, 166, 0.34);
-    }
-    * {
-      box-sizing: border-box;
-    }
-
-    body {
-      margin: 0;
-      color: var(--color-text);
-      background: var(--color-bg);
-      font-family: var(--font-sans);
-      font-size: var(--fs-body);
-      letter-spacing: -0.01em;
-      line-height: var(--lh-body);
-      transition: background-color 160ms ease, color 160ms ease;
-    }
-
-    h1,
-    h2,
-    h3,
-    p,
-    li {
-      word-break: keep-all;
-      overflow-wrap: break-word;
-    }
-    a {
-      color: var(--color-primary);
-      text-decoration: none;
-    }
-
-    a:hover {
-      color: var(--color-primary-hover);
-      text-decoration: underline;
-    }
-
-    a:focus-visible {
-      outline: 2px solid var(--color-primary);
-      outline-offset: 3px;
-      border-radius: 4px;
-      box-shadow: 0 0 0 4px var(--focus-ring);
-    }
-
-    .page {
-      width: min(880px, calc(100% - 32px));
-      margin: 0 auto;
-      padding: 24px 0 56px;
-    }
-
-    .site-header {
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-      gap: 20px;
-      padding: 14px 0 18px;
-      border-bottom: 1px solid var(--color-border);
-      background: transparent;
-    }
-
-    .site-name {
-      color: var(--color-ink);
-      font-family: var(--font-serif);
-      font-size: 19px;
-      font-weight: 700;
-    }
-
-    .site-name:hover {
-      color: var(--color-primary);
-      text-decoration: none;
-    }
-
-    nav {
-      display: flex;
-      flex-wrap: wrap;
-      gap: 14px;
-      font-size: 14px;
-    }
-
-    nav a {
-      padding: 5px 0;
-      color: var(--color-menu-accent);
-      font-weight: 700;
-    }
-
-    nav a:hover,
-    nav a:focus-visible {
-      color: var(--color-ink);
-      text-decoration: none;
-    }
-
-    .hero {
-      margin-top: 26px;
-      padding: 44px 0 28px;
-      border: 1px solid var(--color-border);
-      border-right: 0;
-      border-left: 0;
-      border-radius: 0;
-      background: transparent;
-    }
-
-    .eyebrow {
-      margin: 0 0 10px;
-      color: var(--color-muted);
-      font-size: 13px;
-      font-weight: 700;
-      letter-spacing: 0.08em;
-      text-transform: uppercase;
-    }
-
-    h1,
-    h2,
-    h3 {
-      color: var(--color-heading);
-      letter-spacing: 0;
-    }
-
-    h1 {
-      margin: 0;
-      font-family: var(--font-serif);
-      font-size: var(--fs-h1);
-      font-weight: 700;
-      line-height: 1.1;
-    }
-
-    .hero p {
-      max-width: 720px;
-      margin: 14px 0 0;
-      color: var(--color-muted);
-      font-size: 17px;
-    }
-
-    .tag-list {
-      display: flex;
-      flex-wrap: wrap;
-      gap: 8px;
-      margin: 22px 0 0;
-      padding: 0;
-      list-style: none;
-    }
-
-    .tag-list a,
-    .post-meta span {
-      display: inline-flex;
-      align-items: center;
-      min-height: 0;
-      padding: 0;
-      border: 0;
-      border-radius: 0;
-      background: transparent;
-      color: var(--color-tag-text);
-      font-size: var(--fs-meta);
-      font-weight: 500;
-      line-height: 1.2;
-    }
-
-    .tag-list a:hover,
-    .tag-list a:focus-visible,
-    .tag-list a.is-active {
-      color: var(--color-primary);
-      text-decoration: underline;
-      text-underline-offset: 3px;
-    }
-
-    .tag-list a::before,
-    .post-meta span::before {
-      content: "•";
-      margin-right: 5px;
-      color: var(--accent);
-      font-weight: 700;
-    }
-
-    .post-meta .tag-more {
-      color: var(--color-muted);
-    }
-
-    .post-meta .tag-more::before {
-      content: "";
-      margin: 0;
-    }
-
-    .archive {
-      margin-top: 26px;
-    }
-
-    .archive h2 {
-      margin: 0 0 16px;
-      font-size: var(--fs-h2);
-    }
-
-    .post-list {
-      display: grid;
-      gap: 10px;
-      margin: 0;
-      padding: 0;
-      list-style: none;
-    }
-
-    .post {
-      display: grid;
-      grid-template-columns: 110px minmax(0, 1fr);
-      gap: 18px;
-      padding: 18px;
-      border: 1px solid var(--color-border);
-      border-radius: 8px;
-      background: var(--color-surface);
-      transition: border-color 160ms ease;
-    }
-
-    .post:hover {
-      border-color: var(--color-text);
-    }
-
-    .post.is-hidden {
-      display: none;
-    }
-
-    .filter-status {
-      margin: -4px 0 14px;
-      color: var(--color-muted);
-      font-size: 14px;
-    }
-
-    .date {
-      color: var(--color-muted);
-      font-size: 13px;
-      font-weight: 700;
-      white-space: nowrap;
-    }
-
-    .post-meta {
-      display: flex;
-      flex-wrap: wrap;
-      gap: 6px;
-      margin-bottom: 8px;
-    }
-
-    .post h3 {
-      margin: 0 0 6px;
-      font-size: 20px;
-      line-height: 1.35;
-    }
-
-    .post p {
-      margin: 0;
-      color: var(--color-muted);
-      font-size: 15px;
-    }
-
-    footer {
-      margin-top: 28px;
-      padding-top: 20px;
-      border-top: 1px solid var(--color-border);
-      color: var(--color-muted);
-      font-size: var(--fs-meta);
-    }
-
-    footer p {
-      margin: 0;
-    }
-    .theme-toggle {
-      display: inline-flex;
-      align-items: center;
-      justify-content: center;
-      gap: 6px;
-      min-height: 32px;
-      padding: 5px 12px;
-      border: 1px solid var(--color-border);
-      border-radius: 999px;
-      background: var(--color-surface);
-      color: var(--color-menu-accent);
-      cursor: pointer;
-      font-family: var(--font-sans);
-      font-size: 13px;
-      font-weight: 800;
-      line-height: 1;
-      transition: background-color 160ms ease, border-color 160ms ease, color 160ms ease;
-    }
-
-    .theme-toggle:hover,
-    .theme-toggle:focus-visible {
-      border-color: var(--color-primary);
-      background: var(--color-bg-soft);
-      color: var(--color-primary);
-    }
-
-    .theme-toggle:focus-visible {
-      outline: 2px solid var(--color-primary);
-      outline-offset: 3px;
-      box-shadow: 0 0 0 4px var(--focus-ring);
-    }
-
-    .theme-toggle-icon {
-      font-size: 12px;
-      line-height: 1;
-    }
-
-    .side-theme-toggle {
-      width: fit-content;
-      margin: -12px 0 24px;
-    }
-
-    .site-header .theme-toggle {
-      flex: 0 0 auto;
-    }
-
-    .post-toolbar {
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-      gap: 16px;
-      margin-bottom: 28px;
-    }
-
-    .post-toolbar .back {
-      margin: 0;
-    }
-
-
-    @media (max-width: 700px) {
-      .site-header {
-        display: block;
-      }
-
-      nav {
-        margin-top: 12px;
-      }
-
-      .post {
-        display: block;
-      }
-
-      .date {
-        display: block;
-        margin-bottom: 8px;
-      }
-    }
-  </style>
+  <title>전체 기술 기록 | 정태현</title>
 </head>
 <body>
-  <div class="page">
-    <header class="site-header">
-      <a class="site-name" href="../index.html">정태현</a>
-      <nav aria-label="주요 메뉴">
-        <a href="../index.html">Home</a>
-        <a href="../index.html#featured">기획 사례</a>
-        <a href="index.html">전체 글</a>
-        <a href="../about/">About</a>
-        <a href="https://github.com/taehyunny">GitHub</a>
+  <a class="skip-link" href="#content">본문으로 이동</a>
+  <header class="site-header">
+    <div class="site-shell site-header-inner">
+      <a class="site-brand" href="/">정태현의 기술 기록</a>
+      <nav class="site-nav" aria-label="주요 메뉴">
+        <a href="/blog/" aria-current="page">글</a>
+        <a href="/#implementation">구현 기록</a>
+        <a href="/about/">About</a>
+        <a class="nav-optional" href="https://github.com/taehyunny">GitHub</a>
+        <button class="theme-toggle" type="button" aria-label="다크 모드 켜기" aria-pressed="false" title="화면 테마 변경"><span data-theme-icon aria-hidden="true">◐</span></button>
       </nav>
-      <button class="theme-toggle" type="button" aria-label="다크 모드 켜기" aria-pressed="false">
-        <span class="theme-toggle-icon" aria-hidden="true">◐</span>
-        <span class="theme-toggle-text">Dark</span>
-      </button>
-    </header>
+    </div>
+  </header>
 
-    <main>
-      <section class="hero">
-        <p class="eyebrow">Archive</p>
-        <h1>전체 글</h1>
-        <p>업무 흐름, 문서, 데이터, 자동화 사이에서 직접 해본 것과 다시 생각한 것을 모았습니다.</p>
-        <ul class="tag-list" aria-label="블로그 태그">
-          <li><a href="./">전체</a></li>
-          <li><a href="?tag=%EC%97%85%EB%AC%B4%20%ED%94%84%EB%A1%9C%EC%84%B8%EC%8A%A4" data-tag="업무 프로세스">업무 프로세스</a></li>
-          <li><a href="?tag=%EC%82%AC%EC%97%85%EA%B8%B0%ED%9A%8D" data-tag="사업기획">사업기획</a></li>
-          <li><a href="?tag=AI%20%EC%9E%90%EB%8F%99%ED%99%94" data-tag="AI 자동화">AI 자동화</a></li>
-          <li><a href="?tag=%EB%8D%B0%EC%9D%B4%ED%84%B0%20%EA%B5%AC%EC%A1%B0" data-tag="데이터 구조">데이터 구조</a></li>
-          <li><a href="?tag=%EB%AC%B8%EC%84%9C%2F%EA%B2%B0%EC%9E%AC" data-tag="문서/결재">문서/결재</a></li>
-          <li><a href="?tag=%EA%B3%B5%EA%B3%B5%EB%8D%B0%EC%9D%B4%ED%84%B0" data-tag="공공데이터">공공데이터</a></li>
-          <li><a href="?tag=%EB%AC%B8%EC%A0%9C%EC%A0%95%EC%9D%98" data-tag="문제정의">문제정의</a></li>
-          <li><a href="?tag=Tools" data-tag="Tools">Tools</a></li>
-          <li><a href="?tag=Portfolio" data-tag="Portfolio">Portfolio</a></li>
-          <li><a href="?tag=%ED%9A%8C%EA%B3%A0" data-tag="회고">회고</a></li>
-        </ul>
-      </section>
+  <main id="content" class="site-shell">
+    <section class="page-intro" aria-labelledby="archive-title">
+      <p class="eyebrow">Technical Notes</p>
+      <h1 id="archive-title">기술 기록</h1>
+      <p class="intro-copy">기획 의도를 기능 소개로 끝내지 않고, 요구사항과 제약, 데이터 흐름, 구현, 실패 원인과 검증까지 이어서 정리합니다.</p>
+    </section>
 
-      <section class="archive" aria-labelledby="archive-title">
-        <h2 id="archive-title">기록 목록</h2>
-        <p class="filter-status" id="filter-status" hidden></p>
-        <ol class="post-list">
-          <li class="post" data-tags="사업기획 공공데이터 AI 자동화 데이터 구조 Portfolio">
-            <time class="date" datetime="2026-07-02">Jul 2, 2026</time>
-            <div>
-              <div class="post-meta"><span>사업기획</span><span>공공데이터</span><span class="tag-more">+1</span><span>8 min read</span></div>
-              <h3><a href="../posts/youth-ai-pass/index.html">공공데이터를 AI 커리어 추천 흐름으로 바꾸며 배운 것</a></h3>
-              <p>전라남도 청년 정책과 교육 데이터를 수집, 정규화, 필터링, AI 설명 흐름으로 연결하며 배운 서비스 기획 기록입니다.</p>
-            </div>
-          </li>
+    <section class="content-section" aria-label="글 목록">
+      <div class="filter-bar" role="group" aria-label="기술 분야 필터">
+        <button class="filter-button is-active" type="button" data-filter="전체" aria-pressed="true">전체</button>
+        <button class="filter-button" type="button" data-filter="시스템·업무 설계" aria-pressed="false">시스템·업무 설계</button>
+        <button class="filter-button" type="button" data-filter="데이터·AI 시스템" aria-pressed="false">데이터·AI 시스템</button>
+        <button class="filter-button" type="button" data-filter="인터랙션·Vision" aria-pressed="false">인터랙션·Vision</button>
+      </div>
+      <p class="archive-count" data-archive-count aria-live="polite">9개의 글</p>
 
-          <li class="post" data-tags="업무 프로세스 문서/결재 데이터 구조 내부 시스템 기획">
-            <time class="date" datetime="2026-06-16">Jun 16, 2026</time>
-            <div>
-              <div class="post-meta"><span>업무 프로세스</span><span>문서/결재</span><span>8 min read</span></div>
-              <h3><a href="../posts/kas-web-erp-django/index.html">엑셀과 구두 보고를 업무 시스템으로 바꾸며 배운 승인·정산 구조</a></h3>
-              <p>강사 파견 업체의 요청, 결재, 강사료, 식사 장부, 회계 흐름을 하나의 업무 시스템으로 묶으며 필요한 기록과 권한 구조를 정리한 글입니다.</p>
-            </div>
-          </li>
+      <ol class="article-list">
+        <li class="article-row" data-archive-item data-tags="데이터·AI 시스템|공공데이터|AI 자동화|데이터 구조"><time class="article-date" datetime="2026-07-02">2026. 07. 02</time><article class="article-body"><p class="post-domain">데이터·AI 시스템 · 8분</p><h2><a href="/posts/youth-ai-pass/">공공데이터를 AI 커리어 추천 흐름으로 바꾸며 배운 것</a></h2><p class="article-summary">원본 데이터 보존, 표준 모델, 필터, AI 판단, API fallback과 통합 검증 계획을 연결한 기록입니다.</p><ul class="inline-tags"><li>공공데이터</li><li>API 계약</li></ul></article></li>
+        <li class="article-row" data-archive-item data-tags="시스템·업무 설계|업무 프로세스|사업기획|문서/결재"><time class="article-date" datetime="2026-06-16">2026. 06. 16</time><article class="article-body"><p class="post-domain">시스템·업무 설계 · 8분</p><h2><a href="/posts/kas-web-erp-django/">엑셀과 구두 보고를 업무 시스템으로 바꾸며 배운 승인·정산 구조</a></h2><p class="article-summary">요청, 승인, 강사료, 장부와 회계 기록을 Django 안에서 연결하며 상태와 권한 기준을 정한 과정입니다.</p><ul class="inline-tags"><li>Django</li><li>업무 프로세스</li></ul></article></li>
+        <li class="article-row" data-archive-item data-tags="데이터·AI 시스템|사업기획|AI 자동화|공공데이터"><time class="article-date" datetime="2026-06-16">2026. 06. 16</time><article class="article-body"><p class="post-domain">데이터·AI 시스템 · 7분</p><h2><a href="/posts/kas-grant-collector/">정부지원사업 공고를 의사결정 자료로 바꾸는 업무 흐름 설계</a></h2><p class="article-summary">수집 결과를 정규화하고 중복을 줄인 뒤, 점수와 근거를 남겨 사람이 검토할 후보로 좁힌 자동화 기록입니다.</p><ul class="inline-tags"><li>Python</li><li>검토 자동화</li></ul></article></li>
+        <li class="article-row" data-archive-item data-tags="시스템·업무 설계|업무 프로세스|사업기획|문서/결재"><time class="article-date" datetime="2026-06-03">2026. 06. 03</time><article class="article-body"><p class="post-domain">시스템·업무 설계 · 5분</p><h2><a href="/posts/internal-work-system-planning/">내부 업무 시스템을 기획할 때 먼저 생각한 것들</a></h2><p class="article-summary">화면보다 먼저 요청, 검토, 승인, 파일과 기록의 책임을 정의해야 했던 이유를 정리했습니다.</p><ul class="inline-tags"><li>요구사항</li><li>승인 구조</li></ul></article></li>
+        <li class="article-row" data-archive-item data-tags="시스템·업무 설계|데이터 구조"><time class="article-date" datetime="2026-05-25">2026. 05. 25</time><article class="article-body"><p class="post-domain">시스템·업무 설계 · 5분</p><h2><a href="/posts/cpp-delivery-platform/">주문·결제 데이터가 흔들리지 않게 서버 기준을 세운 기록</a></h2><p class="article-summary">주소, 주문, 결제, 리뷰 흐름을 서버 기준으로 검증하고 주문 당시 값을 스냅샷으로 남긴 C++ 프로젝트 기록입니다.</p><ul class="inline-tags"><li>C++</li><li>데이터 일관성</li></ul></article></li>
+        <li class="article-row" data-archive-item data-tags="데이터·AI 시스템|AI 자동화|인터랙션·Vision"><time class="article-date" datetime="2026-05-25">2026. 05. 25</time><article class="article-body"><p class="post-domain">데이터·AI 시스템 · 5분</p><h2><a href="/posts/coco-emotion-care-agent/">AI가 감정을 판단할 때 사람이 보완해야 하는 흐름을 어떻게 설계할까</a></h2><p class="article-summary">표정 인식 결과를 확정값으로 쓰지 않고 사용자 선택, LLM 응답, SQLite 기록으로 보완한 흐름입니다.</p><ul class="inline-tags"><li>Vision</li><li>Human-in-the-loop</li></ul></article></li>
+        <li class="article-row" data-archive-item data-tags="인터랙션·Vision|AI 자동화"><time class="article-date" datetime="2026-05-25">2026. 05. 25</time><article class="article-body"><p class="post-domain">인터랙션·Vision · 5분</p><h2><a href="/posts/ai-drawing-system/">AI 생성 결과를 사용자가 이해할 수 있는 과정으로 바꾸는 인터랙션 설계</a></h2><p class="article-summary">스케치, 이미지 생성, 윤곽선 추출, C++ 재생을 분리해 결과를 따라갈 수 있는 과정으로 만든 기록입니다.</p><ul class="inline-tags"><li>이미지 생성</li><li>C++</li></ul></article></li>
+        <li class="article-row" data-archive-item data-tags="인터랙션·Vision|데이터 구조"><time class="article-date" datetime="2026-05-25">2026. 05. 25</time><article class="article-body"><p class="post-domain">인터랙션·Vision · 5분</p><h2><a href="/posts/fall-detection-blackbox/">감지 결과를 나중에 확인 가능한 기록으로 남기는 영상 로그 구조</a></h2><p class="article-summary">실시간 이벤트 전후의 프레임과 클립을 함께 저장해 감지 결과를 사람이 다시 검증할 수 있게 한 구조입니다.</p><ul class="inline-tags"><li>Vision</li><li>이벤트 로그</li></ul></article></li>
+        <li class="article-row" data-archive-item data-tags="데이터·AI 시스템|시스템·업무 설계|AI 자동화|문서/결재|회고"><time class="article-date" datetime="2026-05-25">2026. 05. 25</time><article class="article-body"><p class="post-domain">데이터·AI 시스템 · 4분</p><h2><a href="/sample-post.html">문서와 프로젝트 경험을 포트폴리오 글로 바꾸는 자동화 흐름</a></h2><p class="article-summary">메모와 프로젝트 자료에서 문제, 데이터 흐름, 구현과 한계를 추출하는 문서 자동화 MVP의 구조를 정리했습니다.</p><ul class="inline-tags"><li>Python</li><li>문서 자동화</li></ul></article></li>
+      </ol>
+    </section>
+  </main>
 
-          <li class="post" data-tags="사업기획 AI 자동화 공공데이터 Tools">
-            <time class="date" datetime="2026-06-16">Jun 16, 2026</time>
-            <div>
-              <div class="post-meta"><span>사업기획</span><span>AI 자동화</span><span class="tag-more">+1</span><span>7 min read</span></div>
-              <h3><a href="../posts/kas-grant-collector/index.html">정부지원사업 공고를 의사결정 자료로 바꾸는 업무 흐름 설계</a></h3>
-              <p>정부지원사업, 입찰, 강사 모집 공고를 수집한 뒤 정규화, 중복 제거, 점수화, 보고서 생성으로 이어지게 만든 기록입니다.</p>
-            </div>
-          </li>
-
-          <li class="post" data-tags="업무 프로세스 문제정의">
-            <time class="date" datetime="2026-06-03">Jun 3, 2026</time>
-            <div>
-              <div class="post-meta"><span>업무 프로세스</span><span>문제정의</span><span>5 min read</span></div>
-              <h3><a href="../posts/internal-work-system-planning/index.html">내부 업무 시스템을 기획할 때 먼저 생각한 것들</a></h3>
-              <p>회사 안의 요청, 검토, 승인, 파일, 기록 흐름을 하나의 업무 시스템으로 묶기 위해 어떤 관점이 먼저 필요했는지 정리한 글입니다.</p>
-            </div>
-          </li>
-
-          <li class="post" data-tags="데이터 구조">
-            <time class="date" datetime="2026-05-25">May 25, 2026</time>
-            <div>
-              <div class="post-meta"><span>데이터 구조</span><span>5 min read</span></div>
-              <h3><a href="../posts/cpp-delivery-platform/index.html">주문·결제 데이터가 흔들리지 않게 서버 기준을 세운 기록</a></h3>
-              <p>주소, 주문, 결제, 리뷰 흐름을 서버와 데이터베이스 기준으로 검증하고, 주문 당시의 정보를 스냅샷으로 남긴 기록입니다.</p>
-            </div>
-          </li>
-
-          <li class="post" data-tags="AI 자동화 데이터 구조">
-            <time class="date" datetime="2026-05-25">May 25, 2026</time>
-            <div>
-              <div class="post-meta"><span>AI 자동화</span><span>데이터 구조</span><span>5 min read</span></div>
-              <h3><a href="../posts/coco-emotion-care-agent/index.html">AI가 감정을 판단할 때 사람이 보완해야 하는 흐름을 어떻게 설계할까</a></h3>
-              <p>표정 인식, 사용자 선택, LLM 응답, SQLite 기록을 연결하면서 AI 판단을 확정값이 아니라 검토 가능한 흐름으로 설계한 기록입니다.</p>
-            </div>
-          </li>
-
-          <li class="post" data-tags="AI 자동화 업무 프로세스">
-            <time class="date" datetime="2026-05-25">May 25, 2026</time>
-            <div>
-              <div class="post-meta"><span>AI 자동화</span><span>업무 프로세스</span><span>5 min read</span></div>
-              <h3><a href="../posts/ai-drawing-system/index.html">AI 생성 결과를 사용자가 이해할 수 있는 과정으로 바꾸는 인터랙션 설계</a></h3>
-              <p>스케치 입력, AI 이미지 생성, 윤곽선 추출, C++ 재생 흐름을 분리하며 AI 결과를 사용자가 따라갈 수 있는 과정으로 만든 기록입니다.</p>
-            </div>
-          </li>
-
-          <li class="post" data-tags="데이터 구조 회고">
-            <time class="date" datetime="2026-05-25">May 25, 2026</time>
-            <div>
-              <div class="post-meta"><span>데이터 구조</span><span>회고</span><span>5 min read</span></div>
-              <h3><a href="../posts/fall-detection-blackbox/index.html">감지 결과를 나중에 확인 가능한 기록으로 남기는 영상 로그 구조</a></h3>
-              <p>실시간 영상 이벤트를 감지하는 데서 끝내지 않고, 발생 전후의 프레임과 클립을 함께 남겨 다시 확인할 수 있게 만든 기록입니다.</p>
-            </div>
-          </li>
-
-          <li class="post" data-tags="문서/결재 AI 자동화 데이터 구조 회고 Portfolio Tools">
-            <time class="date" datetime="2026-05-25">May 25, 2026</time>
-            <div>
-              <div class="post-meta"><span>문서/결재</span><span>AI 자동화</span><span class="tag-more">+1</span><span>4 min read</span></div>
-              <h3><a href="../sample-post.html">문서와 프로젝트 경험을 포트폴리오 글로 바꾸는 자동화 흐름</a></h3>
-              <p>메모, 공모전 자료, README를 문제 정의와 시스템 설계 관점으로 재구성해 포트폴리오 글 초안으로 만드는 문서 자동화 실험입니다.</p>
-            </div>
-          </li>
-
-        </ol>
-      </section>
-    </main>
-
-    <footer>
-      <p>
-        I write about planning work systems, structuring business data, and using AI automation where it supports better decisions.
-        Last updated: 2026-07-08.
-      </p>
-    </footer>
-  </div>
-  <script>
-    (function () {
-      var root = document.documentElement;
-
-      function applyTheme(theme) {
-        var nextTheme = theme === "dark" ? "dark" : "light";
-        root.dataset.theme = nextTheme;
-        try {
-          localStorage.setItem("theme", nextTheme);
-        } catch (error) {}
-
-        document.querySelectorAll(".theme-toggle").forEach(function (button) {
-          var isDark = nextTheme === "dark";
-          button.setAttribute("aria-pressed", String(isDark));
-          button.setAttribute("aria-label", isDark ? "라이트 모드 켜기" : "다크 모드 켜기");
-          var text = button.querySelector(".theme-toggle-text");
-          if (text) {
-            text.textContent = isDark ? "Light" : "Dark";
-          }
-        });
-      }
-
-      applyTheme(root.dataset.theme === "dark" ? "dark" : "light");
-      document.querySelectorAll(".theme-toggle").forEach(function (button) {
-        button.addEventListener("click", function () {
-          applyTheme(root.dataset.theme === "dark" ? "light" : "dark");
-        });
-      });
-
-      var params = new URLSearchParams(window.location.search);
-      var selectedTag = params.get("tag");
-      var posts = Array.prototype.slice.call(document.querySelectorAll(".post"));
-      var status = document.getElementById("filter-status");
-      var tagLinks = Array.prototype.slice.call(document.querySelectorAll(".tag-list a"));
-
-      if (selectedTag) {
-        var visibleCount = 0;
-
-        posts.forEach(function (post) {
-          var tags = post.dataset.tags || "";
-          var isVisible = tags.indexOf(selectedTag) !== -1;
-          post.classList.toggle("is-hidden", !isVisible);
-          if (isVisible) {
-            visibleCount += 1;
-          }
-        });
-
-        tagLinks.forEach(function (link) {
-          link.classList.toggle("is-active", link.dataset.tag === selectedTag);
-        });
-
-        if (status) {
-          status.hidden = false;
-          status.textContent = selectedTag + " 태그의 글 " + visibleCount + "개를 보여줍니다.";
-        }
-      } else {
-        tagLinks.forEach(function (link) {
-          link.classList.toggle("is-active", !link.dataset.tag);
-        });
-      }
-    })();
-  </script></body>
+  <footer class="site-shell site-footer">
+    <p>© <span data-current-year>2026</span> 정태현</p>
+    <p><a href="/">Home</a> · <a href="/about/">About</a> · <a href="/feed.xml">RSS</a></p>
+  </footer>
+  <script src="/assets/js/site.js?v=20260717"></script>
+</body>
 </html>
