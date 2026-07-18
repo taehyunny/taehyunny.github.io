@@ -21,7 +21,7 @@
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard/dist/web/variable/pretendardvariable-dynamic-subset.css">
   <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Nanum+Myeongjo:wght@700&display=swap">
-  <link rel="stylesheet" href="/assets/css/site.css?v=20260717">
+  <link rel="stylesheet" href="/assets/css/site.css?v=20260717b">
   <script>
     (function () {
       try {
@@ -67,16 +67,28 @@
   </header>
 
   <main id="content" class="site-shell">
-    <section class="page-intro" aria-labelledby="home-title">
-      <p class="eyebrow">Strategy · Systems · Implementation</p>
-      <h1 id="home-title">문제를 정의하고,<br>시스템으로 검증한 기록</h1>
-      <p class="intro-copy">업무 흐름과 데이터 구조를 기획하고 Python, Django, C++, AI로 구현하며 확인한 설계 판단과 실패를 기록합니다.</p>
-      <ul class="identity-line" aria-label="주요 관심 분야">
-        <li>업무 시스템</li>
-        <li>데이터·AI</li>
-        <li>공공데이터</li>
-        <li>구현과 검증</li>
-      </ul>
+    <section class="page-intro home-intro" aria-labelledby="home-title">
+      <div class="intro-main">
+        <p class="eyebrow">정태현의 작업 노트 · 2026</p>
+        <h1 id="home-title">일하며 발견한 문제를,<br>작은 시스템으로 풀어봅니다.</h1>
+        <p class="intro-copy">업무 흐름, 데이터 구조, AI 자동화를 직접 설계하고 구현하며 배운 것을 적습니다. 잘된 결과보다 판단의 이유와 실패한 과정까지 남기려고 합니다.</p>
+        <ul class="identity-line" aria-label="주요 관심 분야">
+          <li>업무 시스템</li>
+          <li>데이터·AI</li>
+          <li>공공데이터</li>
+          <li>구현과 검증</li>
+        </ul>
+      </div>
+      <aside class="now-note" aria-labelledby="now-title">
+        <p class="now-label">요즘 기록하는 것</p>
+        <h2 id="now-title">작게 만들고,<br>확인한 만큼 적습니다.</h2>
+        <ul class="now-list">
+          <li><a href="/posts/youth-ai-pass/">공공데이터 원본과 서비스 모델의 경계</a></li>
+          <li><a href="/posts/kas-web-erp-django/">요청·승인·정산을 잇는 업무 구조</a></li>
+          <li><a href="/posts/kas-grant-collector/">AI 판단을 사람이 다시 확인하는 방법</a></li>
+        </ul>
+        <p class="now-footnote">최근 작업과 글을 기준으로 천천히 갱신합니다.</p>
+      </aside>
     </section>
 
     <section class="content-section" aria-labelledby="featured-title">
@@ -84,16 +96,23 @@
         <h2 id="featured-title">먼저 읽을 글</h2>
         <a href="/blog/">전체 글 보기</a>
       </div>
-      <ol class="article-list">
-        <li class="article-row">
+      <article class="featured-story">
+        <figure class="featured-figure">
+          <a href="/posts/youth-ai-pass/">
+            <img src="/assets/posts/youth-ai-pass/current-structure-public.png" alt="청년 AI 패스의 프런트엔드, 메인 서버, AI 서버와 데이터 수집 구조를 정리한 다이어그램" width="1800" height="1227">
+          </a>
+          <figcaption>청년 AI 패스의 현재 구조와 통합 지점을 정리한 작업 다이어그램</figcaption>
+        </figure>
+        <div class="featured-copy">
+          <p class="post-domain">데이터·AI 시스템 · 대표 글</p>
           <time class="article-date" datetime="2026-07-02">2026. 07. 02</time>
-          <div class="article-body">
-            <p class="post-domain">데이터·AI 시스템</p>
-            <h2><a href="/posts/youth-ai-pass/">공공데이터를 AI 커리어 추천 흐름으로 바꾸며 배운 것</a></h2>
-            <p class="article-summary">서로 다른 공공데이터를 원본 기록, 표준 모델, 필터, 추천 근거로 연결하며 데이터 계약과 실패 경로를 설계한 기록입니다.</p>
-            <ul class="inline-tags"><li>공공데이터</li><li>API 계약</li></ul>
-          </div>
-        </li>
+          <h3><a href="/posts/youth-ai-pass/">공공데이터를 AI 커리어 추천 흐름으로 바꾸며 배운 것</a></h3>
+          <p class="article-summary">서로 다른 공공데이터를 원본 기록, 표준 모델, 필터, 추천 근거로 연결하며 데이터 계약과 실패 경로를 설계한 기록입니다.</p>
+          <ul class="inline-tags"><li>공공데이터</li><li>API 계약</li></ul>
+          <a class="read-more" href="/posts/youth-ai-pass/">글 읽기 <span aria-hidden="true">→</span></a>
+        </div>
+      </article>
+      <ol class="article-list article-list-secondary">
         <li class="article-row">
           <time class="article-date" datetime="2026-06-16">2026. 06. 16</time>
           <div class="article-body">
@@ -117,11 +136,14 @@
 
     <section class="content-section" aria-labelledby="domains-title">
       <div class="section-heading">
-        <h2 id="domains-title">기술 분야별 기록</h2>
+        <h2 id="domains-title">주제별로 읽기</h2>
+        <a href="/blog/">전체 글 보기</a>
       </div>
       <div class="domain-grid">
         <section class="domain-column" aria-labelledby="systems-title">
+          <p class="domain-index">01 · 3편</p>
           <h3 id="systems-title">시스템·업무 설계</h3>
+          <p class="domain-summary">사람이 하던 요청과 승인을 상태, 권한, 기록 기준으로 옮깁니다.</p>
           <ul class="domain-list">
             <li><a href="/posts/kas-web-erp-django/">승인·정산 구조를 Django 시스템으로 옮긴 기록</a><small>권한 · 상태 · 기록 보존</small></li>
             <li><a href="/posts/cpp-delivery-platform/">주문·결제 데이터의 서버 기준을 세운 기록</a><small>C++ · 데이터 스냅샷</small></li>
@@ -129,7 +151,9 @@
           </ul>
         </section>
         <section class="domain-column" aria-labelledby="data-title">
+          <p class="domain-index">02 · 3편</p>
           <h3 id="data-title">데이터·AI 시스템</h3>
+          <p class="domain-summary">원본 데이터가 서비스 판단과 AI 응답으로 이어지는 경계를 다룹니다.</p>
           <ul class="domain-list">
             <li><a href="/posts/youth-ai-pass/">공공데이터와 AI 추천 흐름</a><small>정규화 · 필터 · API fallback</small></li>
             <li><a href="/posts/kas-grant-collector/">지원사업 공고 수집과 검토 자동화</a><small>수집 · 중복 제거 · 점수화</small></li>
@@ -137,7 +161,9 @@
           </ul>
         </section>
         <section class="domain-column" aria-labelledby="interaction-title">
+          <p class="domain-index">03 · 2편</p>
           <h3 id="interaction-title">인터랙션·Vision</h3>
+          <p class="domain-summary">AI가 감지하고 생성한 결과를 사람이 확인할 수 있는 형태로 남깁니다.</p>
           <ul class="domain-list">
             <li><a href="/posts/ai-drawing-system/">AI 생성 결과를 과정으로 바꾼 인터랙션</a><small>이미지 생성 · C++ 재생</small></li>
             <li><a href="/posts/fall-detection-blackbox/">감지 결과를 검증 가능한 영상 로그로 남기기</a><small>이벤트 · 프레임 · 클립</small></li>
