@@ -1,0 +1,79 @@
+<!doctype html>
+<html lang="ko">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="icon" href="/favicon.ico?v=20260622" sizes="any">
+  <link rel="preconnect" href="https://cdn.jsdelivr.net" crossorigin>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard/dist/web/variable/pretendardvariable-dynamic-subset.css">
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Nanum+Myeongjo:wght@700&display=swap">
+  <script>(function(){try{var t=localStorage.getItem("theme");document.documentElement.dataset.theme=t==="dark"?"dark":"light";}catch(e){document.documentElement.dataset.theme="light";}})();</script>
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-Z1WFWHS0VR"></script>
+  <script>window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments);}gtag("js",new Date());gtag("config","G-Z1WFWHS0VR");</script>
+  <meta name="description" content="고객·매장·라이더·관리자용 C++ 데스크톱 클라이언트를 역할별로 분리하고, Signature·CmdID·BodySize로 구성된 8바이트 헤더와 JSON Body를 공통 통신 계약으로 사용한 팀 프로젝트 프로토타입이다. 고객의 장바구니와 주문 생성, 매장의 주문 수락·거절, 라이더의 픽업·배달 완료, 관리자의 주문 조회·취소 흐름이 코드로 확인된다. 다만 공개 README가 강조하는 서버 검증 및 MariaDB 주문 스냅샷 구현은 현재 분석 번들에 서버 코드가 없어 확인할 수 없다.">
+  <link rel="canonical" href="https://taehyunny.github.io/posts/its-bedalyo-이츠-배달료/">
+  <meta property="og:type" content="article">
+  <meta property="og:title" content="역할별 배달 클라이언트를 하나의 TCP 패킷 계약으로 연결한 주문 흐름 설계">
+  <meta property="og:description" content="고객·매장·라이더·관리자용 C++ 데스크톱 클라이언트를 역할별로 분리하고, Signature·CmdID·BodySize로 구성된 8바이트 헤더와 JSON Body를 공통 통신 계약으로 사용한 팀 프로젝트 프로토타입이다. 고객의 장바구니와 주문 생성, 매장의 주문 수락·거절, 라이더의 픽업·배달 완료, 관리자의 주문 조회·취소 흐름이 코드로 확인된다. 다만 공개 README가 강조하는 서버 검증 및 MariaDB 주문 스냅샷 구현은 현재 분석 번들에 서버 코드가 없어 확인할 수 없다.">
+  <meta property="og:url" content="https://taehyunny.github.io/posts/its-bedalyo-이츠-배달료/">
+  <meta property="article:published_time" content="2026-07-19">
+  <meta property="article:modified_time" content="2026-07-19">
+  <meta property="article:section" content="시스템·업무 설계">
+  <title>역할별 배달 클라이언트를 하나의 TCP 패킷 계약으로 연결한 주문 흐름 설계 | 정태현</title>
+  <link rel="stylesheet" href="/assets/css/site.css?v=20260717b">
+  <script src="/assets/js/site.js?v=20260717" defer></script>
+  <style>
+    .post-toolbar { display:flex; justify-content:space-between; gap:16px; margin-bottom:28px; }
+    .post-toolbar .back { margin:0; }
+    .post-kicker { margin:0 0 12px; color:var(--accent); font-size:13px; font-weight:750; }
+    .post-meta { color:var(--faint); font-size:13px; }
+    body[data-page="post"] h1 { margin:14px 0 16px; font-family:var(--font-serif); font-size:clamp(30px,5vw,46px); line-height:1.35; }
+    .lead { margin:0 0 18px; color:var(--muted); font-size:18px; line-height:1.8; }
+    .tags { display:flex; flex-wrap:wrap; gap:8px 16px; margin:0 0 46px; padding:0; list-style:none; }
+    .tags li { color:var(--muted); font-size:13px; }
+    .tags li::before { content:"•"; margin-right:6px; color:var(--accent); }
+    body[data-page="post"] article > h2 { margin-top:52px; padding-top:22px; border-top:1px solid var(--border); font-size:22px; }
+    body[data-page="post"] article > p, body[data-page="post"] article > ul, body[data-page="post"] article > ol { line-height:1.8; }
+    .article-footer { margin-top:64px; padding-top:24px; border-top:1px solid var(--border); color:var(--muted); font-size:14px; }
+  </style>
+</head>
+<body data-page="post" data-category="시스템·업무 설계" data-published="2026-07-19" data-updated="2026-07-19" data-read-time="8분">
+  <main>
+    <div class="post-toolbar">
+      <p class="back"><a href="/blog/">← 전체 글</a></p>
+      <button class="theme-toggle" type="button" aria-label="다크 모드 켜기" aria-pressed="false"><span class="theme-toggle-icon" aria-hidden="true">◐</span><span class="theme-toggle-text">Dark</span></button>
+    </div>
+    <article>
+      <p class="post-kicker">시스템·업무 설계 · 8 min read</p>
+      <div class="post-meta">Jul 19, 2026</div>
+      <h1>역할별 배달 클라이언트를 하나의 TCP 패킷 계약으로 연결한 주문 흐름 설계</h1>
+      <p class="lead">고객·매장·라이더·관리자용 C++ 데스크톱 클라이언트를 역할별로 분리하고, Signature·CmdID·BodySize로 구성된 8바이트 헤더와 JSON Body를 공통 통신 계약으로 사용한 팀 프로젝트 프로토타입이다. 고객의 장바구니와 주문 생성, 매장의 주문 수락·거절, 라이더의 픽업·배달 완료, 관리자의 주문 조회·취소 흐름이 코드로 확인된다. 다만 공개 README가 강조하는 서버 검증 및 MariaDB 주문 스냅샷 구현은 현재 분석 번들에 서버 코드가 없어 확인할 수 없다.</p>
+      <ul class="tags"><li>C++</li><li>Qt</li><li>MFC</li><li>TCP/IP</li><li>JSON</li></ul>
+      <p>고객·매장·라이더·관리자용 C++ 데스크톱 클라이언트를 역할별로 분리하고, Signature·CmdID·BodySize로 구성된 8바이트 헤더와 JSON Body를 공통 통신 계약으로 사용한 팀 프로젝트 프로토타입이다. 고객의 장바구니와 주문 생성, 매장의 주문 수락·거절, 라이더의 픽업·배달 완료, 관리자의 주문 조회·취소 흐름이 코드로 확인된다. 다만 공개 README가 강조하는 서버 검증 및 MariaDB 주문 스냅샷 구현은 현재 분석 번들에 서버 코드가 없어 확인할 수 없다.</p>
+<h2 id="1-문제와-배경">1. 문제와 배경</h2>
+<ul><li>고객, 매장 운영자, 라이더, 관리자가 서로 다른 화면과 작업 흐름을 사용하면서도 동일한 주문 상태와 요청 규칙을 공유해야 한다.</li><li>TCP는 메시지 경계를 보장하지 않으므로 가변 길이 JSON을 안전하게 구분하고 분할 수신을 처리할 패킷 규칙이 필요하다.</li><li>주문 생성부터 매장 수락·거절, 픽업, 배달 완료, 관리자 취소까지 역할별 행동을 명령 단위로 구분해야 한다.</li><li>고객이 여러 화면을 이동해도 선택한 매장과 메뉴, 수량, 금액을 유지할 클라이언트 상태 관리가 필요하다.</li><li>프로젝트 문서는 운영 서비스가 아닌 팀 프로젝트 프로토타입이라고 범위를 한정한다.</li><li>루트 README는 주문 당시 메뉴·가격·결제 정보를 서버 기준 스냅샷으로 저장하는 것을 핵심 목표로 설명한다. 다만 해당 서버 및 DB 구현은 별도 저장소에 있다고 문서에 명시되어 현재 번들에서는 검증할 수 없다.</li><li>분석 번들에는 Qt 기반 고객 클라이언트와 MFC 기반 매장·라이더·관리자 클라이언트가 포함되어 있다.</li></ul>
+<h2 id="2-대상-사용자와-입출력">2. 대상 사용자와 입출력</h2>
+<ul><li><strong>대상 사용자</strong>: 배달 주문을 검색하고 장바구니·주소·주문을 관리하는 고객</li><li><strong>대상 사용자</strong>: 접수된 주문과 메뉴·리뷰·매출·정산을 관리하는 매장 운영자</li><li><strong>대상 사용자</strong>: 배달 가능 주문을 조회하고 픽업·배달 완료 상태를 전달하는 라이더</li><li><strong>대상 사용자</strong>: 주문 취소·환불, 리뷰, 블랙리스트, 채팅 업무를 처리하는 관리자</li><li><strong>입력</strong>: 로그인·회원가입 정보</li><li><strong>입력</strong>: 매장 카테고리와 검색어</li><li><strong>입력</strong>: 주소 및 상세 주소 정보</li><li><strong>입력</strong>: 장바구니의 매장 ID, 메뉴 ID, 수량, 단가, 선택 옵션</li><li><strong>입력</strong>: 주문 ID와 매장 측 수락 예상 시간 또는 거절 사유</li><li><strong>입력</strong>: 라이더가 선택한 주문 ID</li><li><strong>입력</strong>: 관리자 주문 검색 조건과 취소 사유</li><li><strong>입력</strong>: TCP로 수신한 CmdID별 JSON 응답</li><li><strong>출력</strong>: 역할별 요청을 나타내는 CmdID와 JSON Body 패킷</li><li><strong>출력</strong>: 매장·메뉴·검색·주소 결과 화면</li><li><strong>출력</strong>: 주문 생성 성공 또는 실패 메시지</li><li><strong>출력</strong>: 매장의 주문 목록과 수락·거절 결과</li><li><strong>출력</strong>: 라이더의 배달 가능 주문 목록과 픽업·완료 요청</li><li><strong>출력</strong>: 관리자의 주문 조회·취소 및 리뷰 관리 화면</li><li><strong>출력</strong>: 서버 응답을 UI에 전달하는 Qt signal 또는 Windows 메시지</li></ul>
+<h2 id="3-요구사항과-기술-제약">3. 요구사항과 기술 제약</h2>
+<ul><li><strong>요구사항</strong>: 모든 패킷은 2바이트 Signature, 2바이트 CmdID, 4바이트 BodySize 뒤에 JSON Body를 배치해야 한다.</li><li><strong>요구사항</strong>: 고객·매장·라이더·관리자 기능은 CmdID 번호 대역으로 역할과 책임을 구분해야 한다.</li><li><strong>요구사항</strong>: 수신 데이터가 헤더나 Body보다 짧을 수 있으므로 필요한 바이트가 모일 때까지 버퍼링하거나 정확한 길이만큼 반복 수신해야 한다.</li><li><strong>요구사항</strong>: 잘못된 Signature와 JSON 파싱 오류를 처리해야 한다.</li><li><strong>요구사항</strong>: 고객 주문 생성 전에 장바구니가 비어 있지 않고 최소 주문 금액을 충족하는지 확인해야 한다.</li><li><strong>요구사항</strong>: 한 장바구니에는 하나의 매장만 유지하고 다른 매장 메뉴 선택 시 기존 장바구니 정리 여부를 확인해야 한다.</li><li><strong>요구사항</strong>: 매장은 대기 상태의 주문만 수락하거나 거절할 수 있어야 한다.</li><li><strong>요구사항</strong>: 라이더는 서버 연결 후 배달 가능 주문 목록을 요청하고 선택한 주문에 픽업·배달 완료 요청을 보낼 수 있어야 한다.</li><li><strong>제약</strong>: 프로토타입이며 운영 환경의 보안·신뢰성·배포 수준은 확인되지 않는다.</li><li><strong>제약</strong>: 고객 클라이언트는 Qt/QTcpSocket, 나머지 역할 클라이언트는 Windows MFC/WinSock을 사용해 UI와 네트워크 구현 방식이 이원화되어 있다.</li><li><strong>제약</strong>: 클라이언트 간 상호운용을 위해 헤더 정렬과 네트워크 바이트 순서를 동일하게 유지해야 한다.</li><li><strong>제약</strong>: CartSession은 앱 실행 중 메모리에만 존재하며 앱 종료 후 복원되지 않는다.</li><li><strong>제약</strong>: 현재 번들에는 서버, DAO, DB 스키마, 실행 설정, 테스트 코드가 포함되지 않아 전체 시스템 동작을 검증할 수 없다.</li><li><strong>제약</strong>: SOURCE_MANIFEST에 실제 접속 정보가 포함된 과거 README가 분석 대상으로 기록되어 있어 공개 저장소의 보안 경계 문서와 충돌한다.</li></ul>
+<h2 id="4-시스템-구조와-데이터-흐름">4. 시스템 구조와 데이터 흐름</h2>
+<ul><li><strong>데이터 흐름</strong>: 고객이 메뉴를 선택하면 CartSession이 매장 ID, 매장명, 메뉴 목록, 수량과 단가를 메모리에 유지한다.</li><li><strong>데이터 흐름</strong>: 결제 버튼에서 최소 주문 금액과 빈 장바구니 여부를 확인한 뒤 사용자 ID, 매장 ID, 총액, 주소, 메뉴 항목으로 OrderCreateReqDTO를 구성한다.</li><li><strong>데이터 흐름</strong>: NetworkManager가 DTO를 JSON으로 직렬화하고 Big Endian의 Signature·CmdID·BodySize를 붙여 QTcpSocket으로 전송한다.</li><li><strong>데이터 흐름</strong>: 수신 데이터는 누적 버퍼에 추가되고, 완전한 8바이트 헤더와 선언된 Body가 도착한 패킷만 분리된다.</li><li><strong>데이터 흐름</strong>: CmdID별 JSON 응답은 DTO로 역직렬화된 후 Qt signal로 해당 화면에 전달된다.</li><li><strong>데이터 흐름</strong>: 매장 클라이언트는 주문 목록을 조회하고 대기 주문에 대해 예상 조리 시간을 포함한 수락 요청 또는 사유를 포함한 거절 요청을 전송한다.</li><li><strong>데이터 흐름</strong>: 라이더 클라이언트는 연결 직후 또는 새로고침 시 배달 가능 주문 목록을 요청하고, 선택한 주문 ID로 픽업 또는 배달 완료 요청을 전송한다.</li><li><strong>데이터 흐름</strong>: 관리자 클라이언트는 백그라운드 인증 후 주문 검색과 취소 등 관리 요청을 전송한다.</li><li><strong>구성 요소</strong>: Qt 고객 클라이언트: 로그인, 홈, 검색, 매장 상세, 메뉴 옵션, 장바구니, 주소, 주문 완료, 마이페이지 화면</li><li><strong>구성 요소</strong>: NetworkManager: 고객 클라이언트의 TCP 연결, 패킷 직렬화·버퍼링·역직렬화 및 signal 발행</li><li><strong>구성 요소</strong>: CartSession: 고객 장바구니의 프로세스 내 싱글톤 상태 저장소</li><li><strong>구성 요소</strong>: UserSession: 로그인 사용자 정보를 공유하는 클라이언트 세션</li><li><strong>구성 요소</strong>: MFC 매장 클라이언트: 주문, 메뉴, 매장, 리뷰, 매출, 정산 탭</li><li><strong>구성 요소</strong>: MFC 라이더 클라이언트: 주문 목록, 픽업, 배달 완료 처리</li><li><strong>구성 요소</strong>: MFC 관리자 클라이언트: 채팅, 주문 취소·환불, 리뷰, 블랙리스트 관리</li><li><strong>구성 요소</strong>: NetworkHelper: MFC 클라이언트의 WinSock 연결, 헤더 변환, 정확한 길이 수신 및 Windows 메시지 전달</li><li><strong>구성 요소</strong>: Global_protocol.h 사본들: 역할별 CmdID와 PacketHeader 계약</li></ul>
+<h2 id="5-구현-방법">5. 구현 방법</h2>
+<ul><li><strong>사용 기술</strong>: C++</li><li><strong>사용 기술</strong>: Qt</li><li><strong>사용 기술</strong>: MFC</li><li><strong>사용 기술</strong>: TCP/IP</li><li><strong>사용 기술</strong>: JSON</li><li><strong>확인된 구현</strong>: 8바이트 고정 헤더와 가변 JSON Body 기반 TCP 패킷 송수신</li><li><strong>확인된 구현</strong>: Big Endian 변환과 누적 수신 버퍼를 이용한 TCP 분할 패킷 처리</li><li><strong>확인된 구현</strong>: 로그인·회원가입·아이디 및 전화번호 중복 확인 요청과 응답 분기</li><li><strong>확인된 구현</strong>: 카테고리별 매장 조회, 매장 검색, 매장 상세와 메뉴 옵션 요청</li><li><strong>확인된 구현</strong>: 주소 저장·목록·삭제·수정·기본 주소 변경 요청</li><li><strong>확인된 구현</strong>: 싱글톤 장바구니의 메뉴 추가, 수량 변경, 총수량·총액 계산, 초기화</li><li><strong>확인된 구현</strong>: 배달·포장 주문 DTO 구성과 주문 생성 요청</li><li><strong>확인된 구현</strong>: 매장의 주문 목록 조회 및 대기 주문 수락·거절</li><li><strong>확인된 구현</strong>: 매장의 메뉴·리뷰 목록 조회와 리뷰 답글 요청</li><li><strong>확인된 구현</strong>: 라이더의 주문 목록 조회, 픽업, 배달 완료 요청</li><li><strong>확인된 구현</strong>: 관리자의 초기 인증, 주문 검색, 취소 및 리뷰 목록 요청</li></ul>
+<h2 id="6-설계-판단">6. 설계 판단</h2>
+<ul><li>CmdID를 공통 1000번대, 고객 2000번대, 매장 3000번대, 라이더 4000번대, 관리자 5000번대, 서버 알림 9000번대로 나눠 역할별 계약 충돌을 줄이려 했다.</li><li>PacketHeader에 1바이트 정렬을 강제해 구조체 패딩 없이 8바이트 규칙을 유지했다.</li><li>JSON Body를 사용해 기능별 DTO를 가변 구조로 교환하면서 헤더에서는 기능과 길이만 책임지도록 분리했다.</li><li>Qt 클라이언트는 누적 QByteArray 버퍼를, MFC 클라이언트는 RecvExact 반복 수신을 사용해 TCP의 분할 수신을 처리했다.</li><li>고객 장바구니를 싱글톤으로 두어 여러 화면이 동일한 상태를 공유하게 했다.</li><li>주문 성공 응답을 받은 뒤에만 CartSession을 비워 실패 시 사용자의 선택을 보존한다.</li><li>주소 삭제는 UI를 먼저 갱신한 뒤 서버 요청을 보내는 낙관적 업데이트를 사용했다.</li><li>매장 주문 수락·거절은 UI에 표시된 상태가 &#x27;대기&#x27;인지 먼저 확인해 잘못된 상태 전이를 제한한다.</li></ul>
+<h2 id="7-실패-현상과-원인">7. 실패 현상과 원인</h2>
+<ul><li>MFC 수신 코드 주석에는 Signature 불일치 시 Body를 소비하지 않고 다음 헤더를 읽어 스트림이 꼬였던 문제가 기록되어 있으며, 현재 코드는 제한된 크기의 Body를 버린 뒤 재시도하도록 수정되어 있다.</li><li>역할별로 복제된 Global_protocol.h 사이에서 라이더 픽업 CmdID가 일치하지 않는다. 관리자·매장 사본은 REQ_PICKUP/RES_PICKUP을 4002/4003으로 정의하지만 라이더 사본은 4030/4031로 정의한다.</li><li>과거 README에는 실제 서버·DB 접속 정보와 비밀번호가 기록되어 있지만 루트 README는 실제 접속 정보를 공개하지 않는다고 주장한다.</li><li>주문 내역 화면의 네트워크 signal 연결과 REQ_ORDER_HISTORY 전송이 주석 및 TODO 상태라 실제 서버 연동이 구현되지 않았다.</li></ul>
+<h2 id="8-검증">8. 검증</h2>
+<ul><li>코드 정적 확인으로 Qt와 MFC 양쪽 모두 Signature 0x4543, CmdID, BodySize를 포함한 패킷 구성을 확인했다.</li><li>Qt 수신부가 완전한 헤더와 Body가 도착할 때까지 버퍼에 보관하는 조건을 확인했다.</li><li>MFC 수신부가 RecvExact로 요청한 길이만큼 반복 수신하고 네트워크 바이트 순서를 변환하는 구현을 확인했다.</li><li>주문 생성 성공 status 200일 때 장바구니 초기화와 성공 화면 전환이 수행되는 분기를 확인했다.</li><li>테스트 파일과 실행 결과는 번들에 없으며, 사용자 안전 규칙에 따라 빌드·실행·테스트는 수행하지 않았다.</li></ul>
+<h2 id="9-트레이드오프와-한계">9. 트레이드오프와 한계</h2>
+<ul><li>루트 README의 핵심인 서버 측 검증, MariaDB 저장, 주문 스냅샷은 현재 저장소 번들에서 구현을 확인할 수 없다.</li><li>주문 생성 요청에 클라이언트가 계산한 totalPrice와 unitPrice가 포함되지만 서버가 이를 재계산·검증하는지는 확인되지 않는다.</li><li>장바구니 옵션 ID 필드가 있으나 주문 생성 시 selectedOptions는 항상 빈 배열로 전송된다.</li><li>장바구니는 로컬 메모리에만 존재하고 서버 동기화와 앱 재시작 복원이 구현되지 않았다.</li><li>회원탈퇴는 확인 UI만 있으며 실제 요청 전송은 TODO다.</li><li>주문 내역 조회는 화면 골격만 있고 서버 요청과 응답 연결이 비활성화되어 있다.</li><li>포장 매장 주소와 예상 시간은 DTO 확장 TODO 상태다.</li><li>정산 화면은 실제 정산 내역 대신 total_sales를 임의 비율로 나눈 고정 날짜 더미 데이터를 표시한다.</li><li>매출 수수료율 12.8%가 코드에 하드코딩되어 근거와 변경 정책을 확인할 수 없다.</li><li>클라이언트별로 프로토콜 헤더가 복제되어 CmdID 불일치가 발생할 수 있다.</li><li>자동화 테스트, 통합 테스트, 실행 로그, 성능·동시성·복구 검증 자료가 없다.</li></ul>
+<h2 id="10-다음-개선점">10. 다음 개선점</h2>
+<ul><li>Global_protocol.h를 단일 공유 계약으로 통합하고 역할별 복사본의 CmdID 차이를 제거한다.</li><li>프로토콜 계약 테스트를 추가해 헤더 크기, Big Endian 직렬화, CmdID 값, 분할·병합 패킷 처리를 검증한다.</li><li>서버 저장소의 주문 DTO·DAO·트랜잭션 코드를 함께 제시해 가격 재검증과 주문 스냅샷 저장 주장을 검증 가능하게 만든다.</li><li>주문 내역, 회원탈퇴, 장바구니 서버 동기화, 메뉴 옵션 전송 등 TODO 기능의 계약과 완료 기준을 정의한다.</li><li>낙관적으로 삭제한 주소 요청이 실패했을 때 이전 상태로 복구하거나 목록을 재조회하는 실패 처리 흐름을 추가한다.</li><li>정산 더미 데이터와 하드코딩 수수료를 실제 응답 계약 및 정책 데이터로 교체한다.</li><li>실제 접속 정보가 포함된 과거 README의 공개 이력과 현재 저장소 노출 여부를 점검하고 자격 증명을 교체한다.</li></ul>
+      <footer class="article-footer"><p><a href="/">홈</a> · <a href="/blog/">전체 글</a> · <a href="/#contact">연락</a></p></footer>
+    </article>
+  </main>
+</body>
+</html>
