@@ -21,7 +21,7 @@
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard/dist/web/variable/pretendardvariable-dynamic-subset.css">
   <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Nanum+Myeongjo:wght@700&display=swap">
-  <link rel="stylesheet" href="/assets/css/site.css?v=20260717b">
+  <link rel="stylesheet" href="/assets/css/site.css?v=20260721">
   <script>
     (function () {
       try {
@@ -115,7 +115,7 @@
       <ol class="article-list article-list-secondary">
         <li class="article-row">
           <time class="article-date" datetime="2026-07-19">2026. 07. 19</time>
-          <div class="article-body"><p class="post-domain">시스템·업무 설계 · 8분</p><h2><a href="/posts/its-bedalyo-이츠-배달료/">역할별 배달 클라이언트를 하나의 TCP 패킷 계약으로 연결한 주문 흐름 설계</a></h2><p class="article-summary">고객·매장·라이더·관리자용 C++ 데스크톱 클라이언트를 역할별로 분리하고, Signature·CmdID·BodySize로 구성된 8바이트 헤더와 JSON Body를 공통 통신 계약으로 사용한 팀 프로젝트 프로토타입이다. 고객의 장바구니와 주문 생성, 매장의 주문 수락·거절, 라이더의 픽업·배달 완료, 관리자의 주문 조회·취소 흐름이 코드로 확인된다. 다만 공개 README가 강조하는 서버 검증 및 MariaDB 주문 스냅샷 구현은 현재 분석 번들에 서버 코드가 없어 확인할 수 없다.</p></div>
+          <div class="article-body"><p class="post-domain">시스템·업무 설계 · 3분</p><h2><a href="/posts/its-bedalyo-이츠-배달료/">네 개의 배달 클라이언트를 하나의 TCP 규칙으로 연결하기</a></h2><p class="article-summary">고객·매장·라이더·관리자 클라이언트가 같은 주문 상태를 주고받도록 8바이트 헤더와 JSON 본문을 공통 규칙으로 정리했다. 코드에서 확인한 구현과 어긋난 CmdID, 아직 검증하지 못한 서버 범위를 함께 기록한다.</p></div>
         </li>
         <li class="article-row">
           <time class="article-date" datetime="2026-06-16">2026. 06. 16</time>
